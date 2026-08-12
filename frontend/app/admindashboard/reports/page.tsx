@@ -72,7 +72,6 @@ export default function ReportsPage() {
         <button className="btn btn-secondary" onClick={fetchStats}><RefreshCw size={14} /> Refresh</button>
       </div>
 
-      {/* KPI Strip */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, marginBottom: 24 }}>
         {[
           { label: "Today's Revenue",  value: `Rs.${stats.todayRevenue.toLocaleString()}`,  icon: <DollarSign size={16} />,  color: '#059669' },
@@ -90,9 +89,7 @@ export default function ReportsPage() {
         ))}
       </div>
 
-      {/* Charts Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
-        {/* Revenue vs Investment vs Profit */}
         <ChartCard title="Revenue vs Investment vs Profit" subtitle="Monthly 2026 breakdown">
           <ResponsiveContainer width="100%" height={220}>
             <AreaChart data={stats.monthlyChart} margin={{ top: 4, right: 4, bottom: 0, left: -16 }}>
@@ -107,7 +104,7 @@ export default function ReportsPage() {
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
               <XAxis dataKey="month" tick={{ fill: 'var(--text-muted)', fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: 'var(--text-muted)', fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={v => `Rs.${v/1000}k`} />
-              <Tooltip contentStyle={tooltipStyle} formatter={(v: number, n: string) => [`Rs.${v.toLocaleString()}`, n]} />
+              <Tooltip contentStyle={tooltipStyle} formatter={(v: any, n: any) => [`Rs.${Number(v).toLocaleString()}`, n]} />
               <Area type="monotone" dataKey="revenue"    stroke="#059669" strokeWidth={2} fill="url(#grev)" dot={false} />
               <Area type="monotone" dataKey="investment" stroke="#2563eb" strokeWidth={2} fill="url(#ginv)" dot={false} />
               <Area type="monotone" dataKey="profit"     stroke="#7c3aed" strokeWidth={2} fill="url(#gpro)" dot={false} />
@@ -122,14 +119,13 @@ export default function ReportsPage() {
           </div>
         </ChartCard>
 
-        {/* Profit Trend */}
         <ChartCard title="Monthly Net Profit Trend" subtitle="Net profit line chart for current year">
           <ResponsiveContainer width="100%" height={220}>
             <LineChart data={stats.monthlyChart} margin={{ top: 4, right: 4, bottom: 0, left: -16 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
               <XAxis dataKey="month" tick={{ fill: 'var(--text-muted)', fontSize: 11 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: 'var(--text-muted)', fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={v => `Rs.${v/1000}k`} />
-              <Tooltip contentStyle={tooltipStyle} formatter={(v: number) => [`Rs.${v.toLocaleString()}`, 'Profit']} />
+              <Tooltip contentStyle={tooltipStyle} formatter={(v: any) => [`Rs.${Number(v).toLocaleString()}`, 'Profit']} />
               <Line type="monotone" dataKey="profit" stroke="#7c3aed" strokeWidth={3} dot={{ fill: '#7c3aed', r: 4 }} activeDot={{ r: 6 }} />
             </LineChart>
           </ResponsiveContainer>
@@ -137,7 +133,6 @@ export default function ReportsPage() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: 20 }}>
-        {/* Category Sales Donut */}
         <ChartCard title="Sales by Category">
           {stats.categoryBreakdown.length === 0 ? (
             <div style={{ padding: 40, textAlign: 'center', color: 'var(--text-muted)' }}>No category sales.</div>
@@ -148,7 +143,7 @@ export default function ReportsPage() {
                   <Pie data={stats.categoryBreakdown} cx="50%" cy="50%" innerRadius={42} outerRadius={64} dataKey="value" strokeWidth={0}>
                     {stats.categoryBreakdown.map((e: any, i: number) => <Cell key={i} fill={CATEGORY_COLORS[i % CATEGORY_COLORS.length]} />)}
                   </Pie>
-                  <Tooltip contentStyle={tooltipStyle} formatter={(v: number) => [`${v}%`, 'Share']} />
+                  <Tooltip contentStyle={tooltipStyle} formatter={(v: any) => [`${v}%`, 'Share']} />
                 </PieChart>
               </ResponsiveContainer>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 4 }}>
@@ -166,7 +161,6 @@ export default function ReportsPage() {
           )}
         </ChartCard>
 
-        {/* Top Product Revenue Breakdown */}
         <ChartCard title="Product Revenue Performance" subtitle="Performances of top products this month">
           <div style={{ overflowX: 'auto' }}>
             <table className="admin-table" style={{ fontSize: 13 }}>

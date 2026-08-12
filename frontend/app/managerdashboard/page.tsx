@@ -75,7 +75,6 @@ export default function DashboardPage() {
   return (
     <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: 24 }}>
 
-      {/* Stat Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
         <StatCard label="Total Revenue" value="$84,520" change="18.4%" positive accentColor="#3b82f6" icon={<DollarSign size={16} />} />
         <StatCard label="Total Orders" value="2,841" change="12.1%" positive accentColor="#10b981" icon={<ShoppingCart size={16} />} />
@@ -83,10 +82,8 @@ export default function DashboardPage() {
         <StatCard label="Stock Alerts" value="17" change="3 items" positive={false} accentColor="#f59e0b" icon={<Package size={16} />} />
       </div>
 
-      {/* Charts row */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: 16 }}>
 
-        {/* Revenue chart */}
         <div style={{
           background: 'var(--bg-card)',
           border: '1px solid var(--border)',
@@ -129,7 +126,6 @@ export default function DashboardPage() {
           </ResponsiveContainer>
         </div>
 
-        {/* Pie chart */}
         <div style={{
           background: 'var(--bg-card)',
           border: '1px solid var(--border)',
@@ -162,10 +158,8 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Bottom row: Top products + Recent orders */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 16 }}>
 
-        {/* Top Products */}
         <div style={{
           background: 'var(--bg-card)',
           border: '1px solid var(--border)',
@@ -223,7 +217,6 @@ export default function DashboardPage() {
           </table>
         </div>
 
-        {/* Recent Orders */}
         <div style={{
           background: 'var(--bg-card)',
           border: '1px solid var(--border)',

@@ -24,7 +24,6 @@ public class Bill {
     private Long customerId;
     private String customerName;
 
-    // Financial fields
     private Double subtotal;
     private Double discountAmount;
     private Double totalAmount;
@@ -59,7 +58,6 @@ public class Bill {
         item.setBill(this);
     }
 
-    // ── Getters / Setters ──────────────────────────────────────
     public Long getId()                              { return id; }
     public void setId(Long id)                       { this.id = id; }
     public String getBillNumber()                    { return billNumber; }

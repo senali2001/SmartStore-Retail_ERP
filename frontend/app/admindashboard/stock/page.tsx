@@ -46,7 +46,6 @@ export default function StockPage() {
     fetchProducts()
   }, [])
 
-  // Helper function to resolve dynamic status
   const getProductStatus = (p: any) => {
     const qty = p.stockQuantity || 0
     const min = p.minimumStockLevel || 0
@@ -103,7 +102,6 @@ export default function StockPage() {
         </div>
       </div>
 
-      {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 12, marginBottom: 20 }}>
         {[
           { label: 'Total Products',  value: products.length, icon: <Package size={16} />,    color: '#059669' },
@@ -124,7 +122,6 @@ export default function StockPage() {
         ))}
       </div>
 
-      {/* Toolbar */}
       <div className="toolbar">
         <div className="search-wrap" style={{ width: 260 }}>
           <Search className="search-icon" size={14} />
@@ -206,7 +203,6 @@ export default function StockPage() {
         )}
       </div>
 
-      {/* View Modal */}
       {viewOpen && selected && (
         <div className="modal-overlay" onClick={() => setViewOpen(false)}>
           <div className="modal-box" style={{ maxWidth: 480 }} onClick={e => e.stopPropagation()}>

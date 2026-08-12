@@ -80,7 +80,6 @@ export default function Sidebar() {
         zIndex: 50,
       }}
     >
-      {/* Logo */}
       <div style={{
         padding: '20px 20px 16px',
         borderBottom: '1px solid var(--border)',
@@ -103,7 +102,6 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Scrollable nav */}
       <nav
         className="sidebar-scroll"
         style={{ flex: 1, overflowY: 'auto', padding: '12px 0' }}
@@ -171,11 +169,9 @@ export default function Sidebar() {
             })}
           </div>
         ))}
-        {/* bottom padding for scroll breathing room */}
         <div style={{ height: 24 }} />
       </nav>
 
-      {/* User profile footer */}
       <div style={{
         padding: '12px 16px',
         borderTop: '1px solid var(--border)',

@@ -27,7 +27,6 @@ export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
   const notifRef   = useRef<HTMLDivElement>(null)
   const profileRef = useRef<HTMLDivElement>(null)
 
-  /* Live clock */
   useEffect(() => {
     const update = () => {
       const now = new Date()
@@ -39,7 +38,6 @@ export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
     return () => clearInterval(t)
   }, [])
 
-  /* Theme */
   useEffect(() => {
     const saved = localStorage.getItem('smartstore-theme')
     if (saved === 'dark') { setDark(true); document.documentElement.setAttribute('data-theme', 'dark') }
@@ -52,7 +50,6 @@ export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
     localStorage.setItem('smartstore-theme', next ? 'dark' : 'light')
   }
 
-  /* Close dropdowns on outside click */
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (notifRef.current && !notifRef.current.contains(e.target as Node)) setNotifOpen(false)
@@ -71,13 +68,11 @@ export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
       className="admin-header"
       style={{ marginLeft: sidebarW, transition: 'margin-left 0.25s ease', position: 'sticky', top: 0, zIndex: 50 }}
     >
-      {/* ── Left ── */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         <button className="btn btn-ghost btn-icon" onClick={onMenuClick} style={{ color: 'var(--text-secondary)' }}>
           <Menu size={18} />
         </button>
 
-        {/* Search */}
         <div className="search-wrap" style={{ width: 260 }}>
           <Search className="search-icon" size={14} />
           <input
@@ -88,10 +83,8 @@ export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
         </div>
       </div>
 
-      {/* ── Right ── */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
 
-        {/* Live clock */}
         <div style={{
           background: 'var(--bg-hover)',
           border: '1px solid var(--border)',
@@ -106,7 +99,6 @@ export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
           <span style={{ fontSize: 10.5, color: 'var(--text-muted)' }}>{date}</span>
         </div>
 
-        {/* Theme Toggle */}
         <button
           className="btn btn-secondary btn-icon"
           onClick={toggleTheme}
@@ -116,7 +108,6 @@ export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
           {dark ? <Sun size={15} /> : <Moon size={15} />}
         </button>
 
-        {/* Notifications */}
         <div className="dropdown" ref={notifRef}>
           <button
             className="btn btn-secondary btn-icon"
@@ -175,7 +166,6 @@ export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
           )}
         </div>
 
-        {/* Profile */}
         <div className="dropdown" ref={profileRef}>
           <button
             style={{

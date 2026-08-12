@@ -36,7 +36,6 @@ public class DashboardService {
     public Map<String, Object> getStats() {
         Map<String, Object> stats = new LinkedHashMap<>();
 
-        // ── Date ranges ──────────────────────────────────────
         LocalDate today = LocalDate.now(ZoneId.of("Asia/Colombo"));
         LocalDateTime todayStart  = today.atStartOfDay();
         LocalDateTime todayEnd    = today.plusDays(1).atStartOfDay();
@@ -44,7 +43,6 @@ public class DashboardService {
         LocalDateTime yearStart   = today.withDayOfYear(1).atStartOfDay();
         LocalDateTime yearEnd     = today.plusYears(1).withDayOfYear(1).atStartOfDay();
 
-        // ── Today's KPIs ─────────────────────────────────────
         double todayRevenue    = safe(billRepository.sumRevenueBetween(todayStart, todayEnd));
         double todayInvestment = safe(billRepository.sumInvestmentBetween(todayStart, todayEnd));
         double todayDiscount   = safe(billRepository.sumDiscountBetween(todayStart, todayEnd));
@@ -61,20 +59,17 @@ public class DashboardService {
         stats.put("todayCustomers",  todayCustomers);
         stats.put("todayOrders",     todayOrders);
 
-        // ── Monthly & Yearly ─────────────────────────────────
         double monthRevenue  = safe(billRepository.sumRevenueBetween(monthStart, todayEnd));
         double yearRevenue   = safe(billRepository.sumRevenueBetween(yearStart, yearEnd));
         stats.put("monthRevenue", round2(monthRevenue));
         stats.put("yearRevenue",  round2(yearRevenue));
 
-        // ── Customer stats ────────────────────────────────────
         stats.put("totalCustomers",   customerRepository.count());
         stats.put("silverMembers",    customerRepository.countSilverMembers());
         stats.put("goldMembers",      customerRepository.countGoldMembers());
         stats.put("newCustomers",     customerRepository.countNewToday());
         stats.put("returningCustomers", customerRepository.countReturning());
 
-        // ── Top 10 products this month ────────────────────────
         List<Object[]> topRows = billRepository.findTopProductsBetween(monthStart, todayEnd);
         List<Map<String, Object>> topProducts = new ArrayList<>();
         int rank = 1;
@@ -96,7 +91,6 @@ public class DashboardService {
         }
         stats.put("topProducts", topProducts);
 
-        // ── Category breakdown this month ─────────────────────
         List<Object[]> catRows = billRepository.findRevenueByCategoryBetween(monthStart, todayEnd);
         double catTotal = catRows.stream().mapToDouble(r -> ((Number)r[1]).doubleValue()).sum();
         List<Map<String, Object>> categories = new ArrayList<>();
@@ -110,7 +104,6 @@ public class DashboardService {
         }
         stats.put("categoryBreakdown", categories);
 
-        // ── Monthly chart (current year) ──────────────────────
         List<Object[]> monthlyRows = billRepository.findMonthlyRevenuForYear(today.getYear());
         Map<Integer, Object[]> monthlyMap = new HashMap<>();
         for (Object[] row : monthlyRows) monthlyMap.put(((Number)row[0]).intValue(), row);
@@ -129,7 +122,6 @@ public class DashboardService {
         }
         stats.put("monthlyChart", monthlyChart);
 
-        // ── Stock alerts ──────────────────────────────────────
         List<Product> allProducts = productRepository.findAll();
         LocalDate now = LocalDate.now();
 
@@ -167,7 +159,6 @@ public class DashboardService {
         stats.put("expiringSoon",   expiringSoon);
         stats.put("expiringMonth",  expiringMonth);
 
-        // ── Supplier count ────────────────────────────────────
         stats.put("totalSuppliers",  supplierRepository.count());
         stats.put("activeSuppliers", supplierRepository.findAllByOrderByCompanyNameAsc()
                 .stream().filter(s -> "ACTIVE".equals(s.getStatus())).count());
@@ -175,7 +166,6 @@ public class DashboardService {
         return stats;
     }
 
-    // ── Helpers ───────────────────────────────────────────────
     private double safe(Double v)    { return v != null ? v : 0.0; }
     private long   safeLong(Long v)  { return v != null ? v : 0L; }
     private double round2(double v)  { return Math.round(v * 100.0) / 100.0; }

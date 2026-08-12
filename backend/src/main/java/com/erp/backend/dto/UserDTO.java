@@ -15,7 +15,6 @@ public class UserDTO {
     private LocalDate joinDate;
     private String status;
 
-    // ✅ GETTERS
     public String getUsername() { return username; }
     public String getFullName() { return fullName; }
     public String getEmail() { return email; }
@@ -27,7 +26,6 @@ public class UserDTO {
     public LocalDate getJoinDate() { return joinDate; }
     public String getStatus() { return status; }
 
-    // ✅ SETTERS
     public void setUsername(String username) { this.username = username; }
     public void setFullName(String fullName) { this.fullName = fullName; }
     public void setEmail(String email) { this.email = email; }

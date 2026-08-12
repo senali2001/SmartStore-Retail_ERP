@@ -38,21 +38,18 @@ export default function NewBillPanel() {
   const [lowStockWarnings, setLowStockWarnings] = useState<string[]>([]);
   const [savedBillData, setSavedBillData] = useState<any>(null);
 
-  // Customer Loyalty State
   const [phoneSearch, setPhoneSearch] = useState("");
   const [customer, setCustomer] = useState<any>(null);
   const [searchMessage, setSearchMessage] = useState("");
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("CASH");
 
-  // New Customer Form State
   const [newCustName, setNewCustName] = useState("");
   const [newCustPhone, setNewCustPhone] = useState("");
   const [newCustEmail, setNewCustEmail] = useState("");
   const [newCustBirthday, setNewCustBirthday] = useState("");
   const [newCustAddress, setNewCustAddress] = useState("");
 
-  // Product Autocomplete
   useEffect(() => {
     if (keyword.trim().length < 1) {
       setProducts([]);
@@ -68,7 +65,6 @@ export default function NewBillPanel() {
     return () => controller.abort();
   }, [keyword]);
 
-  // Customer Search
   const handleSearchCustomer = async () => {
     if (!phoneSearch.trim()) return;
     try {
@@ -87,7 +83,6 @@ export default function NewBillPanel() {
     }
   };
 
-  // Create Customer
   const handleCreateCustomer = async () => {
     if (!newCustName || !newCustPhone) {
       alert("Name and Phone are required.");
@@ -111,7 +106,6 @@ export default function NewBillPanel() {
         setPhoneSearch(newCustPhone);
         setSearchMessage("");
         setShowCreateModal(false);
-        // reset form
         setNewCustName("");
         setNewCustPhone("");
         setNewCustEmail("");
@@ -249,7 +243,6 @@ export default function NewBillPanel() {
       setLowStockWarnings(data.lowStockWarnings || []);
       setMessage(`Bill saved successfully. Bill No: ${data.billNumber}`);
 
-      // Refresh customer model points in display if linked
       if (customer) {
         const nextPoints = customer.loyaltyPoints + Math.floor(totals.totalAmount / 100);
         setCustomer((prev: any) => ({
@@ -274,7 +267,6 @@ export default function NewBillPanel() {
     <div className="min-h-screen bg-[#f4f2ea] p-4 md:p-6 font-sans">
       <div className="mx-auto max-w-7xl rounded-3xl border border-stone-200 bg-white shadow-[0_25px_80px_rgba(15,23,42,0.08)]">
         
-        {/* Header */}
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-stone-200 px-6 py-5">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-600">SmartStore billing</p>
@@ -294,10 +286,8 @@ export default function NewBillPanel() {
 
         <div className="grid gap-6 p-6 xl:grid-cols-[1.1fr_0.9fr]">
           
-          {/* Left Panel: Customer Loyalty & Product Selection */}
           <div className="space-y-4">
             
-            {/* Customer Search Panel */}
             <div className="rounded-3xl border border-stone-200 bg-[#fcfbf7] p-5 space-y-3">
               <h2 className="text-base font-bold text-stone-900">Customer Loyalty Points</h2>
               <div className="flex gap-2">
@@ -346,7 +336,6 @@ export default function NewBillPanel() {
               )}
             </div>
 
-            {/* Product Selector */}
             <div className="rounded-3xl border border-stone-200 bg-[#fcfbf7] p-5 space-y-3">
               <label className="text-sm font-semibold text-stone-700">Cashier Register</label>
               <input
@@ -387,7 +376,6 @@ export default function NewBillPanel() {
             </div>
           </div>
 
-          {/* Right Panel: Invoice Calculation & Payment */}
           {savedBillData ? (
             <div className="rounded-3xl border border-stone-200 bg-[#f1fcf5] p-6 space-y-6">
               <div className="text-center">
@@ -489,7 +477,6 @@ export default function NewBillPanel() {
                 )}
               </div>
 
-              {/* Payment Methods */}
               <div className="space-y-2">
                 <span className="text-sm font-semibold text-stone-700">Payment Method</span>
                 <div className="grid grid-cols-3 gap-2">
@@ -511,7 +498,6 @@ export default function NewBillPanel() {
                 </div>
               </div>
 
-              {/* Total Calculation */}
               <div className="rounded-2xl border border-stone-200 bg-white p-4 space-y-2">
                 <div className="flex justify-between text-sm text-stone-600">
                   <span>Subtotal</span>
@@ -554,7 +540,6 @@ export default function NewBillPanel() {
         </div>
       </div>
 
-      {/* Create Customer Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 p-4">
           <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl border border-stone-100">

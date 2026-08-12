@@ -268,7 +268,6 @@ export default function SettingsPage() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '220px 1fr', gap: 20 }}>
-        {/* Sidebar nav */}
         <div className="admin-card" style={{ padding: '8px 0', height: 'fit-content' }}>
           {SECTIONS.map(s => (
             <button
@@ -301,7 +300,6 @@ export default function SettingsPage() {
           ))}
         </div>
 
-        {/* Content panel */}
         <div className="admin-card" style={{ padding: 24 }}>
           <div style={{ marginBottom: 20 }}>
             <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-primary)' }}>

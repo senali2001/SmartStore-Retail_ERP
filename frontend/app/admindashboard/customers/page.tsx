@@ -46,7 +46,6 @@ export default function CustomersPage() {
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
   const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
-  // Calculations
   const total     = customers.length
   const newToday  = customers.filter(c => c.registrationDate && c.registrationDate.startsWith(new Date().toISOString().split('T')[0])).length
   const returning = customers.filter(c => c.totalOrders > 1).length
@@ -71,7 +70,6 @@ export default function CustomersPage() {
         </button>
       </div>
 
-      {/* KPI Stats Strip */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 12, marginBottom: 20 }}>
         {[
           { label: 'Total Customers',    value: total,     color: '#059669', icon: <UserCircle size={16} /> },
@@ -90,10 +88,8 @@ export default function CustomersPage() {
         ))}
       </div>
 
-      {/* Grid Layout: Top Customers on right, List on left */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 20 }}>
         
-        {/* Left Column: All Customers */}
         <div>
           <div className="toolbar">
             <div className="search-wrap" style={{ width: 280 }}>
@@ -146,7 +142,6 @@ export default function CustomersPage() {
           </div>
         </div>
 
-        {/* Right Column: Top Customers (Top 10 by total spending) */}
         <div>
           <div className="admin-card" style={{ padding: 18 }}>
             <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>Top 10 Customers</div>
@@ -175,7 +170,6 @@ export default function CustomersPage() {
         </div>
       </div>
 
-      {/* Customer Profile Modal */}
       {view && (
         <div className="modal-overlay" onClick={() => setView(null)}>
           <div className="modal-box" style={{ maxWidth: 520 }} onClick={e => e.stopPropagation()}>

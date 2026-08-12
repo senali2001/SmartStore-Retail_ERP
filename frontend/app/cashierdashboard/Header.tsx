@@ -15,7 +15,6 @@ export default function Header() {
       top: 0,
       zIndex: 40,
     }}>
-      {/* Left: breadcrumb */}
       <div>
         <div style={{ fontFamily: 'var(--font-display)', fontSize: 17, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
           Dashboard
@@ -25,9 +24,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Right: search + actions */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        {/* Search */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -52,7 +49,6 @@ export default function Header() {
           />
         </div>
 
-        {/* Refresh */}
         <button style={{
           width: 34, height: 34,
           background: 'var(--bg-card)',
@@ -65,7 +61,6 @@ export default function Header() {
           <RefreshCw size={13} />
         </button>
 
-        {/* Notification */}
         <button style={{
           width: 34, height: 34,
           background: 'var(--bg-card)',
@@ -85,7 +80,6 @@ export default function Header() {
           }} />
         </button>
 
-        {/* Avatar */}
         <div style={{
           width: 34, height: 34,
           borderRadius: 10,

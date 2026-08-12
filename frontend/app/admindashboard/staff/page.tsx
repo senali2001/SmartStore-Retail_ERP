@@ -8,7 +8,6 @@ import {
   UserCheck, UserX, Clock, Building2, MoreHorizontal
 } from 'lucide-react'
 
-/* ── Types ───────────────────────────────────────────────────── */
 interface StaffMember {
   id?: number
   username: string
@@ -24,7 +23,6 @@ interface StaffMember {
   createdAt?: string
 }
 
-/* ── Sample / Fallback Data ──────────────────────────────────── */
 const SAMPLE_STAFF: StaffMember[] = [
   { id: 1, username: 'admin',   fullName: 'Kamal Perera',    email: 'kamal@smartstore.lk',   phone: '0771234567', nic: '901234567V',  role: 'ADMIN',   salary: 85000, joinDate: '2021-03-15', status: 'ACTIVE'   },
   { id: 2, username: 'mgr01',   fullName: 'Nimal Silva',     email: 'nimal@smartstore.lk',   phone: '0772345678', nic: '851234567V',  role: 'MANAGER', salary: 65000, joinDate: '2021-07-01', status: 'ACTIVE'   },
@@ -46,7 +44,6 @@ const ROLE_COLORS: Record<string, string> = {
 
 const API_BASE = 'http://localhost:8080/api'
 
-/* ── Avatar color by name ────────────────────────────────────── */
 function avatarColor(name: string) {
   const colors = ['#059669','#2563eb','#7c3aed','#d97706','#db2777','#0d9488','#ea580c','#65a30d']
   let hash = 0
@@ -58,13 +55,11 @@ function initials(name: string) {
   return name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
 }
 
-/* ── Empty form ──────────────────────────────────────────────── */
 const emptyForm = (): StaffMember => ({
   username: '', fullName: '', email: '', phone: '', nic: '',
   role: 'CASHIER', password: '', salary: 0, joinDate: '', status: 'ACTIVE',
 })
 
-/* ── Pagination hook ─────────────────────────────────────────── */
 const PAGE_SIZE = 6
 
 export default function StaffPage() {
@@ -81,7 +76,6 @@ export default function StaffPage() {
   const [toast, setToast]               = useState<{ msg: string; type: 'success' | 'error' } | null>(null)
   const [resetPwd, setResetPwd]         = useState('')
 
-  /* ── Fetch from backend ── */
   const fetchStaff = async () => {
     setLoading(true)
     try {
@@ -91,7 +85,6 @@ export default function StaffPage() {
         if (data.length > 0) setStaff(data)
       }
     } catch {
-      // Use sample data if backend unavailable
     } finally {
       setLoading(false)
     }
@@ -104,7 +97,6 @@ export default function StaffPage() {
     setTimeout(() => setToast(null), 3500)
   }
 
-  /* ── Filters ── */
   const filtered = staff.filter(s => {
     const q = search.toLowerCase()
     const matchQ = !q || s.fullName.toLowerCase().includes(q) || s.username.toLowerCase().includes(q) || s.email.toLowerCase().includes(q) || s.nic.toLowerCase().includes(q)
@@ -115,14 +107,12 @@ export default function StaffPage() {
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
   const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
-  /* ── Stats ── */
   const total    = staff.length
   const active   = staff.filter(s => s.status === 'ACTIVE').length
   const cashiers = staff.filter(s => s.role === 'CASHIER').length
   const managers = staff.filter(s => s.role === 'MANAGER').length
   const admins   = staff.filter(s => s.role === 'ADMIN').length
 
-  /* ── CRUD handlers ── */
   const openAdd  = () => { setForm(emptyForm()); setModalMode('add') }
   const openEdit = (s: StaffMember) => { setForm({ ...s }); setSelected(s); setModalMode('edit') }
   const openView = (s: StaffMember) => { setSelected(s); setModalMode('view') }
@@ -146,7 +136,6 @@ export default function StaffPage() {
           setStaff(prev => [...prev, newUser])
           showToast(`${form.fullName} added successfully!`)
         } else {
-          // Optimistic update
           setStaff(prev => [...prev, { ...form, id: Date.now(), salary: Number(form.salary) }])
           showToast(`${form.fullName} added (offline mode)`)
         }
@@ -196,13 +185,11 @@ export default function StaffPage() {
     closeModal()
   }
 
-  /* ── Field change ── */
   const setF = (k: keyof StaffMember, v: string) => setForm(prev => ({ ...prev, [k]: v }))
 
   return (
     <div className="admin-page">
 
-      {/* Toast */}
       {toast && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 9999,
@@ -221,7 +208,6 @@ export default function StaffPage() {
         </div>
       )}
 
-      {/* ── Page Header ── */}
       <div className="page-header">
         <div>
           <h1 className="page-title">Staff Management</h1>
@@ -240,7 +226,6 @@ export default function StaffPage() {
         </div>
       </div>
 
-      {/* ── Stats Strip ── */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 12, marginBottom: 20 }}>
         {[
           { label: 'Total Staff',   value: total,    icon: <Users size={16} />,     color: '#059669' },
@@ -261,7 +246,6 @@ export default function StaffPage() {
         ))}
       </div>
 
-      {/* ── Toolbar ── */}
       <div className="toolbar">
         <div className="search-wrap" style={{ width: 280 }}>
           <Search className="search-icon" size={14} />
@@ -284,7 +268,6 @@ export default function StaffPage() {
         </span>
       </div>
 
-      {/* ── Table ── */}
       <div className="admin-card" style={{ overflow: 'hidden' }}>
         {loading ? (
           <div style={{ padding: 40, textAlign: 'center', color: 'var(--text-muted)' }}>
@@ -310,47 +293,36 @@ export default function StaffPage() {
               <tbody>
                 {paged.map((s, i) => (
                   <tr key={s.id || i}>
-                    {/* Avatar */}
                     <td>
                       <div className="avatar avatar-md" style={{ background: avatarColor(s.fullName) }}>
                         {initials(s.fullName)}
                       </div>
                     </td>
-                    {/* ID */}
                     <td>
                       <span style={{ fontSize: 11.5, fontFamily: 'monospace', color: 'var(--text-muted)', background: 'var(--bg-hover)', padding: '2px 7px', borderRadius: 5 }}>
                         #{String(s.id || i + 1).padStart(4, '0')}
                       </span>
                     </td>
-                    {/* Name */}
                     <td>
                       <div style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: 13.5 }}>{s.fullName}</div>
                       <div style={{ fontSize: 11.5, color: 'var(--text-muted)' }}>@{s.username}</div>
                     </td>
-                    {/* Email */}
                     <td style={{ fontSize: 12.5, color: 'var(--text-secondary)' }}>{s.email}</td>
-                    {/* Phone */}
                     <td style={{ fontSize: 12.5 }}>{s.phone}</td>
-                    {/* NIC */}
                     <td style={{ fontSize: 12, fontFamily: 'monospace', color: 'var(--text-muted)' }}>{s.nic}</td>
-                    {/* Role */}
                     <td><span className={`badge ${ROLE_COLORS[s.role] || 'badge-gray'}`}>{s.role}</span></td>
-                    {/* Salary */}
                     <td style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: 13 }}>
                       Rs.{(s.salary || 0).toLocaleString()}
                     </td>
-                    {/* Join Date */}
                     <td style={{ fontSize: 12.5, color: 'var(--text-muted)' }}>
                       {s.joinDate ? new Date(s.joinDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}
                     </td>
-                    {/* Status */}
                     <td>
                       <span className={`badge ${s.status === 'ACTIVE' ? 'badge-green' : 'badge-red'}`}>
                         <span className="badge-dot" style={{ background: s.status === 'ACTIVE' ? 'var(--color-green)' : 'var(--color-red)' }} />
                         {s.status}
                       </span>
                     </td>
-                    {/* Actions */}
                     <td>
                       <div style={{ display: 'flex', gap: 5 }}>
                         <button className="btn btn-ghost btn-xs" onClick={() => openView(s)} data-tip="View Profile" style={{ color: 'var(--color-blue)' }}>
@@ -374,7 +346,6 @@ export default function StaffPage() {
           </div>
         )}
 
-        {/* Pagination */}
         {totalPages > 1 && (
           <div className="pagination" style={{ borderTop: '1px solid var(--border)' }}>
             <button className="page-btn" onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}>
@@ -396,7 +367,6 @@ export default function StaffPage() {
       {(modalMode === 'add' || modalMode === 'edit') && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-box" style={{ maxWidth: 640 }} onClick={e => e.stopPropagation()}>
-            {/* Header */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
               <div style={{ width: 44, height: 44, borderRadius: 12, background: 'var(--accent-glow)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent)' }}>
                 {modalMode === 'add' ? <UserPlus size={20} /> : <Pencil size={20} />}
@@ -410,10 +380,8 @@ export default function StaffPage() {
               </button>
             </div>
 
-            {/* Form */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
 
-              {/* Row 1 */}
               <div className="form-grid-2">
                 <div className="input-group">
                   <label className="input-label">Full Name *</label>
@@ -425,7 +393,6 @@ export default function StaffPage() {
                 </div>
               </div>
 
-              {/* Row 2 */}
               <div className="form-grid-2">
                 <div className="input-group">
                   <label className="input-label">Email Address *</label>
@@ -437,7 +404,6 @@ export default function StaffPage() {
                 </div>
               </div>
 
-              {/* Row 3 */}
               <div className="form-grid-2">
                 <div className="input-group">
                   <label className="input-label">NIC Number</label>
@@ -453,7 +419,6 @@ export default function StaffPage() {
                 </div>
               </div>
 
-              {/* Row 4 */}
               <div className="form-grid-2">
                 <div className="input-group">
                   <label className="input-label">Monthly Salary (Rs.)</label>
@@ -465,7 +430,6 @@ export default function StaffPage() {
                 </div>
               </div>
 
-              {/* Row 5 */}
               <div className="form-grid-2">
                 {modalMode === 'add' && (
                   <div className="input-group">
@@ -483,7 +447,6 @@ export default function StaffPage() {
               </div>
             </div>
 
-            {/* Footer */}
             <div className="modal-footer">
               <button className="btn btn-secondary" onClick={closeModal}>Cancel</button>
               <button className="btn btn-primary" onClick={handleSave} disabled={saving}>
@@ -501,7 +464,6 @@ export default function StaffPage() {
       {modalMode === 'view' && selected && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-box" style={{ maxWidth: 520 }} onClick={e => e.stopPropagation()}>
-            {/* Profile header */}
             <div style={{ textAlign: 'center', marginBottom: 20 }}>
               <div className="avatar avatar-lg" style={{ background: avatarColor(selected.fullName), width: 72, height: 72, fontSize: 26, borderRadius: 20, margin: '0 auto 12px' }}>
                 {initials(selected.fullName)}
@@ -519,7 +481,6 @@ export default function StaffPage() {
 
             <hr className="section-divider" />
 
-            {/* Details */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
               {[
                 { icon: <Mail size={14} />,     label: 'Email',     value: selected.email     },

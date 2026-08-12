@@ -59,7 +59,6 @@ export default function SuppliersPage() {
         </div>
       </div>
 
-      {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, marginBottom: 20 }}>
         {[
           { label: 'Total Suppliers',     value: suppliers.length, icon: <Truck size={16} />,       color: '#059669' },
@@ -77,7 +76,6 @@ export default function SuppliersPage() {
         ))}
       </div>
 
-      {/* Toolbar */}
       <div className="toolbar">
         <div className="search-wrap" style={{ width: 280 }}>
           <Search className="search-icon" size={14} />
@@ -136,7 +134,6 @@ export default function SuppliersPage() {
         )}
       </div>
 
-      {/* View Modal */}
       {view && (
         <div className="modal-overlay" onClick={() => setView(null)}>
           <div className="modal-box" style={{ maxWidth: 500 }} onClick={e => e.stopPropagation()}>

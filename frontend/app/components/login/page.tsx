@@ -29,7 +29,6 @@ export default function LoginPage() {
       lastTouched: number;
     }[] = [];
 
-    // 🔹 Initialize grid
     function initGrid() {
       grid = [];
       for (let x = 0; x < width; x += squareSize) {
@@ -39,7 +38,6 @@ export default function LoginPage() {
       }
     }
 
-    // 🔹 High DPI Canvas Resize
     function resizeCanvas() {
       const dpr = window.devicePixelRatio || 1;
       width = window.innerWidth;
@@ -54,20 +52,18 @@ export default function LoginPage() {
       const context = canvas.getContext("2d");
       if (!context) return;
 
-      context.setTransform(1, 0, 0, 1, 0, 0); // reset transform
+      context.setTransform(1, 0, 0, 1, 0, 0);
       context.scale(dpr, dpr);
 
       initGrid();
     }
 
-    // 🔹 Find cell under mouse
     function getCellAt(x: number, y: number) {
       const cellX = Math.floor(x / squareSize) * squareSize;
       const cellY = Math.floor(y / squareSize) * squareSize;
       return grid.find((c) => c.x === cellX && c.y === cellY);
     }
 
-    // 🔹 Mouse move
     function handleMouseMove(e: MouseEvent) {
       const cell = getCellAt(e.clientX, e.clientY);
       if (cell && cell.alpha === 0) {
@@ -77,7 +73,6 @@ export default function LoginPage() {
       }
     }
 
-    // 🔹 Draw the grid
     function drawGrid() {
       const context = canvas.getContext("2d");
       if (!context) return;
@@ -115,7 +110,6 @@ export default function LoginPage() {
       requestAnimationFrame(drawGrid);
     }
 
-    // 🔹 Initial setup
     resizeCanvas();
     drawGrid();
     window.addEventListener("resize", resizeCanvas);
@@ -128,7 +122,6 @@ export default function LoginPage() {
   }, []);
 
 
-//handle login
 const handleLogin = async () => {
   try {
     const res = await fetch("http://localhost:8080/api/login", {
@@ -146,7 +139,6 @@ const handleLogin = async () => {
 
     const role = await res.text();
 
-    // redirect based on role
     if (role === "admin") {
       window.location.href = "/admindashboard";
     } else if (role === "manager") {
@@ -165,21 +157,21 @@ const handleLogin = async () => {
   return (
     <div className="login-container">
       <canvas ref={canvasRef}></canvas>
-    
 
       <div className="login-box">
         <h2>LOGIN</h2>
-        <input type="text" 
-        placeholder="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)} 
-         />
-        <input type="password" 
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)} 
-         />
-        <br/><br/>
+        <div className="input-group">
+          <input type="text" 
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)} 
+          />
+          <input type="password" 
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)} 
+          />
+        </div>
         <button onClick={handleLogin}>Sign In</button>
       </div>
     </div>

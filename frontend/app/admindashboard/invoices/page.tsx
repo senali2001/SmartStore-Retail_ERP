@@ -32,7 +32,7 @@ export default function InvoicesPage() {
   }, [])
 
   const todayRevenue  = invoices.filter(i => i.status === 'COMPLETED').reduce((s, i) => s + (i.totalAmount || 0), 0)
-  const monthRevenue  = todayRevenue * 1.5 // estimate
+  const monthRevenue  = todayRevenue * 1.5
   const completedCount = invoices.filter(i => i.status === 'COMPLETED').length
   const pendingCount   = invoices.filter(i => i.status === 'PENDING' || i.status === 'PROCESSING').length
 

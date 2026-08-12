@@ -49,7 +49,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         customerRepository.flush();
         inventoryRepository.flush();
 
-        // ── 1. SEED SUPPLIERS ─────────────────────────────────
         System.out.println("Seeding 15 realistic suppliers...");
         String[][] supplierDefs = {
             {"SUP-001", "Fresh Farm Distributors", "Suresh Perera", "0771234501", "info@freshfarm.lk", "A23, Economic Center, Dambulla", "Net 30", "Fresh Vegetables", "ACTIVE"},
@@ -86,7 +85,6 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         List<Supplier> suppliers = supplierRepository.findAll();
 
-        // ── 2. SEED PRODUCTS ──────────────────────────────────
         System.out.println("Seeding products linked to suppliers...");
         Object[][] productDefs = {
             {"Basmati Rice 5kg", "Grocery", "Bags", 85.0, 15.0, 1250.0, 1590.0, 0.0, LocalDate.now().minusMonths(1), LocalDate.now().plusYears(1), "SUP-006", "4001234567890", "Kurakkan", "B-9981"},
@@ -134,7 +132,6 @@ public class DatabaseSeeder implements CommandLineRunner {
             productRepository.save(p);
         }
 
-        // ── 3. SEED CUSTOMERS ─────────────────────────────────
         System.out.println("Seeding 100 realistic customers...");
         String[] firstNames = {"Ramesh", "Dilani", "Kumari", "Nalin", "Pradeep", "Suneetha", "Tharaka", "Nilmini", "Suresh", "Priya", "Kamal", "Nimal", "Amara", "Ruwan", "Dilshan", "Sachini", "Tharaka", "Anitha", "Mahesh", "Sunil"};
         String[] lastNames = {"Perera", "Silva", "Jayasinghe", "Fernando", "Rathnayake", "Wijesekara", "Gamage", "Bandara", "Gunawardena", "Kumari", "Wijesinghe", "Alwis", "Samarasinghe", "Jayawardena", "Karunaratne", "Senanayake", "Peiris", "Mendis", "Cooray", "Dias"};
@@ -166,7 +163,6 @@ public class DatabaseSeeder implements CommandLineRunner {
             customerList.add(customerRepository.save(c));
         }
 
-        // ── 4. SEED BILLS / TRANSACTION HISTORY ───────────────
         System.out.println("Seeding 150 completed bills over the last 6 months + today...");
         List<Product> products = productRepository.findAll();
         List<Customer> customers = customerRepository.findAll();
@@ -246,7 +242,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         }
         System.out.println("Transaction history seeding complete.");
 
-        // ── 5. SEED INVENTORY ITEMS (FALLBACK) ────────────────
         System.out.println("Seeding database with sample inventory items...");
         inventoryRepository.save(createInventoryItem("Sony WH-1000XM5", "Electronics", 82.0, 10.0, 250.0, 350.0, "Units", "Aisle 4"));
         inventoryRepository.save(createInventoryItem("Nike Air Max 270", "Apparel", 14.0, 15.0, 80.0, 150.0, "Pairs", "Aisle 2"));

@@ -24,11 +24,9 @@ public class Product {
     private LocalDate manufacturingDate;
     private LocalDate expiryDate;
 
-    // Supplier linkage
     private Long supplierId;
     private String supplierName;
 
-    // Product identifiers
     private String barcode;
     private String brand;
     private String batchNumber;

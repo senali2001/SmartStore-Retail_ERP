@@ -11,7 +11,6 @@ public class BillRequest {
     private String paymentMethod; // CASH | CARD | MOBILE
     private List<BillItemRequest> items;
 
-    // Getters and Setters
     public String getCashierName() {
         return cashierName;
     }

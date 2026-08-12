@@ -103,7 +103,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     fetchStats()
-    const interval = setInterval(fetchStats, 10000) // update every 10 seconds automatically
+    const interval = setInterval(fetchStats, 10000)
     return () => clearInterval(interval)
   }, [])
 
@@ -123,7 +123,6 @@ export default function DashboardPage() {
     )
   }
 
-  // Fallbacks if backend doesn't output expected structure
   const stats = data || {
     todayRevenue: 0, todayInvestment: 0, todayProfit: 0, todayDiscount: 0, profitPct: 0, todayCustomers: 0,
     monthRevenue: 0, yearRevenue: 0, totalCustomers: 0, silverMembers: 0, goldMembers: 0, newCustomers: 0, returningCustomers: 0,
@@ -135,7 +134,6 @@ export default function DashboardPage() {
     <div className="admin-page">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: 24 }}>
 
-        {/* ── CENTER ── */}
         <div style={{ minWidth: 0 }}>
           <div className="hero-section" style={{
             background: 'linear-gradient(135deg, #065f46 0%, #059669 50%, #047857 100%)',
@@ -183,7 +181,6 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* KPIs */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14, marginBottom: 20 }}>
             <StatCard label="Today's Revenue"    value={stats.todayRevenue}    prefix="Rs." change={12} icon={<DollarSign size={17} />}  accent="#059669" />
             <StatCard label="Today's Investment" value={stats.todayInvestment} prefix="Rs." change={8}  icon={<ShoppingBag size={17} />} accent="#2563eb" />
@@ -193,7 +190,6 @@ export default function DashboardPage() {
             <StatCard label="Discounts Given"    value={stats.todayDiscount}   prefix="Rs." change={-2} icon={<Gift size={17} />}        accent="#0d9488" />
           </div>
 
-          {/* Revenue Chart */}
           <div className="admin-card" style={{ padding: 20, marginBottom: 20 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
               <div>
@@ -231,7 +227,6 @@ export default function DashboardPage() {
             </ResponsiveContainer>
           </div>
 
-          {/* Top Products Table */}
           <div className="admin-card" style={{ overflow: 'hidden' }}>
             <div style={{ padding: '16px 20px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
@@ -243,7 +238,7 @@ export default function DashboardPage() {
               </Link>
             </div>
             {stats.topProducts.length === 0 ? (
-              <div style={{ padding: 30, textAlignment: 'center', color: 'var(--text-muted)' }}>No items sold this month.</div>
+              <div style={{ padding: 30, textAlign: 'center', color: 'var(--text-muted)' }}>No items sold this month.</div>
             ) : (
               <div style={{ overflowX: 'auto' }}>
                 <table className="admin-table">
@@ -293,10 +288,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* ── RIGHT PANEL ── */}
         <div className="right-panel">
 
-          {/* Donut Chart */}
           <div className="admin-card" style={{ padding: 18 }}>
             <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>Sales by Category</div>
             <div style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 12 }}>Current month breakdown</div>
@@ -329,7 +322,6 @@ export default function DashboardPage() {
             )}
           </div>
 
-          {/* Critical Stock */}
           <div className="admin-card" style={{ overflow: 'hidden' }}>
             <div style={{
               padding: '12px 14px',
@@ -350,7 +342,6 @@ export default function DashboardPage() {
             ))}
           </div>
 
-          {/* Low Stock */}
           <div className="admin-card" style={{ overflow: 'hidden' }}>
             <div style={{
               padding: '12px 14px',
@@ -371,7 +362,6 @@ export default function DashboardPage() {
             ))}
           </div>
 
-          {/* Expired Products */}
           <div className="admin-card" style={{ overflow: 'hidden' }}>
             <div style={{
               padding: '12px 14px',
@@ -394,7 +384,6 @@ export default function DashboardPage() {
             ))}
           </div>
 
-          {/* Expiring Soon */}
           <div className="admin-card" style={{ overflow: 'hidden' }}>
             <div style={{
               padding: '12px 14px',

@@ -41,7 +41,6 @@ public class BillingServiceTest {
 
     @Test
     void testSaveBillSuccessfully() {
-        // Arrange
         BillRequest request = new BillRequest();
         request.setCashierName("John Doe");
         request.setReceivedAmount(100.0);
@@ -67,10 +66,8 @@ public class BillingServiceTest {
             return saved;
         });
 
-        // Act
         Map<String, Object> result = billingService.saveBill(request);
 
-        // Assert
         assertNotNull(result);
         assertEquals(123L, result.get("id"));
         assertEquals("John Doe", result.get("cashierName"));
@@ -81,7 +78,6 @@ public class BillingServiceTest {
         assertEquals(55.0, result.get("balance"));
         assertNotNull(result.get("createdAt"));
 
-        // Verify stock deducted
         assertEquals(5.0, product.getStockQuantity());
         verify(productRepository, times(1)).save(product);
 
@@ -92,7 +88,6 @@ public class BillingServiceTest {
 
     @Test
     void testSaveBillLowStockWarning() {
-        // Arrange
         BillRequest request = new BillRequest();
         request.setCashierName("Jane");
         request.setReceivedAmount(50.0);
@@ -118,10 +113,8 @@ public class BillingServiceTest {
             return saved;
         });
 
-        // Act
         Map<String, Object> result = billingService.saveBill(request);
 
-        // Assert
         assertEquals(1.0, product.getStockQuantity()); // 10 - 9 = 1
         List<?> warnings = (List<?>) result.get("lowStockWarnings");
         assertEquals(1, warnings.size());

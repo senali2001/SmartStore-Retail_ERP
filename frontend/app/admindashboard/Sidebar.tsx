@@ -39,7 +39,6 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
         className="admin-sidebar"
         style={{ width: w }}
       >
-        {/* ── Logo ── */}
         <div className="sidebar-logo-section" style={{ justifyContent: collapsed ? 'center' : 'flex-start' }}>
           <div className="sidebar-logo-icon">
             <Store size={18} color="#fff" />
@@ -52,7 +51,6 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
           )}
         </div>
 
-        {/* ── Toggle button ── */}
         <button
           onClick={onToggle}
           style={{
@@ -85,7 +83,6 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
           {collapsed ? <ChevronRight size={13} /> : <ChevronLeft size={13} />}
         </button>
 
-        {/* ── Nav ── */}
         <nav className="sidebar-nav no-scroll">
           {!collapsed && (
             <div className="sidebar-section-label">NAVIGATION</div>
@@ -116,10 +113,8 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
             )
           })}
 
-          {/* Divider */}
           <div style={{ margin: '8px 0', borderTop: '1px solid var(--border)' }} />
 
-          {/* Logout */}
           <button
             className="sidebar-item"
             onClick={() => setLogoutOpen(true)}
@@ -135,7 +130,6 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
           </button>
         </nav>
 
-        {/* ── Footer profile ── */}
         {!collapsed && (
           <div className="sidebar-footer">
             <div
@@ -165,7 +159,6 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
         )}
       </aside>
 
-      {/* ── Logout Confirmation Modal ── */}
       {logoutOpen && (
         <div className="modal-overlay" onClick={() => setLogoutOpen(false)}>
           <div className="modal-box" style={{ maxWidth: 380 }} onClick={e => e.stopPropagation()}>

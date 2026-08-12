@@ -85,7 +85,6 @@ export default function BillHistoryPanel() {
   return (
     <div className="min-h-screen bg-[#f4f2ea] p-4 md:p-6">
       <div className="mx-auto max-w-5xl">
-        {/* Page Header */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-600">
@@ -107,7 +106,6 @@ export default function BillHistoryPanel() {
           </Link>
         </div>
 
-        {/* Search Bar */}
         <div className="mb-4 flex items-center gap-2 rounded-2xl border border-stone-200 bg-white px-4 py-3 shadow-sm">
           <Search size={16} className="shrink-0 text-stone-400" />
           <input
@@ -118,7 +116,6 @@ export default function BillHistoryPanel() {
           />
         </div>
 
-        {/* States */}
         {loading && (
           <div className="flex flex-col items-center gap-3 rounded-3xl border border-stone-200 bg-white py-16 text-sm text-stone-500 shadow-sm">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent" />
@@ -139,7 +136,6 @@ export default function BillHistoryPanel() {
           </div>
         )}
 
-        {/* Bill Cards */}
         {!loading && !error && (
           <div className="space-y-3">
             {filtered.map((bill) => {
@@ -149,17 +145,14 @@ export default function BillHistoryPanel() {
                   key={bill.id}
                   className="overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition-all"
                 >
-                  {/* Summary Row */}
                   <button
                     onClick={() => toggle(bill.id)}
                     className="flex w-full items-center gap-4 px-5 py-4 text-left transition hover:bg-stone-50"
                   >
-                    {/* Icon */}
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
                       <FileText size={18} />
                     </div>
 
-                    {/* Main info */}
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="font-mono text-sm font-bold text-stone-900">
@@ -186,7 +179,6 @@ export default function BillHistoryPanel() {
                       </div>
                     </div>
 
-                    {/* Total */}
                     <div className="text-right">
                       <p className="text-base font-bold text-stone-900">
                         LKR {bill.totalAmount?.toFixed(2)}
@@ -194,16 +186,13 @@ export default function BillHistoryPanel() {
                       <p className="text-xs text-stone-400">Total</p>
                     </div>
 
-                    {/* Expand toggle */}
                     <div className="ml-2 text-stone-400">
                       {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                     </div>
                   </button>
 
-                  {/* Expanded Detail */}
                   {isOpen && (
                     <div className="border-t border-stone-100 px-5 pb-5 pt-4">
-                      {/* Items Table */}
                       <div className="overflow-hidden rounded-2xl border border-stone-100">
                         <table className="w-full text-sm">
                           <thead>
@@ -247,9 +236,7 @@ export default function BillHistoryPanel() {
                         </table>
                       </div>
 
-                      {/* Totals + Actions Row */}
                       <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
-                        {/* Summary */}
                         <div className="space-y-1 text-sm">
                           <div className="flex gap-6 text-stone-500">
                             <span>
@@ -281,7 +268,6 @@ export default function BillHistoryPanel() {
                           </div>
                         </div>
 
-                        {/* Download PDF */}
                         <a
                           href={`${API_BASE_URL}/api/bills/${bill.id}/pdf`}
                           target="_blank"
@@ -300,7 +286,6 @@ export default function BillHistoryPanel() {
           </div>
         )}
 
-        {/* Footer count */}
         {!loading && !error && bills.length > 0 && (
           <p className="mt-4 text-center text-xs text-stone-400">
             Showing {filtered.length} of {bills.length} bill

@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// iText 8 Imports
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.layout.Document;
@@ -67,7 +66,6 @@ public class BillingService {
         double investment = 0.0;
         List<String> lowStockWarnings = new ArrayList<>();
 
-        // --- Pass 1: calculate totals to validate payment BEFORE touching stock ---
         for (BillRequest.BillItemRequest itemReq : request.getItems()) {
             double lineGross = (itemReq.getUnitPrice() != null ? itemReq.getUnitPrice() : 0.0)
                     * (itemReq.getQuantity() != null ? itemReq.getQuantity() : 0);
@@ -87,37 +85,31 @@ public class BillingService {
                     String.format("Insufficient payment. Total is LKR %.2f but only LKR %.2f received.", totalAmount, received));
         }
 
-        // Reset to accumulate again cleanly in pass 2
         subtotal = 0.0;
         discountAmount = 0.0;
 
-        // --- Pass 2: deduct stock and build bill items ---
         for (BillRequest.BillItemRequest itemReq : request.getItems()) {
             Product product = productRepository.findById(itemReq.getProductId())
                     .orElseThrow(() -> new RuntimeException("Product not found: " + itemReq.getProductName()));
 
-            // Deduct stock
             double currentStock = product.getStockQuantity() != null ? product.getStockQuantity() : 0.0;
             double quantityToDeduct = itemReq.getQuantity() != null ? itemReq.getQuantity() : 0.0;
             double updatedStock = currentStock - quantityToDeduct;
             product.setStockQuantity(updatedStock);
             productRepository.save(product);
 
-            // Low stock warning
             double minStock = product.getMinimumStockLevel() != null ? product.getMinimumStockLevel() : 0.0;
             if (updatedStock < minStock) {
                 lowStockWarnings.add(String.format("Warning: Stock for '%s' is low. Current: %.2f (Min: %.2f)",
                         product.getProductName(), updatedStock, minStock));
             }
 
-            // Build bill item
             BillItem billItem = new BillItem();
             billItem.setProductId(product.getId());
             billItem.setProductName(product.getProductName());
             billItem.setCategory(product.getCategory());
             billItem.setUnitPrice(itemReq.getUnitPrice());
             
-            // Storing buyingPrice snapshot on the BillItem
             double buyPrice = product.getBuyingPrice() != null ? product.getBuyingPrice() : 0.0;
             billItem.setBuyingPrice(buyPrice);
             billItem.setQuantity(itemReq.getQuantity());
@@ -143,7 +135,6 @@ public class BillingService {
 
         Bill savedBill = billRepository.save(bill);
 
-        // --- Pass 3: Update customer loyalty points ---
         if (request.getCustomerId() != null) {
             customerRepository.findById(request.getCustomerId()).ifPresent(customer -> {
                 customer.addPointsForPurchase(netTotal);
@@ -151,7 +142,6 @@ public class BillingService {
             });
         }
 
-        // Return a response map containing the data
         Map<String, Object> response = new HashMap<>();
         response.put("id", savedBill.getId());
         response.put("billNumber", savedBill.getBillNumber());
