@@ -86,6 +86,8 @@ $env:SPRING_DATASOURCE_URL = 'jdbc:postgresql://<POOLER-HOST>:5432/postgres?sslm
 $env:SPRING_DATASOURCE_USERNAME = 'postgres.<PROJECT-REF>'
 ```
 
-The password is read from `DB_PASSWORD` and must not be committed. The API should be available at `http://localhost:8080`.
+The password is read from `SPRING_DATASOURCE_PASSWORD` (or the legacy `DB_PASSWORD`) and must not be committed. The API should be available at `http://localhost:8080`.
+
+For Render, configure `SPRING_DATASOURCE_URL` as a JDBC URL (`jdbc:postgresql://<HOST>:5432/<DATABASE>?sslmode=require`), `SPRING_DATASOURCE_USERNAME` as the database username, and `SPRING_DATASOURCE_PASSWORD` as the database password. Render's `DATABASE_URL` value is not a JDBC URL; do not use it directly for `SPRING_DATASOURCE_URL`.
 
 Default login accounts (created on first start if missing): `admin` / `admin123`, `cashier` / `cashier123`, `manager` / `manager123`.
