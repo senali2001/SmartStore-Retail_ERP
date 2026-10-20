@@ -1,0 +1,2700 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x000001a2f5e1ac98, pid=32060, tid=3456
+#
+# JRE version: OpenJDK Runtime Environment Temurin-21.0.12.1+1 (21.0.12.1+1) (build 21.0.12.1+1-LTS)
+# Java VM: OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (21.0.12.1+1-LTS, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, parallel gc, windows-amd64)
+# Problematic frame:
+# J 8326 c2 sun.nio.fs.WindowsFileSystemProvider.isSameFile(Ljava/nio/file/Path;Ljava/nio/file/Path;)Z java.base@21.0.12.1 (180 bytes) @ 0x000001a2f5e1ac98 [0x000001a2f5e1ac00+0x0000000000000098]
+#
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   https://github.com/adoptium/adoptium-support/issues
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: --add-modules=ALL-SYSTEM --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/sun.nio.fs=ALL-UNNAMED -Declipse.application=org.eclipse.jdt.ls.core.id1 -Dosgi.bundles.defaultStartLevel=4 -Declipse.product=org.eclipse.jdt.ls.core.product -Djava.import.generatesMetadataFilesAtProjectRoot=false -Dm2e.project.cache.size=50 -DDetectVMInstallationsJob.disabled=true -Dfile.encoding=utf8 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable -javaagent:c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\lombok\lombok-1.18.39-4050.jar -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=c:\Users\acer\AppData\Roaming\Code\User\workspaceStorage\c237d93324249893b784bcad245891e1\redhat.java -Daether.dependencyCollector.impl=bf c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\server\plugins\org.eclipse.equinox.launcher_1.8.0.v20260804-1928.jar -configuration c:\Users\acer\AppData\Roaming\Code\User\globalStorage\redhat.java\1.56.0\config_win -data c:\Users\acer\AppData\Roaming\Code\User\workspaceStorage\c237d93324249893b784bcad245891e1\redhat.java\jdt_ws --stdio
+
+Host: AMD Ryzen 7 5700U with Radeon Graphics         , 16 cores, 15G,  Windows 11 , 64 bit Build 26100 (10.0.26100.9168)
+Time: Mon Sep 21 23:58:41 2026 Sri Lanka Standard Time elapsed time: 5069.131940 seconds (0d 1h 24m 29s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001a2dc7703a0):  JavaThread "Worker-44: Initialize Workspace"        [_thread_in_Java, id=3456, stack(0x0000006ceb100000,0x0000006ceb200000) (1024K)]
+
+Stack: [0x0000006ceb100000,0x0000006ceb200000],  sp=0x0000006ceb1feb40,  free space=1018k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  0x000001a2f5e1ac98
+
+The last pc belongs to nmethod (printed below).
+
+siginfo: EXCEPTION_ACCESS_VIOLATION (0xc0000005), reading address 0x000000002f817304
+
+
+Registers:
+RAX=0x00000000806d9f90, RBX=0x0000000000000010, RCX=0x0000000000000001, RDX=0x00000000806d9f90
+RSP=0x0000006ceb1feb40, RBP=0x00000000d5817338, RSI=0x00000000d566f970, RDI=0x0000000000000011
+R8 =0x000000002f8172f8, R9 =0x000001a2851e7b48, R10=0x00000000d5817398, R11=0x000001a284383530
+R12=0x0000000000000000, R13=0x00000000d5817338, R14=0x0000006ceb1feb20, R15=0x000001a2dc7703a0
+RIP=0x000001a2f5e1ac98, EFLAGS=0x0000000000010246
+
+XMM[0]=0x0000000000000000 0x00000000d5672908
+XMM[1]=0x0000000000000000 0x0000000000000000
+XMM[2]=0x0000000000000000 0x0000000000000000
+XMM[3]=0x0000000000000000 0x0000000000000000
+XMM[4]=0x0000000000000000 0x0000000000000000
+XMM[5]=0x0000000000000000 0x0000000000000000
+XMM[6]=0x159798d323e13c2c 0x6afb1c03ec6b821b
+XMM[7]=0x4950c0c52bb47524 0x4ada2f5c94c4cd0a
+XMM[8]=0x058f45e5c5f2280c 0xc36c9e33196e3567
+XMM[9]=0x561be6d3561be6d3 0x561be6d308a7b557
+XMM[10]=0x0000000000000000 0x00000000b28bce84
+XMM[11]=0xa88f8931a88f8931 0xa88f8931b1373e88
+XMM[12]=0x0000000000000000 0x0000000008a7b557
+XMM[13]=0x0000000000000000 0x0000000000000064
+XMM[14]=0x0000000000000000 0xeb17c88b4f5214c5
+XMM[15]=0x0000000000000000 0x00000000643a4c3a
+  MXCSR=0x00001fa0
+
+
+Register to memory mapping:
+
+RAX=0x00000000806d9f90 is an oop: sun.nio.fs.WindowsFileSystemProvider 
+{0x00000000806d9f90} - klass: 'sun/nio/fs/WindowsFileSystemProvider'
+ - ---- fields (total size 2 words):
+ - private final 'theFileSystem' 'Lsun/nio/fs/WindowsFileSystem;' @12  a 'sun/nio/fs/WindowsFileSystem'{0x00000000806d9f78} (0x806d9f78)
+RBX=0x0000000000000010 is an unknown value
+RCX=0x0000000000000001 is an unknown value
+RDX=0x00000000806d9f90 is an oop: sun.nio.fs.WindowsFileSystemProvider 
+{0x00000000806d9f90} - klass: 'sun/nio/fs/WindowsFileSystemProvider'
+ - ---- fields (total size 2 words):
+ - private final 'theFileSystem' 'Lsun/nio/fs/WindowsFileSystem;' @12  a 'sun/nio/fs/WindowsFileSystem'{0x00000000806d9f78} (0x806d9f78)
+RSP=0x0000006ceb1feb40 is pointing into the stack for thread: 0x000001a2dc7703a0
+RBP=0x00000000d5817338 is an oop: java.lang.String 
+{0x00000000d5817338} - klass: 'java/lang/String'
+ - string: "D:\PROJECTS 2026\ERP-Systems\.git\objects\79"
+ - ---- fields (total size 3 words):
+ - private 'hash' 'I' @12  0 (0x00000000)
+ - private final 'coder' 'B' @16  0 (0x00)
+ - private 'hashIsZero' 'Z' @17  false (0x00)
+ - injected 'flags' 'B' @18  0 (0x00)
+ - private final 'value' '[B' @20  [B{0x00000000d58172f8} (0xd58172f8)
+RSI=0x00000000d566f970 is an oop: [Ljava.lang.Object; 
+{0x00000000d566f970} - klass: 'java/lang/Object'[]
+ - length: 17
+RDI=0x0000000000000011 is an unknown value
+R8 =0x000000002f8172f8 is an unknown value
+R9 =0x000001a2851e7b48 is a pointer to class: 
+sun.nio.fs.WindowsPath$WindowsPathWithAttributes {0x000001a2851e7b50}
+ - instance size:     6
+ - klass size:        166
+ - access:            synchronized 
+ - flags:             rewritten has_nonstatic_fields has_nonstatic_concrete_methods has_miranda_methods 
+ - state:             fully_initialized
+ - name:              'sun/nio/fs/WindowsPath$WindowsPathWithAttributes'
+ - super:             'sun/nio/fs/WindowsPath'
+ - sub:               
+ - arrays:            null
+ - methods:           Array<T>(0x000001a2c6f8a520)
+ - method ordering:   Array<T>(0x000001a284a80280)
+ - default_methods:   Array<T>(0x000001a2c6f8aea8)
+ - default vtable indices:   Array<T>(0x000001a2c6f8af00)
+ - local interfaces:  Array<T>(0x000001a2c6f8a2e8)
+ - trans. interfaces: Array<T>(0x000001a2c6f8ae28)
+ - secondary supers: Array<T>(0x000001a2c6f8ae78)
+ - hash_slot:         19
+ - bitmap:            0x4000002020201000
+ - constants:         constant pool [107] {0x000001a2c6f89f10} for 'sun/nio/fs/WindowsPath$WindowsPathWithAttributes' cache=0x000001a2c6f8af68
+ - class loader data:  loader data: 0x000001a2eabe7760 of 'bootstrap'
+ - inner classes:     Array<T>(0x000001a2c6f8ae10)
+ - nest members:     Array<T>(0x000001a284611228)
+ - permitted subclasses:     Array<T>(0x000001a284611228)
+ - java mirror:       a 'java/lang/Class'{0x000000008082c900} = 'sun/nio/fs/WindowsPath$WindowsPathWithAttributes'
+ - vtable length      57  (start addr: 0x000001a2851e7d18)
+ - itable length      50 (start addr: 0x000001a2851e7ee0)
+ - ---- static fields (0 words):
+ - ---- non-static fields (8 words):
+ - private 'hash' 'I' @12 
+ - private final 'fs' 'Lsun/nio/fs/WindowsFileSystem;' @16 
+ - private final 'type' 'Lsun/nio/fs/WindowsPathType;' @20 
+ - private final 'root' 'Ljava/lang/String;' @24 
+ - private final 'path' 'Ljava/lang/String;' @28 
+ - private volatile 'pathForWin32Calls' 'Ljava/lang/ref/WeakReference;' @32 
+ - private volatile 'offsets' '[Ljava/lang/Integer;' @36 
+ - final 'ref' 'Ljava/lang/ref/WeakReference;' @40 
+ - non-static oop maps: 16-40 
+R10=0x00000000d5817398 is an oop: sun.nio.fs.WindowsPath$WindowsPathWithAttributes 
+{0x00000000d5817398} - klass: 'sun/nio/fs/WindowsPath$WindowsPathWithAttributes'
+ - ---- fields (total size 6 words):
+ - private 'hash' 'I' @12  0 (0x00000000)
+ - private final 'fs' 'Lsun/nio/fs/WindowsFileSystem;' @16  a 'sun/nio/fs/WindowsFileSystem'{0x00000000806d9f78} (0x806d9f78)
+ - private final 'type' 'Lsun/nio/fs/WindowsPathType;' @20  a 'sun/nio/fs/WindowsPathType'{0x0000000080008578} (0x80008578)
+ - private final 'root' 'Ljava/lang/String;' @24  "D:\"{0x00000000d5817350} (0xd5817350)
+ - private final 'path' 'Ljava/lang/String;' @28  "D:\PROJECTS 2026\ERP-Systems\.git\objects\79"{0x00000000d5817338} (0xd5817338)
+ - private volatile 'pathForWin32Calls' 'Ljava/lang/ref/WeakReference;' @32  null (0x00000000)
+ - private volatile 'offsets' '[Ljava/lang/Integer;' @36  null (0x00000000)
+ - final 'ref' 'Ljava/lang/ref/WeakReference;' @40  a 'java/lang/ref/WeakReference'{0x00000000d58173c8} (0xd58173c8)
+R11=0x000001a284383530 is a pointer to class: 
+sun.nio.fs.WindowsPath {0x000001a284383538}
+ - instance size:     5
+ - klass size:        160
+ - access:            synchronized 
+ - flags:             rewritten has_nonstatic_fields has_nonstatic_concrete_methods is_shared_boot_class has_miranda_methods 
+ - state:             fully_initialized
+ - name:              'sun/nio/fs/WindowsPath'
+ - super:             'java/lang/Object'
+ - sub:               'sun/nio/fs/WindowsPath$WindowsPathWithAttributes'   
+ - arrays:            null
+ - methods:           Array<T>(0x000001a284a51ed8)
+ - method ordering:   Array<T>(0x000001a284a52bf8)
+ - default_methods:   Array<T>(0x000001a284a52b68)
+ - default vtable indices:   Array<T>(0x000001a284a52cf0)
+ - local interfaces:  Array<T>(0x000001a284a52bc0)
+ - trans. interfaces: Array<T>(0x000001a284a52bd0)
+ - secondary supers: Array<T>(0x000001a284a4f3f8)
+ - hash_slot:         12
+ - bitmap:            0x4000002000201000
+ - constants:         constant pool [626] {0x000001a284a4f480} for 'sun/nio/fs/WindowsPath' cache=0x000001a284383d08
+ - class loader data:  loader data: 0x000001a2eabe7760 of 'bootstrap'
+ - inner classes:     Array<T>(0x000001a284a51e98)
+ - nest members:     Array<T>(0x000001a284a52d68)
+ - permitted subclasses:     Array<T>(0x000001a284611228)
+ - java mirror:       a 'java/lang/Class'{0x000000008067d918} = 'sun/nio/fs/WindowsPath'
+ - vtable length      55  (start addr: 0x000001a284383700)
+ - itable length      46 (start addr: 0x000001a2843838b8)
+ - ---- static fields (1 words):
+ - private static final 'MAX_PATH' 'I' @112 
+ - private static final 'MAX_LONG_PATH' 'I' @116 
+ - ---- non-static fields (7 words):
+ - private 'hash' 'I' @12 
+ - private final 'fs' 'Lsun/nio/fs/WindowsFileSystem;' @16 
+ - private final 'type' 'Lsun/nio/fs/WindowsPathType;' @20 
+ - private final 'root' 'Ljava/lang/String;' @24 
+ - private final 'path' 'Ljava/lang/String;' @28 
+ - private volatile 'pathForWin32Calls' 'Ljava/lang/ref/WeakReference;' @32 
+ - private volatile 'offsets' '[Ljava/lang/Integer;' @36 
+ - non-static oop maps: 16-36 
+R12=0x0 is null
+R13=0x00000000d5817338 is an oop: java.lang.String 
+{0x00000000d5817338} - klass: 'java/lang/String'
+ - string: "D:\PROJECTS 2026\ERP-Systems\.git\objects\79"
+ - ---- fields (total size 3 words):
+ - private 'hash' 'I' @12  0 (0x00000000)
+ - private final 'coder' 'B' @16  0 (0x00)
+ - private 'hashIsZero' 'Z' @17  false (0x00)
+ - injected 'flags' 'B' @18  0 (0x00)
+ - private final 'value' '[B' @20  [B{0x00000000d58172f8} (0xd58172f8)
+R14=0x0000006ceb1feb20 is pointing into the stack for thread: 0x000001a2dc7703a0
+R15=0x000001a2dc7703a0 is a thread
+
+Top of Stack: (sp=0x0000006ceb1feb40)
+0x0000006ceb1feb40:   00000000d5817450 00000000d5697980   Pt.......yi.....
+0x0000006ceb1feb50:   0000000000001258 0000000000000ea0   X...............
+0x0000006ceb1feb60:   00000000d569d8f8 0000000084a45810   ..i......X......
+0x0000006ceb1feb70:   01dc98137a232f1d 01dd49f706da5e84   ./#z.....^...I..
+0x0000006ceb1feb80:   01dd49f694429a4f 5414583200070000   O.B..I......2X.T
+0x0000006ceb1feb90:   0000000000008000 00000000d58174f8   .........t......
+0x0000006ceb1feba0:   0000000080008de0 000001a2f5315398   .........S1.....
+0x0000006ceb1febb0:   00000000d5672908 000001a2f64624ac   .)g......$F.....
+0x0000006ceb1febc0:   0000000000000000 d566f9580000000f   ............X.f.
+0x0000006ceb1febd0:   00000000d5817398 0000001000000001   .s..............
+0x0000006ceb1febe0:   00000000d566f958 00000000805f4240   X.f.....@B_.....
+0x0000006ceb1febf0:   0000000080307130 00000000d5697c70   0q0.....p|i.....
+0x0000006ceb1fec00:   00000000d58172b8 000001a2f6a7f750   .r......P.......
+0x0000006ceb1fec10:   00000000d566f938 00000000806d9f78   8.f.....x.m.....
+0x0000006ceb1fec20:   0000000000000001 00000000d566f938   ........8.f.....
+0x0000006ceb1fec30:   00000000d5817398 00000000d58172b8   .s.......r......
+0x0000006ceb1fec40:   00000000d5697db0 0000000000000001   .}i.............
+0x0000006ceb1fec50:   0000000000000001 00000000d566f550   ........P.f.....
+0x0000006ceb1fec60:   00000000d5697db0 000001a2f6b5dfac   .}i.............
+0x0000006ceb1fec70:   00000000d566f900 000001a2f6b3c92c   ..f.....,.......
+0x0000006ceb1fec80:   00000000d566f870 00000000d566f8d0   p.f.......f.....
+0x0000006ceb1fec90:   00000000d566f920 000000009b1644e0    .f......D......
+0x0000006ceb1feca0:   00000000d566f938 00000000d566f920   8.f..... .f.....
+0x0000006ceb1fecb0:   00000000d5697d90 0000000000000000   .}i.............
+0x0000006ceb1fecc0:   00000000d58171f8 00000000d566f870   .q......p.f.....
+0x0000006ceb1fecd0:   0000000000000003 000001a2c60b5fa0   ........._......
+0x0000006ceb1fece0:   0000000080932a78 00007ffffc1c2d7b   x*......{-......
+0x0000006ceb1fecf0:   0000000000000000 000001a2f5abd618   ................
+0x0000006ceb1fed00:   00000000d566f8d0 0000000000000024   ..f.....$.......
+0x0000006ceb1fed10:   0000000000000001 00000000d566f110   ..........f.....
+0x0000006ceb1fed20:   00000000d566f180 00000000d566f140   ..f.....@.f.....
+0x0000006ceb1fed30:   000000009b1644e0 00000000d566f870   .D......p.f.....
+
+Instructions: (pc=0x000001a2f5e1ac98)
+0x000001a2f5e1ab98:   0a 31 01 7c ed f8 05 28 01 7c 15 fd 00 28 00 60
+0x000001a2f5e1aba8:   0a 31 01 7c bd e9 05 28 01 7c 1d e9 00 28 00 60
+0x000001a2f5e1abb8:   0a 31 01 7c ed ea 05 28 01 7c d1 ea 00 28 00 60
+0x000001a2f5e1abc8:   0a 31 01 7c 25 f2 05 28 01 7c 9d f1 00 28 00 60
+0x000001a2f5e1abd8:   0a 31 01 7c c1 fd 05 28 01 7c 9d f9 00 28 00 60
+0x000001a2f5e1abe8:   0a 31 05 31 0f 31 00 00 00 00 00 00 00 00 00 00
+0x000001a2f5e1abf8:   00 00 00 00 00 00 00 00 44 8b 52 08 49 bb 00 00
+0x000001a2f5e1ac08:   00 84 a2 01 00 00 4d 03 d3 49 3b c2 0f 85 66 38
+0x000001a2f5e1ac18:   44 ff 66 90 0f 1f 40 00 89 84 24 00 80 ff ff 55
+0x000001a2f5e1ac28:   48 83 ec 70 41 81 7f 20 12 00 00 00 0f 85 7e 17
+0x000001a2f5e1ac38:   00 00 c4 c1 f9 6e c1 4d 8b c8 45 8b 58 08 49 b8
+0x000001a2f5e1ac48:   30 35 38 84 a2 01 00 00 49 ba 00 00 00 84 a2 01
+0x000001a2f5e1ac58:   00 00 4d 03 d3 4d 8b 52 38 4d 3b d0 0f 85 ca 0e
+0x000001a2f5e1ac68:   00 00 4d 8b d1 c4 c1 f9 7e c3 45 8b 5b 08 49 b9
+0x000001a2f5e1ac78:   00 00 00 84 a2 01 00 00 4d 03 cb 4d 8b 59 38 4d
+0x000001a2f5e1ac88:   3b d8 0f 85 bc 0e 00 00 41 8b 6a 1c 44 8b 45 14
+0x000001a2f5e1ac98:   41 8b 58 0c c4 e1 f9 7e c2 44 8b 4a 1c 45 8b 59
+0x000001a2f5e1aca8:   14 45 8b 43 0c 45 0f be 59 10 0f be 4d 10 c4 42
+0x000001a2f5e1acb8:   22 f7 c0 c4 e2 72 f7 cb 41 3b c8 44 8b d9 45 0f
+0x000001a2f5e1acc8:   4f d8 45 85 db 7e 67 4d 8b f1 4c 8b ed 33 db eb
+0x000001a2f5e1acd8:   0b 0f 1f 80 00 00 00 00 8b 6c 24 38 8b 7d 14 48
+0x000001a2f5e1ace8:   63 f3 80 7d 10 00 0f 85 ac 0c 00 00 89 6c 24 38
+0x000001a2f5e1acf8:   8b 6f 0c 3b dd 0f 83 21 0c 00 00 0f b6 7c 37 10
+0x000001a2f5e1ad08:   41 8b 41 14 41 80 79 10 00 0f 85 11 0d 00 00 8b
+0x000001a2f5e1ad18:   68 0c 3b dd 0f 83 3e 0c 00 00 0f b6 6c 30 10 3b
+0x000001a2f5e1ad28:   fd 0f 85 7b 0d 00 00 ff c3 41 3b db 7c aa 41 3b
+0x000001a2f5e1ad38:   c8 0f 84 21 10 00 00 48 89 54 24 08 4c 89 14 24
+0x000001a2f5e1ad48:   49 8b d2 41 b8 01 00 00 00 66 90 e8 08 17 bd 00
+0x000001a2f5e1ad58:   0f 1f 84 00 c8 05 00 00 4d 8b 97 80 03 00 00 49
+0x000001a2f5e1ad68:   8b 1a 44 8b 43 4c 45 85 c0 0f 84 99 09 00 00 41
+0x000001a2f5e1ad78:   8b 68 14 44 8b 5d 0c 45 8d 53 ff 41 81 e2 47 86
+0x000001a2f5e1ad88:   c8 61 45 85 db 0f 86 d5 0d 00 00 46 8b 4c 95 10
+
+
+Stack slot to memory mapping:
+
+stack at sp + 0 slots: 0x00000000d5817450 is an oop: sun.nio.fs.WindowsFileAttributes 
+{0x00000000d5817450} - klass: 'sun/nio/fs/WindowsFileAttributes'
+ - ---- fields (total size 8 words):
+ - private final 'fileAttrs' 'I' @12  16 (0x00000010)
+ - private final 'creationTime' 'J' @16  134188388112195444 (0x01dcbba0c668df74)
+ - private final 'lastAccessTime' 'J' @24  134344889209154806 (0x01dd49f706b36cf6)
+ - private final 'lastWriteTime' 'J' @32  134240258899753164 (0x01dceacde246b8cc)
+ - private final 'size' 'J' @40  0 (0x0000000000000000)
+ - private final 'reparseTag' 'I' @48  0 (0x00000000)
+ - private final 'volSerialNumber' 'I' @52  1410619442 (0x54145832)
+ - private final 'fileIndexHigh' 'I' @56  196608 (0x00030000)
+ - private final 'fileIndexLow' 'I' @60  339715 (0x00052f03)
+stack at sp + 1 slots: 0x00000000d5697980 is an oop: sun.nio.fs.WindowsPath$WindowsPathWithAttributes 
+{0x00000000d5697980} - klass: 'sun/nio/fs/WindowsPath$WindowsPathWithAttributes'
+ - ---- fields (total size 6 words):
+ - private 'hash' 'I' @12  0 (0x00000000)
+ - private final 'fs' 'Lsun/nio/fs/WindowsFileSystem;' @16  a 'sun/nio/fs/WindowsFileSystem'{0x00000000806d9f78} (0x806d9f78)
+ - private final 'type' 'Lsun/nio/fs/WindowsPathType;' @20  a 'sun/nio/fs/WindowsPathType'{0x0000000080008578} (0x80008578)
+ - private final 'root' 'Ljava/lang/String;' @24  "D:\"{0x00000000d5697938} (0xd5697938)
+ - private final 'path' 'Ljava/lang/String;' @28  "D:\PROJECTS 2026\ERP-Systems\.git\objects"{0x00000000d5697920} (0xd5697920)
+ - private volatile 'pathForWin32Calls' 'Ljava/lang/ref/WeakReference;' @32  null (0x00000000)
+ - private volatile 'offsets' '[Ljava/lang/Integer;' @36  null (0x00000000)
+ - final 'ref' 'Ljava/lang/ref/WeakReference;' @40  a 'java/lang/ref/WeakReference'{0x00000000d56979b0} (0xd56979b0)
+stack at sp + 2 slots: 0x0000000000001258 is an unknown value
+stack at sp + 3 slots: 0x0000000000000ea0 is an unknown value
+stack at sp + 4 slots: 0x00000000d569d8f8 is an oop: sun.nio.fs.NativeBuffer 
+{0x00000000d569d8f8} - klass: 'sun/nio/fs/NativeBuffer'
+ - ---- fields (total size 4 words):
+ - private final 'size' 'I' @12  2048 (0x00000800)
+ - private final 'address' 'J' @16  1798977233088 (0x000001a2db6620c0)
+ - private final 'cleanable' 'Ljava/lang/ref/Cleaner$Cleanable;' @24  a 'jdk/internal/ref/CleanerImpl$PhantomCleanableRef'{0x00000000d569d930} (0xd569d930)
+ - private 'owner' 'Ljava/lang/Object;' @28  null (0x00000000)
+stack at sp + 5 slots: 0x0000000084a45810 is an oop: org.eclipse.core.internal.jobs.Worker 
+{0x0000000084a45810} - klass: 'org/eclipse/core/internal/jobs/Worker'
+ - ---- fields (total size 16 words):
+ - 'threadLocalRandomProbe' 'I' @12  1957966946 (0x74b43462)
+ - private volatile 'eetop' 'J' @16  1798995116960 (0x000001a2dc7703a0)
+ - private final 'tid' 'J' @24  274 (0x0000000000000112)
+ - 'threadLocalRandomSeed' 'J' @32  6493538444105905330 (0x5a1daecf884674b2)
+ - injected 'jvmti_thread_state' 'J' @40  0 (0x0000000000000000)
+ - 'threadLocalRandomSecondarySeed' 'I' @48  0 (0x00000000)
+ - injected 'jvmti_VTMS_transition_disable_count' 'I' @52  0 (0x00000000)
+ - injected 'jfr_epoch' 'S' @56  0 (0x0000)
+ - volatile 'interrupted' 'Z' @58  false (0x00)
+ - injected 'jvmti_is_in_VTMS_transition' 'Z' @59  false (0x00)
+ - private volatile 'name' 'Ljava/lang/String;' @60  "Worker-44: Initialize Workspace"{0x000000009b166568} (0x9b166568)
+ - private volatile 'contextClassLoader' 'Ljava/lang/ClassLoader;' @64  a 'org/eclipse/osgi/internal/framework/ContextFinder'{0x00000000806d97d8} (0x806d97d8)
+ - private 'inheritedAccessControlContext' 'Ljava/security/AccessControlContext;' @68  a 'java/security/AccessControlContext'{0x0000000080a77f98} (0x80a77f98)
+ - private final 'holder' 'Ljava/lang/Thread$FieldHolder;' @72  a 'java/lang/Thread$FieldHolder'{0x0000000084a458c8} (0x84a458c8)
+ - 'threadLocals' 'Ljava/lang/ThreadLocal$ThreadLocalMap;' @76  a 'java/lang/ThreadLocal$ThreadLocalMap'{0x0000000084a459a8} (0x84a459a8)
+ - 'inheritableThreadLocals' 'Ljava/lang/ThreadLocal$ThreadLocalMap;' @80  a 'java/lang/ThreadLocal$ThreadLocalMap'{0x0000000084abfe80} (0x84abfe80)
+ - private 'scopedValueBindings' 'Ljava/lang/Object;' @84  a 'java/lang/Class'{0x0000000080721280} = 'java/lang/Thread' (0x80721280)
+ - final 'interruptLock' 'Ljava/lang/Object;' @88  a 'java/lang/Object'{0x0000000084a458f0} (0x84a458f0)
+ - private volatile 'parkBlocker' 'Ljava/lang/Object;' @92  null (0x00000000)
+ - volatile 'nioBlocker' 'Lsun/nio/ch/Interruptible;' @96  null (0x00000000)
+ - private 'cont' 'Ljdk/internal/vm/Continuation;' @100  null (0x00000000)
+ - private volatile 'uncaughtExceptionHandler' 'Ljava/lang/Thread$UncaughtExceptionHandler;' @104  null (0x00000000)
+ - private 'container' 'Ljdk/internal/vm/ThreadContainer;' @108  null (0x00000000)
+ - private volatile 'headStackableScopes' 'Ljdk/internal/vm/StackableScope;' @112  null (0x00000000)
+ - private volatile 'currentJob' 'Lorg/eclipse/core/internal/jobs/InternalJob;' @116  a 'org/eclipse/jdt/ls/core/internal/handlers/InitHandler$1'{0x000000009af1e6d0} (0x9af1e6d0)
+ - private final 'pool' 'Lorg/eclipse/core/internal/jobs/WorkerPool;' @120  a 'org/eclipse/core/internal/jobs/WorkerPool'{0x0000000080945138} (0x80945138)
+ - private final 'generalName' 'Ljava/lang/String;' @124  "Worker-44"{0x0000000084a45890} (0x84a45890)
+stack at sp + 6 slots: 0x01dc98137a232f1d is an unknown value
+stack at sp + 7 slots: 0x01dd49f706da5e84 is an unknown value
+
+
+Compiled method (c2) 5069192 8326   !   4       sun.nio.fs.WindowsFileSystemProvider::isSameFile (180 bytes)
+ total in heap  [0x000001a2f5e1a790,0x000001a2f5e1e100] = 14704
+ relocation     [0x000001a2f5e1a8f0,0x000001a2f5e1abf0] = 768
+ main code      [0x000001a2f5e1ac00,0x000001a2f5e1c3c8] = 6088
+ stub code      [0x000001a2f5e1c3c8,0x000001a2f5e1c528] = 352
+ oops           [0x000001a2f5e1c528,0x000001a2f5e1c538] = 16
+ metadata       [0x000001a2f5e1c538,0x000001a2f5e1c738] = 512
+ scopes data    [0x000001a2f5e1c738,0x000001a2f5e1d6b8] = 3968
+ scopes pcs     [0x000001a2f5e1d6b8,0x000001a2f5e1dc18] = 1376
+ dependencies   [0x000001a2f5e1dc18,0x000001a2f5e1dcc8] = 176
+ handler table  [0x000001a2f5e1dcc8,0x000001a2f5e1e088] = 960
+ nul chk table  [0x000001a2f5e1e088,0x000001a2f5e1e100] = 120
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Entry Point]
+  # {method} {0x000001a2843809e0} 'isSameFile' '(Ljava/nio/file/Path;Ljava/nio/file/Path;)Z' in 'sun/nio/fs/WindowsFileSystemProvider'
+  # this:     rdx:rdx   = 'sun/nio/fs/WindowsFileSystemProvider'
+  # parm0:    r8:r8     = 'java/nio/file/Path'
+  # parm1:    r9:r9     = 'java/nio/file/Path'
+  #           [sp+0x80]  (sp of caller)
+  0x000001a2f5e1ac00: 448b 5208 | 49bb 0000 | 0084 a201 | 0000 4d03 | d349 3bc2 
+
+  0x000001a2f5e1ac14: ;   {runtime_call ic_miss_stub}
+  0x000001a2f5e1ac14: 0f85 6638 | 44ff 6690 | 0f1f 4000 
+[Verified Entry Point]
+  0x000001a2f5e1ac20: 8984 2400 | 80ff ff55 | 4883 ec70 | 4181 7f20 | 1200 0000 | 0f85 7e17 | 0000 c4c1 | f96e c14d 
+  0x000001a2f5e1ac40: 8bc8 458b 
+
+  0x000001a2f5e1ac44: ;   {metadata('sun/nio/fs/WindowsPath')}
+  0x000001a2f5e1ac44: 5808 49b8 | 3035 3884 | a201 0000 | 49ba 0000 | 0084 a201 | 0000 4d03 | d34d 8b52 | 384d 3bd0 
+  0x000001a2f5e1ac64: 0f85 ca0e | 0000 4d8b | d1c4 c1f9 | 7ec3 458b | 5b08 49b9 | 0000 0084 | a201 0000 | 4d03 cb4d 
+  0x000001a2f5e1ac84: 8b59 384d | 3bd8 0f85 | bc0e 0000 | 418b 6a1c 
+
+  0x000001a2f5e1ac94: ; implicit exception: dispatches to 0x000001a2f5e1bf50
+  0x000001a2f5e1ac94: 448b 4514 
+
+  0x000001a2f5e1ac98: ; implicit exception: dispatches to 0x000001a2f5e1bf6c
+  0x000001a2f5e1ac98: 418b 580c | c4e1 f97e | c244 8b4a | 1c45 8b59 | 1445 8b43 | 0c45 0fbe | 5910 0fbe | 4d10 c442 
+  0x000001a2f5e1acb8: 22f7 c0c4 | e272 f7cb | 413b c844 | 8bd9 450f | 4fd8 4585 | db7e 674d | 8bf1 4c8b | ed33 dbeb 
+  0x000001a2f5e1acd8: 0b0f 1f80 | 0000 0000 | 8b6c 2438 | 8b7d 1448 | 63f3 807d | 1000 0f85 | ac0c 0000 | 896c 2438 
+  0x000001a2f5e1acf8: ; implicit exception: dispatches to 0x000001a2f5e1befc
+  0x000001a2f5e1acf8: 8b6f 0c3b | dd0f 8321 | 0c00 000f | b67c 3710 | 418b 4114 | 4180 7910 | 000f 8511 | 0d00 008b 
+  0x000001a2f5e1ad18: 680c 3bdd | 0f83 3e0c | 0000 0fb6 | 6c30 103b | fd0f 857b | 0d00 00ff | c341 3bdb | 7caa 413b 
+  0x000001a2f5e1ad38: c80f 8421 | 1000 0048 | 8954 2408 
+
+  0x000001a2f5e1ad44: ;   {no_reloc}
+  0x000001a2f5e1ad44: 4c89 1424 | 498b d241 | b801 0000 
+
+  0x000001a2f5e1ad50: ;   {optimized virtual_call}
+  0x000001a2f5e1ad50: 0066 90e8 
+
+  0x000001a2f5e1ad54: ; ImmutableOopMap {[0]=Oop [8]=Oop }
+                      ;*invokevirtual openForReadAttributeAccess {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@56
+  0x000001a2f5e1ad54: 0817 bd00 
+
+  0x000001a2f5e1ad58: ;   {other}
+  0x000001a2f5e1ad58: 0f1f 8400 | c805 0000 | 4d8b 9780 | 0300 0049 | 8b1a 448b | 434c 4585 | c00f 8499 | 0900 0041 
+  0x000001a2f5e1ad78: 8b68 1444 | 8b5d 0c45 | 8d53 ff41 | 81e2 4786 | c861 4585 | db0f 86d5 | 0d00 0046 | 8b4c 9510 
+  0x000001a2f5e1ad98: 4585 c90f | 8460 0900 | 0041 8b49 | 0c49 8bf9 
+
+  0x000001a2f5e1ada8: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1ada8: 81f9 8089 | 0080 743b | 4889 5c24 | 1848 8944 | 2410 498b 
+
+  0x000001a2f5e1adbc: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1adbc: d049 b880 | 8900 8000 | 0000 0045 | 8bca 488b 
+
+  0x000001a2f5e1adcc: ;   {optimized virtual_call}
+  0x000001a2f5e1adcc: e866 90e8 
+
+  0x000001a2f5e1add0: ; ImmutableOopMap {[0]=Oop [8]=Oop [24]=Oop }
+                      ;*invokevirtual getEntryAfterMiss {reexecute=0 rethrow=0 return_oop=1}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@38
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@3
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1add0: 6ce0 3300 
+
+  0x000001a2f5e1add4: ;   {other}
+  0x000001a2f5e1add4: 0f1f 8400 | 4406 0001 | 4885 c00f | 8423 0900 | 0048 8bf8 | 488b c544 | 8b57 1c4d | 8bc2 4d85 
+  0x000001a2f5e1adf4: c074 3a45 
+
+  0x000001a2f5e1adf8: ;   {metadata('sun/nio/fs/NativeBuffer'[])}
+  0x000001a2f5e1adf8: 8b58 0841 | 81fb 4046 | 0401 0f85 | 9c10 0000 | 458b 580c | 4183 fb02 | 0f86 da0d | 0000 458b 
+  0x000001a2f5e1ae18: 5810 4585 | db75 5c45 | 8b58 1445 | 85db 7545 | 458b 5818 | 4585 db75 | 2e48 8944 | 2410 ba34 
+  0x000001a2f5e1ae38: 0000 0048 
+
+  0x000001a2f5e1ae3c: ;   {static_call}
+  0x000001a2f5e1ae3c: 8b2c 24e8 
+
+  0x000001a2f5e1ae40: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*invokestatic allocNativeBuffer {reexecute=0 rethrow=0 return_oop=1}
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@17
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1ae40: 3c3f 44ff 
+
+  0x000001a2f5e1ae44: ;   {other}
+  0x000001a2f5e1ae44: 0f1f 8400 | b406 0002 | 4885 c00f | 84b8 0f00 | 004c 8bd0 | 488b 4424 | 10eb 3b41 | ba08 0000 
+  0x000001a2f5e1ae64: 0041 b902 | 0000 00eb | 1441 ba04 | 0000 0041 | b901 0000 | 00eb 0645 | 33d2 4533 | c941 8b6b 
+  0x000001a2f5e1ae84: 0c83 fd34 | 0f8c 8a0e | 0000 4789 | 6410 1045 | 8963 1c4d | 8bd3 4d8b 
+
+  0x000001a2f5e1ae9c: ;   {oop(a 'java/lang/Class'{0x0000000080001608} = 'jdk/internal/misc/VM')}
+  0x000001a2f5e1ae9c: 4a10 49bb | 0816 0080 | 0000 0000 | 418b ab94 | 0000 0083 | fd04 0f8c | f00d 0000 | 4d8b 9f80 
+  0x000001a2f5e1aebc: 0300 0049 | 8b2b 448b 
+
+  0x000001a2f5e1aec4: ;   {metadata('jdk/internal/misc/CarrierThread')}
+  0x000001a2f5e1aec4: 4508 4181 | f840 bf12 | 000f 8411 | 0c00 004c | 894c 2420 | 4c89 5424 | 1848 8944 | 2410 488b 
+  0x000001a2f5e1aee4: d04d 8bc1 
+
+  0x000001a2f5e1aee8: ;   {static_call}
+  0x000001a2f5e1aee8: 488b e8e8 
+
+  0x000001a2f5e1aeec: ; ImmutableOopMap {[0]=Oop [8]=Oop [24]=Oop }
+                      ;*invokestatic GetFileInformationByHandle0 {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsNativeDispatcher::GetFileInformationByHandle@7
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@13
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1aeec: f088 f4ff 
+
+  0x000001a2f5e1aef0: ;   {other}
+  0x000001a2f5e1aef0: 0f1f 8400 | 6007 0003 | 4c8b 5424 | 2049 8bda | 8b2b 81e5 | 0004 0000 | 85ed 0f85 | 740e 0000 
+  0x000001a2f5e1af10: 4d8b 9fb8 | 0100 0044 | 8b13 4489 | 5424 204d | 8bc3 4983 | c340 4c8b | 5304 4c89 | 5424 2844 
+  0x000001a2f5e1af30: 8b4b 3044 | 894c 2424 | 4c8b 530c | 4c89 5424 | 304c 8b53 | 144c 8954 | 2438 4863 | 4b20 448b 
+  0x000001a2f5e1af50: 5324 448b | 4b2c 4489 | 4c24 408b | 6b1c 896c | 2444 48c1 | e120 4903 | ca48 894c | 2448 4d3b 
+  0x000001a2f5e1af70: 9fc8 0100 | 000f 8361 | 0900 004d | 899f b801 | 0000 410f | 1883 0001 | 0000 49c7 | 0001 0000 
+  0x000001a2f5e1af90: ;   {metadata('sun/nio/fs/WindowsFileAttributes')}
+  0x000001a2f5e1af90: 0041 c740 | 08c8 6138 | 0045 8960 | 0c4d 8960 | 104d 8960 | 184d 8960 | 204d 8960 | 284d 8960 
+  0x000001a2f5e1afb0: 304d 8960 | 384c 8944 | 2450 8b6c | 2420 4189 | 680c 448b | 5c24 2445 | 8958 3c8b | 6c24 4041 
+  0x000001a2f5e1afd0: 8968 3844 | 8b5c 2444 | 4589 5834 | 4c8b 5c24 | 484d 8958 | 284c 8b5c | 2438 4d89 | 5820 4c8b 
+  0x000001a2f5e1aff0: 5c24 304d | 8958 184c | 8b5c 2428 | 4d89 5810 | 4d8b 9780 | 0300 004d | 8b12 4c89 | 5424 2041 
+  0x000001a2f5e1b010: 8b4a 4c85 | c90f 842e | 0800 008b | 6914 448b | 550c 458d | 5aff 4181 | e347 86c8 | 6145 85d2 
+  0x000001a2f5e1b030: 0f86 5a0b | 0000 468b | 549d 1045 | 85d2 0f84 | 1406 0000 | 458b 420c 
+
+  0x000001a2f5e1b048: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b048: 498b fa41 | 81f8 8089 | 0080 0f85 | 0206 0000 | 448b 5f1c | 4d8b d34c | 8b44 2418 | 498b c84d 
+  0x000001a2f5e1b068: 85d2 0f84 | d406 0000 | 458b 4a08 
+
+  0x000001a2f5e1b074: ;   {metadata('sun/nio/fs/NativeBuffer'[])}
+  0x000001a2f5e1b074: 4181 f940 | 4604 010f | 85c3 0d00 | 0045 8b4a | 0c41 83f9 | 020f 868d | 0b00 0041 | 8b5a 1085 
+  0x000001a2f5e1b094: db0f 84dc | 0000 0089 | 4c24 204c | 8954 2418 | 418b 7a14 | 85ff 0f84 | b200 0000 | 458b 5218 
+  0x000001a2f5e1b0b4: 4585 d20f | 849d 0000 | 0045 8b48 | 0c44 8b5b | 0c45 3bd9 | 7d58 488b | d333 ed45 | 33db eb0e 
+  0x000001a2f5e1b0d4: 488b d7bd | 0400 0000 | 41bb 0100 | 0000 4c89 | 4424 3044 | 895c 2424 
+
+  0x000001a2f5e1b0ec: ;   {optimized virtual_call}
+  0x000001a2f5e1b0ec: 6666 90e8 
+
+  0x000001a2f5e1b0f0: ; ImmutableOopMap {[0]=Oop [8]=Oop [24]=Oop [32]=NarrowOop [48]=Oop [80]=Oop }
+                      ;*invokevirtual free {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@78
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1b0f0: 8c36 44ff 
+
+  0x000001a2f5e1b0f4: ;   {other}
+  0x000001a2f5e1b0f4: 0f1f 8400 | 6409 0004 | 4c8b 5424 | 184d 8d54 | 2a10 448b | 4424 2045 | 8902 49c1 | ea09 49bb 
+  0x000001a2f5e1b114: 0000 16ea | a201 0000 | 4788 2413 | eb74 8b4f | 0c41 3bc9 | 7caa 458b | 5a0c 453b | d97d 1049 
+  0x000001a2f5e1b134: 8bd2 bd08 | 0000 0041 | bb02 0000 | 00eb 9f49 | 8bd0 488b 
+
+  0x000001a2f5e1b148: ;   {optimized virtual_call}
+  0x000001a2f5e1b148: 2c24 90e8 
+
+  0x000001a2f5e1b14c: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [80]=Oop }
+                      ;*invokevirtual free {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@93
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1b14c: 3036 44ff 
+
+  0x000001a2f5e1b150: ;   {other}
+  0x000001a2f5e1b150: 0f1f 8400 | c009 0005 | eb3c 41ba | 0800 0000 | eb06 41ba | 0400 0000 | 4c8b 5c24 | 184d 03da 
+  0x000001a2f5e1b170: 4c8b 5424 | 18eb 034d | 8bda 4983 | c310 4189 | 0b4d 8bd3 | 49c1 ea09 | 49bb 0000 | 16ea a201 
+  0x000001a2f5e1b190: 0000 4788 | 2413 4c8b | 5424 504c | 8914 2448 | 8b54 2408 | 41b8 0100 
+
+  0x000001a2f5e1b1a8: ;   {optimized virtual_call}
+  0x000001a2f5e1b1a8: 0000 90e8 
+
+  0x000001a2f5e1b1ac: ; ImmutableOopMap {[0]=Oop [8]=Oop }
+                      ;*invokevirtual openForReadAttributeAccess {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@99
+  0x000001a2f5e1b1ac: b012 bd00 
+
+  0x000001a2f5e1b1b0: ;   {other}
+  0x000001a2f5e1b1b0: 0f1f 8400 | 200a 0006 | 4d8b 9780 | 0300 004d | 8b0a 418b | 494c 85c9 | 0f84 ae06 | 0000 8b69 
+  0x000001a2f5e1b1d0: 1444 8b5d | 0c45 8d53 | ff41 81e2 | 4786 c861 | 4585 db0f | 86c3 0900 | 0046 8b5c | 9510 4585 
+  0x000001a2f5e1b1f0: db0f 8496 | 0400 0045 | 8b43 0c49 
+
+  0x000001a2f5e1b1fc: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b1fc: 8bfb 4181 | f880 8900 | 800f 8584 | 0400 0044 | 8b5f 1c49 | 8bcb 4885 | c974 3a44 
+
+  0x000001a2f5e1b218: ;   {metadata('sun/nio/fs/NativeBuffer'[])}
+  0x000001a2f5e1b218: 8b51 0841 | 81fa 4046 | 0401 0f85 | a80c 0000 | 448b 510c | 4183 fa02 | 0f86 160a | 0000 448b 
+  0x000001a2f5e1b238: 5110 4585 | d275 6644 | 8b51 1445 | 85d2 7549 | 448b 5118 | 4585 d275 | 3248 8944 | 2418 ba34 
+  0x000001a2f5e1b258: 0000 0048 | 8b6c 2408 
+
+  0x000001a2f5e1b260: ;   {static_call}
+  0x000001a2f5e1b260: 6666 90e8 
+
+  0x000001a2f5e1b264: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*invokestatic allocNativeBuffer {reexecute=0 rethrow=0 return_oop=1}
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@17
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1b264: 183b 44ff 
+
+  0x000001a2f5e1b268: ;   {other}
+  0x000001a2f5e1b268: 0f1f 8400 | d80a 0007 | 4885 c00f | 84af 0b00 | 004c 8bd0 | 488b 4424 | 18eb 3d41 | bb08 0000 
+  0x000001a2f5e1b288: 0041 b902 | 0000 00eb | 0c41 bb04 | 0000 0041 | b901 0000 | 004c 8bc1 | 4d03 c3eb | 064c 8bc1 
+  0x000001a2f5e1b2a8: 4533 c941 | 8b6a 0c83 | fd34 0f8c | 840a 0000 | 4589 621c | 4589 6010 | 4d8b 4a10 
+
+  0x000001a2f5e1b2c4: ;   {oop(a 'java/lang/Class'{0x0000000080001608} = 'jdk/internal/misc/VM')}
+  0x000001a2f5e1b2c4: 49bb 0816 | 0080 0000 | 0000 418b | ab94 0000 | 0083 fd04 | 0f8c f209 | 0000 4d8b | 9f80 0300 
+  0x000001a2f5e1b2e4: 0049 8b2b | 448b 4508 
+
+  0x000001a2f5e1b2ec: ;   {metadata('jdk/internal/misc/CarrierThread')}
+  0x000001a2f5e1b2ec: 4181 f840 | bf12 000f | 8413 0800 | 004c 894c | 2428 4c89 | 5424 2048 | 8944 2418 | 488b d04d 
+  0x000001a2f5e1b30c: 8bc1 488b 
+
+  0x000001a2f5e1b310: ;   {static_call}
+  0x000001a2f5e1b310: e866 90e8 
+
+  0x000001a2f5e1b314: ; ImmutableOopMap {[0]=Oop [8]=Oop [32]=Oop }
+                      ;*invokestatic GetFileInformationByHandle0 {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsNativeDispatcher::GetFileInformationByHandle@7
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@13
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1b314: c884 f4ff 
+
+  0x000001a2f5e1b318: ;   {other}
+  0x000001a2f5e1b318: 0f1f 8400 | 880b 0008 | 4c8b 5424 | 2849 8bda | 8b2b 81e5 | 0004 0000 | 85ed 0f85 | 640a 0000 
+  0x000001a2f5e1b338: 4d8b 9fb8 | 0100 0044 | 8b13 4489 | 5424 284d | 8bcb 4983 | c340 4c8b | 5304 4c89 | 5424 3044 
+  0x000001a2f5e1b358: 8b43 3044 | 8944 242c | 4c8b 530c | 4c89 5424 | 384c 8b53 | 144c 8954 | 2440 4863 | 4b20 448b 
+  0x000001a2f5e1b378: 5324 448b | 432c 4489 | 4424 488b | 6b1c 896c | 244c 48c1 | e120 4903 | ca48 894c | 2450 4d3b 
+  0x000001a2f5e1b398: 9fc8 0100 | 000f 835d | 0500 004d | 899f b801 | 0000 410f | 1883 0001 | 0000 49c7 | 0101 0000 
+  0x000001a2f5e1b3b8: ;   {metadata('sun/nio/fs/WindowsFileAttributes')}
+  0x000001a2f5e1b3b8: 0041 c741 | 08c8 6138 | 0045 8961 | 0c4d 8961 | 104d 8961 | 184d 8961 | 204d 8961 | 284d 8961 
+  0x000001a2f5e1b3d8: 304d 8961 | 384c 894c | 2458 8b6c | 2428 4189 | 690c 448b | 5424 2c45 | 8951 3c8b | 6c24 4841 
+  0x000001a2f5e1b3f8: 8969 3844 | 8b44 244c | 4589 4134 | 4c8b 5c24 | 504d 8959 | 284c 8b5c | 2440 4d89 | 5920 4c8b 
+  0x000001a2f5e1b418: 5c24 384d | 8959 184c | 8b5c 2430 | 4d89 5910 | 4d8b 9780 | 0300 004d | 8b12 4c89 | 5424 2841 
+  0x000001a2f5e1b438: 8b4a 4c85 | c90f 846d | 0400 008b | 6914 448b | 550c 458d | 5aff 4181 | e347 86c8 | 6145 85d2 
+  0x000001a2f5e1b458: 0f86 7607 | 0000 468b | 549d 1045 | 85d2 0f84 | 5e02 0000 | 458b 420c 
+
+  0x000001a2f5e1b470: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b470: 498b fa41 | 81f8 8089 | 0080 0f85 | 4c02 0000 | 448b 5f1c | 4c8b 5424 | 2049 8bfa | 4d85 db0f 
+  0x000001a2f5e1b490: 8430 0300 | 0045 8b4b 
+
+  0x000001a2f5e1b498: ;   {metadata('sun/nio/fs/NativeBuffer'[])}
+  0x000001a2f5e1b498: 0841 81f9 | 4046 0401 | 0f85 ce09 | 0000 458b | 4b0c 4183 | f902 0f86 | c407 0000 | 458b 4b10 
+  0x000001a2f5e1b4b8: 4585 c90f | 84e7 0000 | 0041 8b5b | 1485 db0f | 84cd 0000 | 0041 8b4b | 1885 c90f | 84b9 0000 
+  0x000001a2f5e1b4d8: 0089 7c24 | 2049 8beb | 4d8b da45 | 8b42 0c41 | 8b79 0c41 | 3bf8 7d65 | 498b d145 | 33c9 4c8b 
+  0x000001a2f5e1b4f8: c5eb 1848 | 8bd3 41ba | 0100 0000 | 41b9 0400 | 0000 4c8b | c54d 03c1 | 458b ca4c | 8944 2428 
+  0x000001a2f5e1b518: 4c89 5c24 | 3844 894c 
+
+  0x000001a2f5e1b520: ;   {optimized virtual_call}
+  0x000001a2f5e1b520: 2424 90e8 
+
+  0x000001a2f5e1b524: ; ImmutableOopMap {rbp=Oop [40]=Derived_oop_rbp [0]=Oop [8]=Oop [32]=NarrowOop [56]=Oop [88]=Oop }
+                      ;*invokevirtual free {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@78
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1b524: 5832 44ff 
+
+  0x000001a2f5e1b528: ;   {other}
+  0x000001a2f5e1b528: 0f1f 8400 | 980d 0009 | 4c8b 5424 | 2849 83c2 | 1044 8b5c | 2420 4589 | 1a49 c1ea | 0949 bb00 
+  0x000001a2f5e1b548: 0016 eaa2 | 0100 0047 | 8824 13eb | 6f44 8b53 | 0c45 3bd0 | 7c9d 448b | 490c 453b | c87d 1148 
+  0x000001a2f5e1b568: 8bd1 41ba | 0200 0000 | 41b9 0800 | 0000 eb92 | 498b d348 | 8b6c 2408 
+
+  0x000001a2f5e1b580: ;   {optimized virtual_call}
+  0x000001a2f5e1b580: 6666 90e8 
+
+  0x000001a2f5e1b584: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [88]=Oop }
+                      ;*invokevirtual free {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@93
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1b584: f831 44ff 
+
+  0x000001a2f5e1b588: ;   {other}
+  0x000001a2f5e1b588: 0f1f 8400 | f80d 000a | eb32 41b8 | 0800 0000 | eb06 41b8 | 0400 0000 | 4d8b d34d | 03d0 eb03 
+  0x000001a2f5e1b5a8: 4d8b d349 | 83c2 1041 | 893a 49c1 | ea09 49bb | 0000 16ea | a201 0000 | 4788 2413 | 4c8b 4c24 
+  0x000001a2f5e1b5c8: 584c 8b1c | 2445 8b43 | 3441 8b69 | 3444 3bc5 | 0f85 1a07 | 0000 458b | 5138 458b | 4338 453b 
+  0x000001a2f5e1b5e8: c274 3e48 | 8b54 2418 
+
+  0x000001a2f5e1b5f0: ;   {static_call}
+  0x000001a2f5e1b5f0: 6666 90e8 
+
+  0x000001a2f5e1b5f4: ; ImmutableOopMap {}
+                      ;*invokestatic CloseHandle {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@149
+  0x000001a2f5e1b5f4: e87d f4ff 
+
+  0x000001a2f5e1b5f8: ;   {other}
+  0x000001a2f5e1b5f8: 0f1f 8400 | 680e 000b | 488b 5424 
+
+  0x000001a2f5e1b604: ;   {static_call}
+  0x000001a2f5e1b604: 1066 90e8 
+
+  0x000001a2f5e1b608: ; ImmutableOopMap {}
+                      ;*invokestatic CloseHandle {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@154
+  0x000001a2f5e1b608: d47d f4ff 
+
+  0x000001a2f5e1b60c: ;   {other}
+  0x000001a2f5e1b60c: 0f1f 8400 | 7c0e 000c | 33c0 4883 
+
+  0x000001a2f5e1b618: ;   {poll_return}
+  0x000001a2f5e1b618: c470 5d49 | 3ba7 5004 | 0000 0f87 | 7a0d 0000 | c345 8b41 | 3c41 8b6b | 3c41 3be8 | 75b5 ba45 
+  0x000001a2f5e1b638: ffff ff4c | 8b54 2410 | 4c89 1424 | 4489 4424 
+
+  0x000001a2f5e1b648: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1b648: 1066 90e8 
+
+  0x000001a2f5e1b64c: ; ImmutableOopMap {}
+                      ;*if_icmpne {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.WindowsFileAttributes::isSameFile@30
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@142
+  0x000001a2f5e1b64c: b083 44ff 
+
+  0x000001a2f5e1b650: ;   {other}
+  0x000001a2f5e1b650: 0f1f 8400 | c00e 000d | 33ff 488b 
+
+  0x000001a2f5e1b65c: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b65c: d149 b880 | 8900 8000 | 0000 0045 | 8bcb 488b 
+
+  0x000001a2f5e1b66c: ;   {optimized virtual_call}
+  0x000001a2f5e1b66c: 2c24 90e8 
+
+  0x000001a2f5e1b670: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [24]=Oop [32]=Oop [80]=Oop }
+                      ;*invokevirtual getEntryAfterMiss {reexecute=0 rethrow=0 return_oop=1}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@38
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@3
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1b670: ccd7 3300 
+
+  0x000001a2f5e1b674: ;   {other}
+  0x000001a2f5e1b674: 0f1f 8400 | e40e 000e | 4885 c00f | 84c4 0100 | 0048 8bf8 | e9cb f9ff | ff33 ff49 | 8be9 4889 
+  0x000001a2f5e1b694: 4424 1848 
+
+  0x000001a2f5e1b698: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b698: 8bd1 49b8 | 8089 0080 | 0000 0000 
+
+  0x000001a2f5e1b6a4: ;   {optimized virtual_call}
+  0x000001a2f5e1b6a4: 458b cae8 
+
+  0x000001a2f5e1b6a8: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*invokevirtual getEntryAfterMiss {reexecute=0 rethrow=0 return_oop=1}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@38
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@3
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1b6a8: 94d7 3300 
+
+  0x000001a2f5e1b6ac: ;   {other}
+  0x000001a2f5e1b6ac: 0f1f 8400 | 1c0f 000f | 4885 c00f | 84b7 0100 | 0048 8bf8 | 488b 4424 | 18e9 41fb | ffff 33ff 
+  0x000001a2f5e1b6cc: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b6cc: 488b d149 | b880 8900 | 8000 0000 | 0045 8bcb | 488b 6c24 
+
+  0x000001a2f5e1b6e0: ;   {optimized virtual_call}
+  0x000001a2f5e1b6e0: 0866 90e8 
+
+  0x000001a2f5e1b6e4: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [32]=Oop [40]=Oop [88]=Oop }
+                      ;*invokevirtual getEntryAfterMiss {reexecute=0 rethrow=0 return_oop=1}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@38
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@3
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1b6e4: 58d7 3300 
+
+  0x000001a2f5e1b6e8: ;   {other}
+  0x000001a2f5e1b6e8: 0f1f 8400 | 580f 0010 | 4885 c00f | 84b7 0100 | 0048 8bf8 | e97f fdff | ff33 ffe9 | a8f6 ffff 
+  0x000001a2f5e1b708: 488b c548 | 8b5c 2418 | 4889 4424 
+
+  0x000001a2f5e1b714: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b714: 1048 ba80 | 8900 8000 | 0000 004c | 8bc3 488b 
+
+  0x000001a2f5e1b724: ;   {optimized virtual_call}
+  0x000001a2f5e1b724: 2c24 90e8 
+
+  0x000001a2f5e1b728: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*invokevirtual setInitialValue {reexecute=0 rethrow=0 return_oop=1}
+                      ; - java.lang.ThreadLocal::get@31
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@3
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1b728: 5430 44ff 
+
+  0x000001a2f5e1b72c: ;   {other}
+  0x000001a2f5e1b72c: 0f1f 8400 | 9c0f 0011 | 4c8b d048 | 8b44 2410 | 4d8b c2e9 | aef6 ffff | 498b 87b8 | 0100 004c 
+  0x000001a2f5e1b74c: 8bd0 4983 | c220 4d3b | 97c8 0100 | 000f 8355 | 0600 004d | 8997 b801 | 0000 410f | 1882 0001 
+  0x000001a2f5e1b76c: 0000 48c7 | 0001 0000 | 0041 0f18 | 8240 0100 
+
+  0x000001a2f5e1b77c: ;   {metadata('sun/nio/fs/NativeBuffer'[])}
+  0x000001a2f5e1b77c: 00c7 4008 | 4046 0401 | 410f 1882 | 8001 0000 | c740 0c03 | 0000 004c | 8960 104c | 8960 188b 
+  0x000001a2f5e1b79c: e94c 8bc0 | 4189 6810 
+
+  0x000001a2f5e1b7a4: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b7a4: 48ba 8089 | 0080 0000 | 0000 488b 
+
+  0x000001a2f5e1b7b0: ;   {optimized virtual_call}
+  0x000001a2f5e1b7b0: 2c24 90e8 
+
+  0x000001a2f5e1b7b4: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [80]=Oop }
+                      ;*invokevirtual set {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@27
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1b7b4: c82f 44ff 
+
+  0x000001a2f5e1b7b8: ;   {other}
+  0x000001a2f5e1b7b8: 0f1f 8400 | 2810 0012 | e9d1 f9ff | ff49 8b87 | b801 0000 | 4c8b d849 | 83c3 204d | 3b9f c801 
+  0x000001a2f5e1b7d8: 0000 0f83 | 0106 0000 | 4d89 9fb8 | 0100 0041 | 0f18 8300 | 0100 0048 | c700 0100 | 0000 410f 
+  0x000001a2f5e1b7f8: 1883 4001 
+
+  0x000001a2f5e1b7fc: ;   {metadata('sun/nio/fs/NativeBuffer'[])}
+  0x000001a2f5e1b7fc: 0000 c740 | 0840 4604 | 0141 0f18 | 8380 0100 | 00c7 400c | 0300 0000 | 4c89 6010 | 4c89 6018 
+  0x000001a2f5e1b81c: 8bef 4c8b | c041 8968 
+
+  0x000001a2f5e1b824: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b824: 1048 ba80 | 8900 8000 | 0000 0048 | 8b6c 2408 
+
+  0x000001a2f5e1b834: ;   {optimized virtual_call}
+  0x000001a2f5e1b834: 6666 90e8 
+
+  0x000001a2f5e1b838: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [88]=Oop }
+                      ;*invokevirtual set {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@27
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1b838: 442f 44ff 
+
+  0x000001a2f5e1b83c: ;   {other}
+  0x000001a2f5e1b83c: 0f1f 8400 | ac10 0013 | e97b fdff 
+
+  0x000001a2f5e1b848: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b848: ff48 ba80 | 8900 8000 | 0000 004c | 8b44 2420 | 488b 2c24 
+
+  0x000001a2f5e1b85c: ;   {optimized virtual_call}
+  0x000001a2f5e1b85c: 6666 90e8 
+
+  0x000001a2f5e1b860: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [24]=Oop [80]=Oop }
+                      ;*invokevirtual setInitialValue {reexecute=0 rethrow=0 return_oop=1}
+                      ; - java.lang.ThreadLocal::get@31
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@3
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1b860: 1c2f 44ff 
+
+  0x000001a2f5e1b864: ;   {other}
+  0x000001a2f5e1b864: 0f1f 8400 | d410 0014 | 4c8b d0e9 | ebf7 ffff | 488b 4424 | 184c 8bcd | 4889 4424 
+
+  0x000001a2f5e1b880: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b880: 1848 ba80 | 8900 8000 | 0000 004d | 8bc1 488b 
+
+  0x000001a2f5e1b890: ;   {optimized virtual_call}
+  0x000001a2f5e1b890: 6c24 08e8 
+
+  0x000001a2f5e1b894: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*invokevirtual setInitialValue {reexecute=0 rethrow=0 return_oop=1}
+                      ; - java.lang.ThreadLocal::get@31
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@3
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1b894: e82e 44ff 
+
+  0x000001a2f5e1b898: ;   {other}
+  0x000001a2f5e1b898: 0f1f 8400 | 0811 0015 | 4c8b d048 | 8b44 2418 | 498b cae9 | 62f9 ffff 
+
+  0x000001a2f5e1b8b0: ;   {oop(a 'sun/nio/fs/NativeBuffers$1'{0x0000000080008980})}
+  0x000001a2f5e1b8b0: 48ba 8089 | 0080 0000 | 0000 4c8b | 4424 2848 | 8b6c 2408 
+
+  0x000001a2f5e1b8c4: ;   {optimized virtual_call}
+  0x000001a2f5e1b8c4: 6666 90e8 
+
+  0x000001a2f5e1b8c8: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [32]=Oop [88]=Oop }
+                      ;*invokevirtual setInitialValue {reexecute=0 rethrow=0 return_oop=1}
+                      ; - java.lang.ThreadLocal::get@31
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@3
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1b8c8: b42e 44ff 
+
+  0x000001a2f5e1b8cc: ;   {other}
+  0x000001a2f5e1b8cc: 0f1f 8400 | 3c11 0016 | 4c8b d8e9 | a8fb ffff 
+
+  0x000001a2f5e1b8dc: ;   {metadata('sun/nio/fs/WindowsFileAttributes')}
+  0x000001a2f5e1b8dc: 48ba c861 | 3884 a201 | 0000 488b 
+
+  0x000001a2f5e1b8e8: ;   {runtime_call _new_instance_Java}
+  0x000001a2f5e1b8e8: 2c24 90e8 
+
+  0x000001a2f5e1b8ec: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [24]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=1}
+                      ; - sun.nio.fs.WindowsFileAttributes::fromFileInformation@122
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@118
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1b8ec: 10e0 4fff 
+
+  0x000001a2f5e1b8f0: ;   {other}
+  0x000001a2f5e1b8f0: 0f1f 8400 | 6011 0017 | 4c8b c0e9 | b5f6 ffff 
+
+  0x000001a2f5e1b900: ;   {metadata('sun/nio/fs/WindowsFileAttributes')}
+  0x000001a2f5e1b900: 48ba c861 | 3884 a201 | 0000 488b 
+
+  0x000001a2f5e1b90c: ;   {runtime_call _new_instance_Java}
+  0x000001a2f5e1b90c: 6c24 08e8 
+
+  0x000001a2f5e1b910: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [32]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=1}
+                      ; - sun.nio.fs.WindowsFileAttributes::fromFileInformation@122
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@118
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1b910: ecdf 4fff 
+
+  0x000001a2f5e1b914: ;   {other}
+  0x000001a2f5e1b914: 0f1f 8400 | 8411 0018 | 4c8b c8e9 | b9fa ffff | bae4 ffff | ff89 7c24 | 0889 5c24 | 0c89 5c24 
+  0x000001a2f5e1b934: 10c5 fb11 | 4424 184c | 8954 2420 | 4489 4c24 | 1489 4c24 | 2844 8944 | 242c 4489 
+
+  0x000001a2f5e1b950: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1b950: 5c24 30e8 
+
+  0x000001a2f5e1b954: ; ImmutableOopMap {[8]=NarrowOop [20]=NarrowOop [24]=Oop [32]=Oop [56]=NarrowOop }
+                      ;*invokestatic checkIndex {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.String::checkIndex@5
+                      ; - java.lang.StringLatin1::charAt@3
+                      ; - java.lang.String::charAt@12
+                      ; - sun.nio.fs.WindowsPath::compareTo@59
+                      ; - sun.nio.fs.WindowsPath::equals@14
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1b954: a880 44ff 
+
+  0x000001a2f5e1b958: ;   {other}
+  0x000001a2f5e1b958: 0f1f 8400 | c811 0019 | bae4 ffff | ff89 5c24 | 0889 5c24 | 0cc5 fb11 | 4424 104c | 8954 2418 
+  0x000001a2f5e1b978: 4489 4c24 | 2089 4c24 | 2444 8944 | 2428 4489 | 5c24 2c89 | 7c24 3089 
+
+  0x000001a2f5e1b990: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1b990: 4424 34e8 
+
+  0x000001a2f5e1b994: ; ImmutableOopMap {[16]=Oop [24]=Oop [32]=NarrowOop [52]=NarrowOop [56]=NarrowOop }
+                      ;*invokestatic checkIndex {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.String::checkIndex@5
+                      ; - java.lang.StringLatin1::charAt@3
+                      ; - java.lang.String::charAt@12
+                      ; - sun.nio.fs.WindowsPath::compareTo@67
+                      ; - sun.nio.fs.WindowsPath::equals@14
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1b994: 6880 44ff 
+
+  0x000001a2f5e1b998: ;   {other}
+  0x000001a2f5e1b998: 0f1f 8400 | 0812 001a | 4889 7424 | 4089 5c24 | 384c 896c | 2430 4c89 | 7424 2844 | 895c 2424 
+  0x000001a2f5e1b9b8: 894c 2420 | 4489 4424 | 1c44 894c | 2418 4889 | 5424 104c | 8954 2408 | c5fb 1104 | 2448 8bd7 
+  0x000001a2f5e1b9d8: ;   {static_call}
+  0x000001a2f5e1b9d8: 448b c3e8 
+
+  0x000001a2f5e1b9dc: ; ImmutableOopMap {rbp=NarrowOop [0]=Oop [8]=Oop [16]=Oop [24]=NarrowOop [40]=Oop [48]=Oop }
+                      ;*invokestatic charAt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.String::charAt@21
+                      ; - sun.nio.fs.WindowsPath::compareTo@59
+                      ; - sun.nio.fs.WindowsPath::equals@14
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1b9dc: a033 44ff 
+
+  0x000001a2f5e1b9e0: ;   {other}
+  0x000001a2f5e1b9e0: 0f1f 8400 | 5012 001b | c5fb 1004 | 244c 8b54 | 2408 488b | 5424 1044 | 8b4c 2418 | 448b 4424 
+  0x000001a2f5e1ba00: 1c8b 4c24 | 2044 8b5c | 2424 4c8b | 7424 284c | 8b6c 2430 | 8b5c 2438 | 488b 7424 | 408b f889 
+  0x000001a2f5e1ba20: 6c24 38e9 | e0f2 ffff | 897c 2434 | 895c 2430 | 4c89 6c24 | 284c 8974 | 2420 4489 | 5c24 1c89 
+  0x000001a2f5e1ba40: 4c24 1844 | 8944 2414 | 4489 4c24 | 1048 8954 | 2408 4c89 | 1424 c4e1 | f97e c548 | 8bd0 448b 
+  0x000001a2f5e1ba60: ;   {static_call}
+  0x000001a2f5e1ba60: c366 90e8 
+
+  0x000001a2f5e1ba64: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [16]=NarrowOop [32]=Oop [40]=Oop [56]=NarrowOop }
+                      ;*invokestatic charAt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.String::charAt@21
+                      ; - sun.nio.fs.WindowsPath::compareTo@67
+                      ; - sun.nio.fs.WindowsPath::equals@14
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1ba64: 1833 44ff 
+
+  0x000001a2f5e1ba68: ;   {other}
+  0x000001a2f5e1ba68: 0f1f 8400 | d812 001c | c4e1 f96e | c54c 8b14 | 2448 8b54 | 2408 448b | 4c24 1044 | 8b44 2414 
+  0x000001a2f5e1ba88: 8b4c 2418 | 448b 5c24 | 1c4c 8b74 | 2420 4c8b | 6c24 288b | 5c24 308b | 7c24 348b | e8e9 7df2 
+  0x000001a2f5e1baa8: ffff ba45 | ffff ff89 | 5c24 04c5 | fb11 4424 | 084c 8954 | 2410 4489 | 4c24 1889 | 4c24 1c44 
+  0x000001a2f5e1bac8: 8944 2420 | 4489 5c24 | 2489 7c24 
+
+  0x000001a2f5e1bad4: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bad4: 2c66 90e8 
+
+  0x000001a2f5e1bad8: ; ImmutableOopMap {[8]=Oop [16]=Oop [24]=NarrowOop [56]=NarrowOop }
+                      ;*if_icmpeq {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.WindowsPath::compareTo@76
+                      ; - sun.nio.fs.WindowsPath::equals@14
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1bad8: 247f 44ff 
+
+  0x000001a2f5e1badc: ;   {other}
+  0x000001a2f5e1badc: 0f1f 8400 | 4c13 001d | ba45 ffff | ff48 8944 | 2418 4c89 | 5424 2048 | 8944 2430 | 4c89 4c24 
+  0x000001a2f5e1bafc: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bafc: 3866 90e8 
+
+  0x000001a2f5e1bb00: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [32]=Oop }
+                      ;*ifeq {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) jdk.internal.misc.Blocker::begin@14
+                      ; - sun.nio.fs.WindowsNativeDispatcher::GetFileInformationByHandle@0
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@13
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1bb00: fc7e 44ff 
+
+  0x000001a2f5e1bb04: ;   {other}
+  0x000001a2f5e1bb04: 0f1f 8400 | 7413 001e | ba45 ffff | ff48 8944 | 2420 4c89 | 5424 2848 | 8944 2438 | 4c89 4c24 
+  0x000001a2f5e1bb24: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bb24: 4066 90e8 
+
+  0x000001a2f5e1bb28: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [40]=Oop }
+                      ;*ifeq {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) jdk.internal.misc.Blocker::begin@14
+                      ; - sun.nio.fs.WindowsNativeDispatcher::GetFileInformationByHandle@0
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@13
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1bb28: d47e 44ff 
+
+  0x000001a2f5e1bb2c: ;   {other}
+  0x000001a2f5e1bb2c: 0f1f 8400 | 9c13 001f | ba45 ffff | ffc4 e1f9 
+
+  0x000001a2f5e1bb3c: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bb3c: 7ec5 90e8 
+
+  0x000001a2f5e1bb40: ; ImmutableOopMap {rbp=Oop }
+                      ;*ifne {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.WindowsPath::toWindowsPath@16
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@1
+  0x000001a2f5e1bb40: bc7e 44ff 
+
+  0x000001a2f5e1bb44: ;   {other}
+  0x000001a2f5e1bb44: 0f1f 8400 | b413 0020 | ba45 ffff | ffc4 e1f9 | 7ec5 4c89 
+
+  0x000001a2f5e1bb58: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bb58: 1424 90e8 
+
+  0x000001a2f5e1bb5c: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*ifeq {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.WindowsPath::equals@4
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1bb5c: a07e 44ff 
+
+  0x000001a2f5e1bb60: ;   {other}
+  0x000001a2f5e1bb60: 0f1f 8400 | d013 0021 | bae4 ffff | ff48 8944 | 2418 4889 | 5c24 2044 | 8944 2428 | 4489 5424 
+  0x000001a2f5e1bb80: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bb80: 3066 90e8 
+
+  0x000001a2f5e1bb84: ; ImmutableOopMap {rbp=NarrowOop [0]=Oop [8]=Oop [32]=Oop [40]=NarrowOop }
+                      ;*aaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@18
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@3
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1bb84: 787e 44ff 
+
+  0x000001a2f5e1bb88: ;   {other}
+  0x000001a2f5e1bb88: 0f1f 8400 | f813 0022 | bae4 ffff | ff89 4c24 | 3044 895c 
+
+  0x000001a2f5e1bb9c: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bb9c: 2438 90e8 
+
+  0x000001a2f5e1bba0: ; ImmutableOopMap {rbp=NarrowOop [0]=Oop [8]=Oop [24]=Oop [32]=Oop [48]=NarrowOop [80]=Oop }
+                      ;*aaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@18
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@3
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1bba0: 5c7e 44ff 
+
+  0x000001a2f5e1bba4: ;   {other}
+  0x000001a2f5e1bba4: 0f1f 8400 | 1414 0023 | bae4 ffff | ff48 8944 | 2420 4c89 | 4c24 2889 | 4c24 3044 | 8954 2438 
+  0x000001a2f5e1bbc4: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bbc4: 6666 90e8 
+
+  0x000001a2f5e1bbc8: ; ImmutableOopMap {rbp=NarrowOop [0]=Oop [8]=Oop [40]=Oop [48]=NarrowOop }
+                      ;*aaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@18
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@3
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1bbc8: 347e 44ff 
+
+  0x000001a2f5e1bbcc: ;   {other}
+  0x000001a2f5e1bbcc: 0f1f 8400 | 3c14 0024 | bae4 ffff | ff89 4c24 | 3844 895c 
+
+  0x000001a2f5e1bbe0: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bbe0: 2440 90e8 
+
+  0x000001a2f5e1bbe4: ; ImmutableOopMap {rbp=NarrowOop [0]=Oop [8]=Oop [32]=Oop [40]=Oop [56]=NarrowOop [88]=Oop }
+                      ;*aaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@18
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@3
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1bbe4: 187e 44ff 
+
+  0x000001a2f5e1bbe8: ;   {other}
+  0x000001a2f5e1bbe8: 0f1f 8400 | 5814 0025 | bae4 ffff | ff48 8b2c | 244c 8b54 | 2408 4c89 | 1424 4889 | 4424 104c 
+  0x000001a2f5e1bc08: 8944 2420 
+
+  0x000001a2f5e1bc0c: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bc0c: 6666 90e8 
+
+  0x000001a2f5e1bc10: ; ImmutableOopMap {rbp=Oop [0]=Oop [32]=Oop }
+                      ;*aaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@23
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1bc10: ec7d 44ff 
+
+  0x000001a2f5e1bc14: ;   {other}
+  0x000001a2f5e1bc14: 0f1f 8400 | 8414 0026 | bae4 ffff | ff48 8b2c | 244c 8b5c | 2408 4c89 | 1c24 4c8b | 5c24 104c 
+  0x000001a2f5e1bc34: 895c 2408 | 4c89 5424 
+
+  0x000001a2f5e1bc3c: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bc3c: 2866 90e8 
+
+  0x000001a2f5e1bc40: ; ImmutableOopMap {rbp=Oop [0]=Oop [24]=Oop [40]=Oop [80]=Oop }
+                      ;*aaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@40
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1bc40: bc7d 44ff 
+
+  0x000001a2f5e1bc44: ;   {other}
+  0x000001a2f5e1bc44: 0f1f 8400 | b414 0027 | bae4 ffff | ff48 8b6c | 2408 4c8b | 5424 104c | 8954 2408 | 4889 4424 
+  0x000001a2f5e1bc64: 1848 894c 
+
+  0x000001a2f5e1bc68: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bc68: 2428 90e8 
+
+  0x000001a2f5e1bc6c: ; ImmutableOopMap {rbp=Oop [0]=Oop [40]=Oop }
+                      ;*aaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@23
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1bc6c: 907d 44ff 
+
+  0x000001a2f5e1bc70: ;   {other}
+  0x000001a2f5e1bc70: 0f1f 8400 | e014 0028 | bae4 ffff | ff48 8b6c | 2408 4c8b | 4424 104c | 8944 2408 | 4c8b 4424 
+  0x000001a2f5e1bc90: 184c 8944 | 2410 4c89 
+
+  0x000001a2f5e1bc98: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bc98: 5c24 30e8 
+
+  0x000001a2f5e1bc9c: ; ImmutableOopMap {rbp=Oop [0]=Oop [32]=Oop [48]=Oop [88]=Oop }
+                      ;*aaload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@40
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1bc9c: 607d 44ff 
+
+  0x000001a2f5e1bca0: ;   {other}
+  0x000001a2f5e1bca0: 0f1f 8400 | 1015 0029 | ba45 ffff | ff48 8944 | 2418 4c89 | 5424 2048 | 8944 2430 | 4c89 4c24 
+  0x000001a2f5e1bcc0: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bcc0: 3866 90e8 
+
+  0x000001a2f5e1bcc4: ; ImmutableOopMap {[0]=Oop [8]=Oop [32]=Oop }
+                      ;*if_icmplt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) jdk.internal.misc.VM::isBooted@4
+                      ; - jdk.internal.misc.Blocker::begin@0
+                      ; - sun.nio.fs.WindowsNativeDispatcher::GetFileInformationByHandle@0
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@13
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1bcc4: 387d 44ff 
+
+  0x000001a2f5e1bcc8: ;   {other}
+  0x000001a2f5e1bcc8: 0f1f 8400 | 3815 002a | ba45 ffff | ff48 8944 | 2420 4c89 | 5424 2848 | 8944 2438 | 4c89 4c24 
+  0x000001a2f5e1bce8: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bce8: 4066 90e8 
+
+  0x000001a2f5e1bcec: ; ImmutableOopMap {[0]=Oop [8]=Oop [40]=Oop }
+                      ;*if_icmplt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) jdk.internal.misc.VM::isBooted@4
+                      ; - jdk.internal.misc.Blocker::begin@0
+                      ; - sun.nio.fs.WindowsNativeDispatcher::GetFileInformationByHandle@0
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@13
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1bcec: 107d 44ff 
+
+  0x000001a2f5e1bcf0: ;   {other}
+  0x000001a2f5e1bcf0: 0f1f 8400 | 6015 002b | ba45 ffff | ff4c 8b54 | 2410 4c89 | 1424 4489 
+
+  0x000001a2f5e1bd08: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bd08: 4424 10e8 
+
+  0x000001a2f5e1bd0c: ; ImmutableOopMap {}
+                      ;*if_icmpne {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.WindowsFileAttributes::isSameFile@8
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@142
+  0x000001a2f5e1bd0c: f07c 44ff 
+
+  0x000001a2f5e1bd10: ;   {other}
+  0x000001a2f5e1bd10: 0f1f 8400 | 8015 002c | ba45 ffff | ff48 8944 | 2418 4c89 | 4424 2044 | 894c 2428 
+
+  0x000001a2f5e1bd2c: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bd2c: 6666 90e8 
+
+  0x000001a2f5e1bd30: ; ImmutableOopMap {[0]=Oop [8]=Oop [32]=Oop }
+                      ;*if_icmplt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.NativeBuffers::getNativeBufferFromCache@34
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1bd30: cc7c 44ff 
+
+  0x000001a2f5e1bd34: ;   {other}
+  0x000001a2f5e1bd34: 0f1f 8400 | a415 002d | ba45 ffff | ff48 8944 | 2420 4889 | 4c24 2844 | 894c 2430 
+
+  0x000001a2f5e1bd50: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bd50: 6666 90e8 
+
+  0x000001a2f5e1bd54: ; ImmutableOopMap {[0]=Oop [8]=Oop [40]=Oop }
+                      ;*if_icmplt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.NativeBuffers::getNativeBufferFromCache@34
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1bd54: a87c 44ff 
+
+  0x000001a2f5e1bd58: ;   {other}
+  0x000001a2f5e1bd58: 0f1f 8400 | c815 002e | 412b c8ba | 45ff ffff | c4e1 f97e | c54c 8914 | 2489 4c24 
+
+  0x000001a2f5e1bd74: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bd74: 0866 90e8 
+
+  0x000001a2f5e1bd78: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*ifne {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.WindowsPath::equals@17
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1bd78: 847c 44ff 
+
+  0x000001a2f5e1bd7c: ;   {other}
+  0x000001a2f5e1bd7c: 0f1f 8400 | ec15 002f | ba45 ffff | ff4c 8954 
+
+  0x000001a2f5e1bd8c: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bd8c: 2428 90e8 
+
+  0x000001a2f5e1bd90: ; ImmutableOopMap {[0]=Oop [8]=Oop [24]=Oop }
+                      ;*ifeq {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.WindowsFileAttributes::isReparsePoint@5
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@32
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1bd90: 6c7c 44ff 
+
+  0x000001a2f5e1bd94: ;   {other}
+  0x000001a2f5e1bd94: 0f1f 8400 | 0416 0030 | ba45 ffff | ff4c 8954 
+
+  0x000001a2f5e1bda4: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bda4: 2430 90e8 
+
+  0x000001a2f5e1bda8: ; ImmutableOopMap {[0]=Oop [8]=Oop [32]=Oop }
+                      ;*ifeq {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.WindowsFileAttributes::isReparsePoint@5
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@32
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1bda8: 547c 44ff 
+
+  0x000001a2f5e1bdac: ;   {other}
+  0x000001a2f5e1bdac: 0f1f 8400 | 1c16 0031 | 8be9 4d8b 
+
+  0x000001a2f5e1bdb8: ;   {metadata('sun/nio/fs/NativeBuffer'[])}
+  0x000001a2f5e1bdb8: d048 ba40 | 4604 85a2 | 0100 0041 | b803 0000 | 004c 8954 
+
+  0x000001a2f5e1bdcc: ;   {runtime_call _new_array_Java}
+  0x000001a2f5e1bdcc: 2420 90e8 
+
+  0x000001a2f5e1bdd0: ; ImmutableOopMap {rbp=NarrowOop [0]=Oop [8]=Oop [32]=Oop [80]=Oop }
+                      ;*anewarray {reexecute=0 rethrow=0 return_oop=1}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@15
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1bdd0: 2cde 4fff 
+
+  0x000001a2f5e1bdd4: ;   {other}
+  0x000001a2f5e1bdd4: 0f1f 8400 | 4416 0032 | e9bc f9ff 
+
+  0x000001a2f5e1bde0: ;   {metadata('sun/nio/fs/NativeBuffer'[])}
+  0x000001a2f5e1bde0: ff8b ef48 | ba40 4604 | 85a2 0100 | 0041 b803 | 0000 004c | 8954 2428 
+
+  0x000001a2f5e1bdf8: ;   {runtime_call _new_array_Java}
+  0x000001a2f5e1bdf8: 6666 90e8 
+
+  0x000001a2f5e1bdfc: ; ImmutableOopMap {rbp=NarrowOop [0]=Oop [8]=Oop [40]=Oop [88]=Oop }
+                      ;*anewarray {reexecute=0 rethrow=0 return_oop=1}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@15
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1bdfc: 00de 4fff 
+
+  0x000001a2f5e1be00: ;   {other}
+  0x000001a2f5e1be00: 0f1f 8400 | 7016 0033 | e911 faff | ffba f6ff | ffff 4c8b | 5424 084c 
+
+  0x000001a2f5e1be18: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1be18: 8914 24e8 
+
+  0x000001a2f5e1be1c: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*invokevirtual address {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@7
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1be1c: e07b 44ff 
+
+  0x000001a2f5e1be20: ;   {other}
+  0x000001a2f5e1be20: 0f1f 8400 | 9016 0034 | baf6 ffff | ff4c 8b54 | 2410 4c89 
+
+  0x000001a2f5e1be34: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1be34: 5424 08e8 
+
+  0x000001a2f5e1be38: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*invokevirtual address {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@7
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1be38: c47b 44ff 
+
+  0x000001a2f5e1be3c: ;   {other}
+  0x000001a2f5e1be3c: 0f1f 8400 | ac16 0035 | bade ffff | ff48 8b2c | 244c 8b5c | 2408 4c89 | 1c24 4c8b | 5c24 104c 
+  0x000001a2f5e1be5c: 895c 2408 | 4c89 5424 
+
+  0x000001a2f5e1be64: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1be64: 2066 90e8 
+
+  0x000001a2f5e1be68: ; ImmutableOopMap {rbp=Oop [0]=Oop [24]=Oop [32]=Oop [80]=Oop }
+                      ;*checkcast {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@6
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1be68: 947b 44ff 
+
+  0x000001a2f5e1be6c: ;   {other}
+  0x000001a2f5e1be6c: 0f1f 8400 | dc16 0036 | bade ffff | ff48 8b6c | 2408 4c8b | 4424 104c | 8944 2408 | 4c8b 4424 
+  0x000001a2f5e1be8c: 184c 8944 | 2410 4c89 
+
+  0x000001a2f5e1be94: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1be94: 5c24 28e8 
+
+  0x000001a2f5e1be98: ; ImmutableOopMap {rbp=Oop [0]=Oop [32]=Oop [40]=Oop [88]=Oop }
+                      ;*checkcast {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@6
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1be98: 647b 44ff 
+
+  0x000001a2f5e1be9c: ;   {other}
+  0x000001a2f5e1be9c: 0f1f 8400 | 0c17 0037 | bade ffff | ff48 8b2c | 244c 8b54 | 2408 4c89 | 1424 4889 | 4424 104c 
+  0x000001a2f5e1bebc: 8944 2418 
+
+  0x000001a2f5e1bec0: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bec0: 6666 90e8 
+
+  0x000001a2f5e1bec4: ; ImmutableOopMap {rbp=Oop [0]=Oop [24]=Oop }
+                      ;*checkcast {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@6
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1bec4: 387b 44ff 
+
+  0x000001a2f5e1bec8: ;   {other}
+  0x000001a2f5e1bec8: 0f1f 8400 | 3817 0038 | bade ffff | ff48 8b6c | 2408 4c8b | 5424 104c | 8954 2408 | 4889 4424 
+  0x000001a2f5e1bee8: 1848 894c 
+
+  0x000001a2f5e1beec: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1beec: 2420 90e8 
+
+  0x000001a2f5e1bef0: ; ImmutableOopMap {rbp=Oop [0]=Oop [32]=Oop }
+                      ;*checkcast {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@6
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1bef0: 0c7b 44ff 
+
+  0x000001a2f5e1bef4: ;   {other}
+  0x000001a2f5e1bef4: 0f1f 8400 | 6417 0039 | baf6 ffff | ffc4 e1f9 | 7ec5 4c89 
+
+  0x000001a2f5e1bf08: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bf08: 1424 90e8 
+
+  0x000001a2f5e1bf0c: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.StringLatin1::charAt@2
+                      ; - java.lang.String::charAt@12
+                      ; - sun.nio.fs.WindowsPath::compareTo@59
+                      ; - sun.nio.fs.WindowsPath::equals@14
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1bf0c: f07a 44ff 
+
+  0x000001a2f5e1bf10: ;   {other}
+  0x000001a2f5e1bf10: 0f1f 8400 | 8017 003a | baf6 ffff | ffc4 e1f9 | 7ec5 4c89 
+
+  0x000001a2f5e1bf24: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bf24: 1424 90e8 
+
+  0x000001a2f5e1bf28: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.StringLatin1::charAt@2
+                      ; - java.lang.String::charAt@12
+                      ; - sun.nio.fs.WindowsPath::compareTo@67
+                      ; - sun.nio.fs.WindowsPath::equals@14
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1bf28: d47a 44ff 
+
+  0x000001a2f5e1bf2c: ;   {other}
+  0x000001a2f5e1bf2c: 0f1f 8400 | 9c17 003b | baf4 ffff | ffc4 e1f9 | 7ec5 4c89 
+
+  0x000001a2f5e1bf40: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bf40: 5424 08e8 
+
+  0x000001a2f5e1bf44: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*instanceof {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsPath::equals@1
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1bf44: b87a 44ff 
+
+  0x000001a2f5e1bf48: ;   {other}
+  0x000001a2f5e1bf48: 0f1f 8400 | b817 003c | baf6 ffff | ffc4 e1f9 | 7ec5 4c89 
+
+  0x000001a2f5e1bf5c: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bf5c: 1424 90e8 
+
+  0x000001a2f5e1bf60: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*invokevirtual length {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsPath::compareTo@26
+                      ; - sun.nio.fs.WindowsPath::equals@14
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1bf60: 9c7a 44ff 
+
+  0x000001a2f5e1bf64: ;   {other}
+  0x000001a2f5e1bf64: 0f1f 8400 | d417 003d | baf6 ffff | ffc4 e1f9 | 7ec5 4c89 
+
+  0x000001a2f5e1bf78: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bf78: 1424 90e8 
+
+  0x000001a2f5e1bf7c: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.String::length@4
+                      ; - sun.nio.fs.WindowsPath::compareTo@26
+                      ; - sun.nio.fs.WindowsPath::equals@14
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1bf7c: 807a 44ff 
+
+  0x000001a2f5e1bf80: ;   {other}
+  0x000001a2f5e1bf80: 0f1f 8400 | f017 003e | baf6 ffff | ffc4 e1f9 | 7ec5 4c89 
+
+  0x000001a2f5e1bf94: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bf94: 1424 90e8 
+
+  0x000001a2f5e1bf98: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*invokevirtual length {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsPath::compareTo@32
+                      ; - sun.nio.fs.WindowsPath::equals@14
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1bf98: 647a 44ff 
+
+  0x000001a2f5e1bf9c: ;   {other}
+  0x000001a2f5e1bf9c: 0f1f 8400 | 0c18 003f | baf6 ffff | ffc4 e1f9 | 7ec5 4c89 
+
+  0x000001a2f5e1bfb0: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bfb0: 1424 90e8 
+
+  0x000001a2f5e1bfb4: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.String::length@4
+                      ; - sun.nio.fs.WindowsPath::compareTo@32
+                      ; - sun.nio.fs.WindowsPath::equals@14
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@7
+  0x000001a2f5e1bfb4: 487a 44ff 
+
+  0x000001a2f5e1bfb8: ;   {other}
+  0x000001a2f5e1bfb8: 0f1f 8400 | 2818 0040 | baf6 ffff 
+
+  0x000001a2f5e1bfc4: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bfc4: ff66 90e8 
+
+  0x000001a2f5e1bfc8: ; ImmutableOopMap {}
+                      ;*getfield volSerialNumber {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.WindowsFileAttributes::isSameFile@1
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@142
+  0x000001a2f5e1bfc8: 347a 44ff 
+
+  0x000001a2f5e1bfcc: ;   {other}
+  0x000001a2f5e1bfcc: 0f1f 8400 | 3c18 0041 | baf6 ffff 
+
+  0x000001a2f5e1bfd8: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bfd8: ff66 90e8 
+
+  0x000001a2f5e1bfdc: ; ImmutableOopMap {}
+                      ;*getfield volSerialNumber {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.WindowsFileAttributes::isSameFile@5
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@142
+  0x000001a2f5e1bfdc: 207a 44ff 
+
+  0x000001a2f5e1bfe0: ;   {other}
+  0x000001a2f5e1bfe0: 0f1f 8400 | 5018 0042 | baf6 ffff | ff48 8b2c | 244c 8b54 | 2408 4c89 | 1424 4889 
+
+  0x000001a2f5e1bffc: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1bffc: 4424 10e8 
+
+  0x000001a2f5e1c000: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@8
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@3
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1c000: fc79 44ff 
+
+  0x000001a2f5e1c004: ;   {other}
+  0x000001a2f5e1c004: 0f1f 8400 | 7418 0043 | baf6 ffff | ff48 8b2c | 244c 8b54 | 2408 4c89 | 1424 4c8b | 5424 104c 
+  0x000001a2f5e1c024: 8954 2408 
+
+  0x000001a2f5e1c028: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1c028: 6666 90e8 
+
+  0x000001a2f5e1c02c: ; ImmutableOopMap {rbp=Oop [0]=Oop [80]=Oop }
+                      ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@8
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@3
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1c02c: d079 44ff 
+
+  0x000001a2f5e1c030: ;   {other}
+  0x000001a2f5e1c030: 0f1f 8400 | a018 0044 | baf6 ffff | ff48 8b6c | 2408 4c8b | 5424 104c | 8954 2408 | 4889 4424 
+  0x000001a2f5e1c050: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1c050: 1866 90e8 
+
+  0x000001a2f5e1c054: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@8
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::getNativeBufferFromCache@3
+                      ; - sun.nio.fs.NativeBuffers::getNativeBuffer@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@2
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1c054: a879 44ff 
+
+  0x000001a2f5e1c058: ;   {other}
+  0x000001a2f5e1c058: 0f1f 8400 | c818 0045 | baf6 ffff | ff48 8b6c | 2408 4c8b | 5424 104c | 8954 2408 | 4c8b 5424 
+  0x000001a2f5e1c078: 184c 8954 
+
+  0x000001a2f5e1c07c: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1c07c: 2410 90e8 
+
+  0x000001a2f5e1c080: ; ImmutableOopMap {rbp=Oop [0]=Oop [88]=Oop }
+                      ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                      ; - java.lang.ThreadLocal$ThreadLocalMap::getEntry@8
+                      ; - java.lang.ThreadLocal::get@12
+                      ; - java.lang.ThreadLocal::getCarrierThreadLocal@25
+                      ; - java.lang.System$2::getCarrierThreadLocal@1
+                      ; - jdk.internal.misc.CarrierThreadLocal::get@4
+                      ; - sun.nio.fs.NativeBuffers::releaseNativeBuffer@3
+                      ; - sun.nio.fs.NativeBuffer::release@1
+                      ; - sun.nio.fs.NativeBuffer::close@1
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@128
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1c080: 7c79 44ff 
+
+  0x000001a2f5e1c084: ;   {other}
+  0x000001a2f5e1c084: 0f1f 8400 | f418 0046 | ba45 ffff | ffc4 e1f9 | 7ec5 4c89 
+
+  0x000001a2f5e1c098: ;   {runtime_call UncommonTrapBlob}
+  0x000001a2f5e1c098: 4424 08e8 
+
+  0x000001a2f5e1c09c: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*ifnonnull {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) sun.nio.fs.WindowsPath::toWindowsPath@1
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@1
+  0x000001a2f5e1c09c: 6079 44ff 
+
+  0x000001a2f5e1c0a0: ;   {other}
+  0x000001a2f5e1c0a0: 0f1f 8400 | 1019 0047 | 448b 5008 | 49bb 0000 | 0084 a201 | 0000 4d03 | dae9 cd01 | 0000 448b 
+  0x000001a2f5e1c0c0: 5008 49bb | 0000 0084 | a201 0000 | 4d03 dae9 | 6a02 0000 | e9b0 0000 | 00e9 c300 | 0000 488b 
+  0x000001a2f5e1c0e0: e8e9 9602 | 0000 488b | e8e9 8e02 | 0000 488b | d0e9 a202 | 0000 488b | e8e9 c101 | 0000 e950 
+  0x000001a2f5e1c100: 0100 00e9 | eb01 0000 | 488b 5424 | 284c 8bc0 
+
+  0x000001a2f5e1c110: ;   {optimized virtual_call}
+  0x000001a2f5e1c110: 6666 90e8 
+
+  0x000001a2f5e1c114: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [40]=Oop }
+                      ;*invokevirtual addSuppressed {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@151
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1c114: 6826 44ff 
+
+  0x000001a2f5e1c118: ;   {other}
+  0x000001a2f5e1c118: 0f1f 8400 | 8819 0048 | e94b 0100 | 0048 8b54 | 2420 4c8b 
+
+  0x000001a2f5e1c12c: ;   {optimized virtual_call}
+  0x000001a2f5e1c12c: c066 90e8 
+
+  0x000001a2f5e1c130: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [32]=Oop }
+                      ;*invokevirtual addSuppressed {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@151
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1c130: 4c26 44ff 
+
+  0x000001a2f5e1c134: ;   {other}
+  0x000001a2f5e1c134: 0f1f 8400 | a419 0049 | e9cf 0100 | 0048 8be8 | e933 0200 | 0048 8bd0 | e947 0200 | 00eb 0048 
+  0x000001a2f5e1c154: 8bd0 e93d | 0200 0048 | 8944 2428 | e9f3 0000 | 0048 8944 | 2420 e989 | 0100 00eb | 18eb 46eb 
+  0x000001a2f5e1c174: 2ceb 12eb | 28eb 0eeb | 24e9 ab01 | 0000 e9a6 | 0100 00eb | 0044 8b50 | 0849 bb00 | 0000 84a2 
+  0x000001a2f5e1c194: 0100 004d | 03da e9ec | 0000 00eb | 0044 8b50 | 0849 bb00 | 0000 84a2 | 0100 004d | 03da e987 
+  0x000001a2f5e1c1b4: 0100 00eb | 0044 8b50 | 0849 bb00 | 0000 84a2 | 0100 004d | 03da e9bc | 0000 0044 
+
+  0x000001a2f5e1c1d0: ;   {metadata('sun/nio/fs/WindowsException')}
+  0x000001a2f5e1c1d0: 8b58 0841 | 81fb 9005 | 2f01 751f | 488b d04c | 8b44 2408 
+
+  0x000001a2f5e1c1e4: ;   {optimized virtual_call}
+  0x000001a2f5e1c1e4: 498b e8e8 
+
+  0x000001a2f5e1c1e8: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*invokevirtual rethrowAsIOException {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@113
+  0x000001a2f5e1c1e8: 9425 44ff 
+
+  0x000001a2f5e1c1ec: ;   {other}
+  0x000001a2f5e1c1ec: 0f1f 8400 | 5c1a 004a | 33c0 e9bd | efff ff48 | 8be8 e979 | 0100 0044 
+
+  0x000001a2f5e1c204: ;   {metadata('sun/nio/fs/WindowsException')}
+  0x000001a2f5e1c204: 8b58 0841 | 81fb 9005 | 2f01 751f | 488b d04c | 8b04 2449 
+
+  0x000001a2f5e1c218: ;   {optimized virtual_call}
+  0x000001a2f5e1c218: 8be8 90e8 
+
+  0x000001a2f5e1c21c: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*invokevirtual rethrowAsIOException {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@69
+  0x000001a2f5e1c21c: 6025 44ff 
+
+  0x000001a2f5e1c220: ;   {other}
+  0x000001a2f5e1c220: 0f1f 8400 | 901a 004b | 33c0 e931 | ebff ff48 | 8bd0 e961 | 0100 0048 | 8be8 48c7 | c2ff ffff 
+  0x000001a2f5e1c240: ;   {static_call}
+  0x000001a2f5e1c240: ff66 90e8 
+
+  0x000001a2f5e1c244: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [32]=Oop }
+                      ;*invokestatic end {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsNativeDispatcher::GetFileInformationByHandle@22
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@13
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1c244: 382b 44ff 
+
+  0x000001a2f5e1c248: ;   {other}
+  0x000001a2f5e1c248: 0f1f 8400 | b81a 004c | 488b c548 | 8944 2428 | 488b 5424 | 2048 8b6c 
+
+  0x000001a2f5e1c260: ;   {optimized virtual_call}
+  0x000001a2f5e1c260: 2408 90e8 
+
+  0x000001a2f5e1c264: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [40]=Oop }
+                      ;*invokevirtual close {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@140
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@121
+  0x000001a2f5e1c264: 1825 44ff 
+
+  0x000001a2f5e1c268: ;   {other}
+  0x000001a2f5e1c268: 0f1f 8400 | d81a 004d | 4c8b 4424 | 2845 8b50 | 0849 bb00 | 0000 84a2 | 0100 004d | 03da 488b 
+  0x000001a2f5e1c288: 4424 284d 
+
+  0x000001a2f5e1c28c: ;   {metadata('sun/nio/fs/WindowsException')}
+  0x000001a2f5e1c28c: 8b53 4849 | bb90 052f | 85a2 0100 | 004d 3bd3 | 751e 488b | d04c 8b44 
+
+  0x000001a2f5e1c2a4: ;   {optimized virtual_call}
+  0x000001a2f5e1c2a4: 2408 90e8 
+
+  0x000001a2f5e1c2a8: ; ImmutableOopMap {[0]=Oop }
+                      ;*invokevirtual rethrowAsIOException {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@135
+  0x000001a2f5e1c2a8: d424 44ff 
+
+  0x000001a2f5e1c2ac: ;   {other}
+  0x000001a2f5e1c2ac: 0f1f 8400 | 1c1b 004e | 4533 c9e9 | 0df3 ffff | 488b e848 | 8b54 2418 
+
+  0x000001a2f5e1c2c4: ;   {static_call}
+  0x000001a2f5e1c2c4: 6666 90e8 
+
+  0x000001a2f5e1c2c8: ; ImmutableOopMap {rbp=Oop }
+                      ;*invokestatic CloseHandle {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@164
+  0x000001a2f5e1c2c8: b42a 44ff 
+
+  0x000001a2f5e1c2cc: ;   {other}
+  0x000001a2f5e1c2cc: 0f1f 8400 | 3c1b 004f | e9a3 0000 | 0048 8be8 | 48c7 c2ff 
+
+  0x000001a2f5e1c2e0: ;   {static_call}
+  0x000001a2f5e1c2e0: ffff ffe8 
+
+  0x000001a2f5e1c2e4: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [24]=Oop }
+                      ;*invokestatic end {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsNativeDispatcher::GetFileInformationByHandle@22
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@13
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1c2e4: 982a 44ff 
+
+  0x000001a2f5e1c2e8: ;   {other}
+  0x000001a2f5e1c2e8: 0f1f 8400 | 581b 0050 | 488b c548 | 8944 2420 | 488b 5424 | 1848 8b2c 
+
+  0x000001a2f5e1c300: ;   {optimized virtual_call}
+  0x000001a2f5e1c300: 2466 90e8 
+
+  0x000001a2f5e1c304: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [32]=Oop }
+                      ;*invokevirtual close {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileAttributes::readAttributes@140
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@77
+  0x000001a2f5e1c304: 7824 44ff 
+
+  0x000001a2f5e1c308: ;   {other}
+  0x000001a2f5e1c308: 0f1f 8400 | 781b 0051 | 4c8b 4424 | 2045 8b50 | 0849 bb00 | 0000 84a2 | 0100 004d | 03da 488b 
+  0x000001a2f5e1c328: 4424 20eb | 1144 8b50 | 0849 bb00 | 0000 84a2 | 0100 004d | 03da 4d8b 
+
+  0x000001a2f5e1c340: ;   {metadata('sun/nio/fs/WindowsException')}
+  0x000001a2f5e1c340: 5348 49bb | 9005 2f85 | a201 0000 | 4d3b d375 | 2348 8bd0 | 4c8b 0424 | 488b 6c24 
+
+  0x000001a2f5e1c35c: ;   {optimized virtual_call}
+  0x000001a2f5e1c35c: 0866 90e8 
+
+  0x000001a2f5e1c360: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*invokevirtual rethrowAsIOException {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@90
+  0x000001a2f5e1c360: 1c24 44ff 
+
+  0x000001a2f5e1c364: ;   {other}
+  0x000001a2f5e1c364: 0f1f 8400 | d41b 0052 | 4533 d2e9 | 27ee ffff | 488b e8eb | 0348 8be8 | 488b 5424 
+
+  0x000001a2f5e1c380: ;   {static_call}
+  0x000001a2f5e1c380: 1066 90e8 
+
+  0x000001a2f5e1c384: ; ImmutableOopMap {rbp=Oop }
+                      ;*invokestatic CloseHandle {reexecute=0 rethrow=0 return_oop=0}
+                      ; - sun.nio.fs.WindowsFileSystemProvider::isSameFile@174
+  0x000001a2f5e1c384: f829 44ff 
+
+  0x000001a2f5e1c388: ;   {other}
+  0x000001a2f5e1c388: 0f1f 8400 | f81b 0053 | 488b d5eb | 0348 8bd0 | 4883 c470 
+
+  0x000001a2f5e1c39c: ;   {runtime_call _rethrow_Java}
+  0x000001a2f5e1c39c: 5de9 de11 
+
+  0x000001a2f5e1c3a0: ;   {internal_word}
+  0x000001a2f5e1c3a0: 50ff 49ba | 1bb6 e1f5 | a201 0000 | 4d89 9768 
+
+  0x000001a2f5e1c3b0: ;   {runtime_call SafepointBlob}
+  0x000001a2f5e1c3b0: 0400 00e9 | 4887 44ff 
+
+  0x000001a2f5e1c3b8: ;   {runtime_call StubRoutines (final stubs)}
+  0x000001a2f5e1c3b8: e823 c642 | ffe9 78e8 | ffff f4f4 | f4f4 f4f4 
+[Stub Code]
+  0x000001a2f5e1c3c8: ;   {no_reloc}
+  0x000001a2f5e1c3c8: 48bb c859 | 3884 a201 
+
+  0x000001a2f5e1c3d0: ;   {runtime_call I2C/C2I adapters}
+  0x000001a2f5e1c3d0: 0000 e990 
+
+  0x000001a2f5e1c3d4: ;   {static_stub}
+  0x000001a2f5e1c3d4: 7044 ff48 | bb00 0000 | 0000 0000 
+
+  0x000001a2f5e1c3e0: ;   {runtime_call nmethod}
+  0x000001a2f5e1c3e0: 00e9 fbff 
+
+  0x000001a2f5e1c3e4: ;   {static_stub}
+  0x000001a2f5e1c3e4: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x000001a2f5e1c3f0: ;   {runtime_call nmethod}
+  0x000001a2f5e1c3f0: e9fb ffff 
+
+  0x000001a2f5e1c3f4: ;   {static_stub}
+  0x000001a2f5e1c3f4: ff48 bbc8 | 5938 84a2 
+
+  0x000001a2f5e1c3fc: ;   {runtime_call I2C/C2I adapters}
+  0x000001a2f5e1c3fc: 0100 00e9 | 6370 44ff 
+
+  0x000001a2f5e1c404: ;   {static_stub}
+  0x000001a2f5e1c404: 48bb 0000 | 0000 0000 
+
+  0x000001a2f5e1c40c: ;   {runtime_call nmethod}
+  0x000001a2f5e1c40c: 0000 e9fb 
+
+  0x000001a2f5e1c410: ;   {static_stub}
+  0x000001a2f5e1c410: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x000001a2f5e1c41c: ;   {runtime_call nmethod}
+  0x000001a2f5e1c41c: 00e9 fbff 
+
+  0x000001a2f5e1c420: ;   {static_stub}
+  0x000001a2f5e1c420: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x000001a2f5e1c42c: ;   {runtime_call nmethod}
+  0x000001a2f5e1c42c: e9fb ffff 
+
+  0x000001a2f5e1c430: ;   {static_stub}
+  0x000001a2f5e1c430: ff48 bb00 | 0000 0000 
+
+  0x000001a2f5e1c438: ;   {runtime_call nmethod}
+  0x000001a2f5e1c438: 0000 00e9 | fbff ffff 
+
+  0x000001a2f5e1c440: ;   {static_stub}
+  0x000001a2f5e1c440: 48bb 0000 | 0000 0000 
+
+  0x000001a2f5e1c448: ;   {runtime_call nmethod}
+  0x000001a2f5e1c448: 0000 e9fb 
+
+  0x000001a2f5e1c44c: ;   {static_stub}
+  0x000001a2f5e1c44c: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x000001a2f5e1c458: ;   {runtime_call nmethod}
+  0x000001a2f5e1c458: 00e9 fbff 
+
+  0x000001a2f5e1c45c: ;   {static_stub}
+  0x000001a2f5e1c45c: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x000001a2f5e1c468: ;   {runtime_call nmethod}
+  0x000001a2f5e1c468: e9fb ffff 
+
+  0x000001a2f5e1c46c: ;   {static_stub}
+  0x000001a2f5e1c46c: ff48 bb00 | 0000 0000 
+
+  0x000001a2f5e1c474: ;   {runtime_call nmethod}
+  0x000001a2f5e1c474: 0000 00e9 | fbff ffff 
+
+  0x000001a2f5e1c47c: ;   {static_stub}
+  0x000001a2f5e1c47c: 48bb 0000 | 0000 0000 
+
+  0x000001a2f5e1c484: ;   {runtime_call nmethod}
+  0x000001a2f5e1c484: 0000 e9fb 
+
+  0x000001a2f5e1c488: ;   {static_stub}
+  0x000001a2f5e1c488: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x000001a2f5e1c494: ;   {runtime_call nmethod}
+  0x000001a2f5e1c494: 00e9 fbff 
+
+  0x000001a2f5e1c498: ;   {static_stub}
+  0x000001a2f5e1c498: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x000001a2f5e1c4a4: ;   {runtime_call nmethod}
+  0x000001a2f5e1c4a4: e9fb ffff 
+
+  0x000001a2f5e1c4a8: ;   {static_stub}
+  0x000001a2f5e1c4a8: ff48 bb00 | 0000 0000 
+
+  0x000001a2f5e1c4b0: ;   {runtime_call nmethod}
+  0x000001a2f5e1c4b0: 0000 00e9 | fbff ffff 
+
+  0x000001a2f5e1c4b8: ;   {static_stub}
+  0x000001a2f5e1c4b8: 48bb 0000 | 0000 0000 
+
+  0x000001a2f5e1c4c0: ;   {runtime_call nmethod}
+  0x000001a2f5e1c4c0: 0000 e9fb 
+
+  0x000001a2f5e1c4c4: ;   {static_stub}
+  0x000001a2f5e1c4c4: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x000001a2f5e1c4d0: ;   {runtime_call nmethod}
+  0x000001a2f5e1c4d0: 00e9 fbff 
+
+  0x000001a2f5e1c4d4: ;   {static_stub}
+  0x000001a2f5e1c4d4: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x000001a2f5e1c4e0: ;   {runtime_call nmethod}
+  0x000001a2f5e1c4e0: e9fb ffff 
+
+  0x000001a2f5e1c4e4: ;   {static_stub}
+  0x000001a2f5e1c4e4: ff48 bb00 | 0000 0000 
+
+  0x000001a2f5e1c4ec: ;   {runtime_call nmethod}
+  0x000001a2f5e1c4ec: 0000 00e9 | fbff ffff 
+
+  0x000001a2f5e1c4f4: ;   {static_stub}
+  0x000001a2f5e1c4f4: 48bb 0000 | 0000 0000 
+
+  0x000001a2f5e1c4fc: ;   {runtime_call nmethod}
+  0x000001a2f5e1c4fc: 0000 e9fb 
+
+  0x000001a2f5e1c500: ;   {static_stub}
+  0x000001a2f5e1c500: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x000001a2f5e1c50c: ;   {runtime_call nmethod}
+  0x000001a2f5e1c50c: 00e9 fbff 
+
+  0x000001a2f5e1c510: ;   {runtime_call ExceptionBlob}
+  0x000001a2f5e1c510: ffff e969 | 8e4f ffe8 | 0000 0000 | 4883 2c24 
+
+  0x000001a2f5e1c520: ;   {runtime_call DeoptimizationBlob}
+  0x000001a2f5e1c520: 05e9 7a78 | 44ff f4f4 
+[/MachCode]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x000001a2ca2f41c0, length=52, elements={
+0x000001a2eabbeda0, 0x000001a2eab6c540, 0x000001a2eab6d460, 0x000001a2eab6e220,
+0x000001a2eac67f90, 0x000001a2eac6a320, 0x000001a2eac6e010, 0x000001a2eac7a130,
+0x000001a2fe92ddb0, 0x000001a2febbf3c0, 0x000001a2fec89110, 0x000001a2ca211ce0,
+0x000001a2ca66c650, 0x000001a2ca66d370, 0x000001a2ca66a580, 0x000001a2ca66ac10,
+0x000001a2ca833090, 0x000001a2ca835e80, 0x000001a2ca836ba0, 0x000001a2ca833db0,
+0x000001a2ca8385e0, 0x000001a2ca837f50, 0x000001a2ca839990, 0x000001a2ca839300,
+0x000001a2ca83a020, 0x000001a2cd904eb0, 0x000001a2cd905540, 0x000001a2cd906260,
+0x000001a2cd9068f0, 0x000001a2cd905bd0, 0x000001a2cd906f80, 0x000001a2cd907610,
+0x000001a2cd904190, 0x000001a2cd907ca0, 0x000001a2cd904820, 0x000001a2cd90a400,
+0x000001a2cd90aa90, 0x000001a2cd90b7b0, 0x000001a2cd908330, 0x000001a2cd2980a0,
+0x000001a2ddf3ac60, 0x000001a2ca838c70, 0x000001a2db16a490, 0x000001a2db169e00,
+0x000001a2dc76f680, 0x000001a2dc76e2d0, 0x000001a2dc7703a0, 0x000001a2dc76c890,
+0x000001a2dc772b00, 0x000001a2db1690e0, 0x000001a2cb8f0810, 0x000001a2ddf398b0
+}
+
+Java Threads: ( => current thread )
+  0x000001a2eabbeda0 JavaThread "main"                              [_thread_blocked, id=24264, stack(0x0000006ce2400000,0x0000006ce2500000) (1024K)]
+  0x000001a2eab6c540 JavaThread "Reference Handler"          daemon [_thread_blocked, id=30060, stack(0x0000006ce2800000,0x0000006ce2900000) (1024K)]
+  0x000001a2eab6d460 JavaThread "Finalizer"                  daemon [_thread_blocked, id=29592, stack(0x0000006ce2900000,0x0000006ce2a00000) (1024K)]
+  0x000001a2eab6e220 JavaThread "Signal Dispatcher"          daemon [_thread_blocked, id=22200, stack(0x0000006ce2a00000,0x0000006ce2b00000) (1024K)]
+  0x000001a2eac67f90 JavaThread "Attach Listener"            daemon [_thread_blocked, id=17536, stack(0x0000006ce2b00000,0x0000006ce2c00000) (1024K)]
+  0x000001a2eac6a320 JavaThread "Service Thread"             daemon [_thread_blocked, id=28916, stack(0x0000006ce2c00000,0x0000006ce2d00000) (1024K)]
+  0x000001a2eac6e010 JavaThread "Monitor Deflation Thread"   daemon [_thread_blocked, id=20304, stack(0x0000006ce2d00000,0x0000006ce2e00000) (1024K)]
+  0x000001a2eac7a130 JavaThread "C2 CompilerThread0"         daemon [_thread_blocked, id=12444, stack(0x0000006ce2e00000,0x0000006ce2f00000) (1024K)]
+  0x000001a2fe92ddb0 JavaThread "C1 CompilerThread0"         daemon [_thread_blocked, id=3848, stack(0x0000006ce2f00000,0x0000006ce3000000) (1024K)]
+  0x000001a2febbf3c0 JavaThread "Common-Cleaner"             daemon [_thread_blocked, id=27512, stack(0x0000006ce3200000,0x0000006ce3300000) (1024K)]
+  0x000001a2fec89110 JavaThread "Notification Thread"        daemon [_thread_blocked, id=6564, stack(0x0000006ce3400000,0x0000006ce3500000) (1024K)]
+  0x000001a2ca211ce0 JavaThread "Active Thread: Equinox Container: 50b51447-ee7b-4ac2-aac1-599f1a5ca8b1"        [_thread_blocked, id=24828, stack(0x0000006ce4200000,0x0000006ce4300000) (1024K)]
+  0x000001a2ca66c650 JavaThread "Framework Event Dispatcher: Equinox Container: 50b51447-ee7b-4ac2-aac1-599f1a5ca8b1" daemon [_thread_blocked, id=8268, stack(0x0000006ce4400000,0x0000006ce4500000) (1024K)]
+  0x000001a2ca66d370 JavaThread "Start Level: Equinox Container: 50b51447-ee7b-4ac2-aac1-599f1a5ca8b1" daemon [_thread_blocked, id=8264, stack(0x0000006ce4500000,0x0000006ce4600000) (1024K)]
+  0x000001a2ca66a580 JavaThread "Bundle File Closer"         daemon [_thread_blocked, id=32348, stack(0x0000006ce4600000,0x0000006ce4700000) (1024K)]
+  0x000001a2ca66ac10 JavaThread "Refresh Thread: Equinox Container: 50b51447-ee7b-4ac2-aac1-599f1a5ca8b1" daemon [_thread_blocked, id=4936, stack(0x0000006ce4700000,0x0000006ce4800000) (1024K)]
+  0x000001a2ca833090 JavaThread "SCR Component Actor"        daemon [_thread_blocked, id=10064, stack(0x0000006ce5800000,0x0000006ce5900000) (1024K)]
+  0x000001a2ca835e80 JavaThread "Worker-JM"                         [_thread_blocked, id=26252, stack(0x0000006ce5400000,0x0000006ce5500000) (1024K)]
+  0x000001a2ca836ba0 JavaThread "JNA Cleaner"                daemon [_thread_blocked, id=18864, stack(0x0000006ce3300000,0x0000006ce3400000) (1024K)]
+  0x000001a2ca833db0 JavaThread "Java indexing"              daemon [_thread_blocked, id=13492, stack(0x0000006ce5d00000,0x0000006ce5e00000) (1024K)]
+  0x000001a2ca8385e0 JavaThread "Worker-4: Initialize workspace"        [_thread_blocked, id=5664, stack(0x0000006ce6400000,0x0000006ce6500000) (1024K)]
+  0x000001a2ca837f50 JavaThread "pool-2-thread-1"                   [_thread_blocked, id=11216, stack(0x0000006ce6600000,0x0000006ce6700000) (1024K)]
+  0x000001a2ca839990 JavaThread "WorkspaceEventsHandler"            [_thread_blocked, id=7872, stack(0x0000006ce6900000,0x0000006ce6a00000) (1024K)]
+  0x000001a2ca839300 JavaThread "pool-1-thread-1"                   [_thread_blocked, id=22624, stack(0x0000006ce6a00000,0x0000006ce6b00000) (1024K)]
+  0x000001a2ca83a020 JavaThread "PatternSearchJob-worker-1"  daemon [_thread_blocked, id=12272, stack(0x0000006ce6b00000,0x0000006ce6c00000) (1024K)]
+  0x000001a2cd904eb0 JavaThread "PatternSearchJob-worker-2"  daemon [_thread_blocked, id=28016, stack(0x0000006ce6c00000,0x0000006ce6d00000) (1024K)]
+  0x000001a2cd905540 JavaThread "PatternSearchJob-worker-3"  daemon [_thread_blocked, id=31224, stack(0x0000006ce6d00000,0x0000006ce6e00000) (1024K)]
+  0x000001a2cd906260 JavaThread "PatternSearchJob-worker-4"  daemon [_thread_blocked, id=17728, stack(0x0000006ce6e00000,0x0000006ce6f00000) (1024K)]
+  0x000001a2cd9068f0 JavaThread "PatternSearchJob-worker-5"  daemon [_thread_blocked, id=25824, stack(0x0000006ce6f00000,0x0000006ce7000000) (1024K)]
+  0x000001a2cd905bd0 JavaThread "PatternSearchJob-worker-6"  daemon [_thread_blocked, id=29784, stack(0x0000006ce7000000,0x0000006ce7100000) (1024K)]
+  0x000001a2cd906f80 JavaThread "PatternSearchJob-worker-7"  daemon [_thread_blocked, id=23664, stack(0x0000006ce7100000,0x0000006ce7200000) (1024K)]
+  0x000001a2cd907610 JavaThread "PatternSearchJob-worker-8"  daemon [_thread_blocked, id=20228, stack(0x0000006ce7200000,0x0000006ce7300000) (1024K)]
+  0x000001a2cd904190 JavaThread "PatternSearchJob-worker-9"  daemon [_thread_blocked, id=28004, stack(0x0000006ce7300000,0x0000006ce7400000) (1024K)]
+  0x000001a2cd907ca0 JavaThread "PatternSearchJob-worker-10" daemon [_thread_blocked, id=5564, stack(0x0000006ce7400000,0x0000006ce7500000) (1024K)]
+  0x000001a2cd904820 JavaThread "PatternSearchJob-worker-11" daemon [_thread_blocked, id=17228, stack(0x0000006ce7500000,0x0000006ce7600000) (1024K)]
+  0x000001a2cd90a400 JavaThread "PatternSearchJob-worker-12" daemon [_thread_blocked, id=31700, stack(0x0000006ce7600000,0x0000006ce7700000) (1024K)]
+  0x000001a2cd90aa90 JavaThread "PatternSearchJob-worker-13" daemon [_thread_blocked, id=19696, stack(0x0000006ce7700000,0x0000006ce7800000) (1024K)]
+  0x000001a2cd90b7b0 JavaThread "PatternSearchJob-worker-14" daemon [_thread_blocked, id=464, stack(0x0000006ce7800000,0x0000006ce7900000) (1024K)]
+  0x000001a2cd908330 JavaThread "PatternSearchJob-worker-15" daemon [_thread_blocked, id=2968, stack(0x0000006ce7900000,0x0000006ce7a00000) (1024K)]
+  0x000001a2cd2980a0 JavaThread "Worker-10"                         [_thread_blocked, id=32516, stack(0x0000006ce3d00000,0x0000006ce3e00000) (1024K)]
+  0x000001a2ddf3ac60 JavaThread "Worker-16"                         [_thread_blocked, id=22532, stack(0x0000006ce8200000,0x0000006ce8300000) (1024K)]
+  0x000001a2ca838c70 JavaThread "Worker-21"                         [_thread_blocked, id=28112, stack(0x0000006ce9600000,0x0000006ce9700000) (1024K)]
+  0x000001a2db16a490 JavaThread "Worker-23"                         [_thread_blocked, id=17912, stack(0x0000006ce9d00000,0x0000006ce9e00000) (1024K)]
+  0x000001a2db169e00 JavaThread "Worker-24"                         [_thread_blocked, id=2708, stack(0x0000006ce9e00000,0x0000006ce9f00000) (1024K)]
+  0x000001a2dc76f680 JavaThread "Worker-38"                         [_thread_blocked, id=4580, stack(0x0000006ceaa00000,0x0000006ceab00000) (1024K)]
+  0x000001a2dc76e2d0 JavaThread "Worker-41"                         [_thread_blocked, id=16312, stack(0x0000006cea900000,0x0000006ceaa00000) (1024K)]
+=>0x000001a2dc7703a0 JavaThread "Worker-44: Initialize Workspace"        [_thread_in_Java, id=3456, stack(0x0000006ceb100000,0x0000006ceb200000) (1024K)]
+  0x000001a2dc76c890 JavaThread "Worker-374"                        [_thread_blocked, id=31348, stack(0x0000006ce3e00000,0x0000006ce3f00000) (1024K)]
+  0x000001a2dc772b00 JavaThread "Worker-377: Initialize workspace"        [_thread_blocked, id=29692, stack(0x0000006ce6100000,0x0000006ce6200000) (1024K)]
+  0x000001a2db1690e0 JavaThread "Worker-378"                        [_thread_blocked, id=8900, stack(0x0000006ce6200000,0x0000006ce6300000) (1024K)]
+  0x000001a2cb8f0810 JavaThread "Worker-389"                        [_thread_blocked, id=19156, stack(0x0000006ce4800000,0x0000006ce4900000) (1024K)]
+  0x000001a2ddf398b0 JavaThread "ProjectImportProgressReporter" daemon [_thread_blocked, id=7384, stack(0x0000006ce2100000,0x0000006ce2200000) (1024K)]
+Total: 52
+
+Other Threads:
+  0x000001a2eab540e0 VMThread "VM Thread"                           [id=8656, stack(0x0000006ce2700000,0x0000006ce2800000) (1024K)]
+  0x000001a2eaa4cb20 WatcherThread "VM Periodic Task Thread"        [id=21608, stack(0x0000006ce2600000,0x0000006ce2700000) (1024K)]
+  0x000001a2eabdd530 WorkerThread "GC Thread#0"                     [id=20036, stack(0x0000006ce2500000,0x0000006ce2600000) (1024K)]
+  0x000001a2c576c910 WorkerThread "GC Thread#1"                     [id=23252, stack(0x0000006ce3600000,0x0000006ce3700000) (1024K)]
+  0x000001a2c57711f0 WorkerThread "GC Thread#2"                     [id=32452, stack(0x0000006ce3700000,0x0000006ce3800000) (1024K)]
+  0x000001a2c576ccc0 WorkerThread "GC Thread#3"                     [id=21524, stack(0x0000006ce3800000,0x0000006ce3900000) (1024K)]
+  0x000001a2c57171d0 WorkerThread "GC Thread#4"                     [id=5300, stack(0x0000006ce3900000,0x0000006ce3a00000) (1024K)]
+  0x000001a2c5717980 WorkerThread "GC Thread#5"                     [id=32304, stack(0x0000006ce3a00000,0x0000006ce3b00000) (1024K)]
+  0x000001a2ca14e850 WorkerThread "GC Thread#6"                     [id=13860, stack(0x0000006ce3b00000,0x0000006ce3c00000) (1024K)]
+  0x000001a2ca150220 WorkerThread "GC Thread#7"                     [id=11020, stack(0x0000006ce4300000,0x0000006ce4400000) (1024K)]
+  0x000001a2ca14ec00 WorkerThread "GC Thread#8"                     [id=27988, stack(0x0000006ce5500000,0x0000006ce5600000) (1024K)]
+  0x000001a2ca14f360 WorkerThread "GC Thread#9"                     [id=29668, stack(0x0000006ce5600000,0x0000006ce5700000) (1024K)]
+  0x000001a2ca14f710 WorkerThread "GC Thread#10"                    [id=4848, stack(0x0000006ce5700000,0x0000006ce5800000) (1024K)]
+  0x000001a2cc8743f0 WorkerThread "GC Thread#11"                    [id=17780, stack(0x0000006ce5900000,0x0000006ce5a00000) (1024K)]
+  0x000001a2cc875660 WorkerThread "GC Thread#12"                    [id=17580, stack(0x0000006ce5a00000,0x0000006ce5b00000) (1024K)]
+Total: 15
+
+Threads with active compile tasks:
+Total: 0
+
+VM state: not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x0000000080000000, size: 2048 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x000001a284000000-0x000001a284ba0000-0x000001a284ba0000), size 12189696, SharedBaseAddress: 0x000001a284000000, ArchiveRelocationMode: 1.
+Compressed class space mapped at: 0x000001a285000000-0x000001a2c5000000, reserved size: 1073741824
+Narrow klass base: 0x000001a284000000, Narrow klass shift: 0, Narrow klass range: 0x100000000
+
+GC Precious Log:
+ CardTable entry size: 512
+ CPUs: 16 total, 16 available
+ Memory: 15706M
+ Large Page Support: Disabled
+ NUMA Support: Disabled
+ Compressed Oops: Enabled (32-bit)
+ Alignments: Space 512K, Generation 512K, Heap 2M
+ Heap Min Capacity: 100M
+ Heap Initial Capacity: 100M
+ Heap Max Capacity: 2G
+ Pre-touch: Disabled
+ Parallel Workers: 13
+
+Heap:
+ PSYoungGen      total 4096K, used 2856K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 76% used [0x00000000d5580000,0x00000000d582a0b0,0x00000000d5900000)
+  from space 512K, 25% used [0x00000000d5b80000,0x00000000d5ba0000,0x00000000d5c00000)
+  to   space 512K, 0% used [0x00000000d5c00000,0x00000000d5c00000,0x00000000d5c80000)
+ ParOldGen       total 444416K, used 444017K [0x0000000080000000, 0x000000009b200000, 0x00000000d5580000)
+  object space 444416K, 99% used [0x0000000080000000,0x000000009b19c4a8,0x000000009b200000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+
+Card table byte_map: [0x000001a2ea560000,0x000001a2ea970000] _byte_map_base: 0x000001a2ea160000
+
+Marking Bits: (ParMarkBitMap*) 0x00007ffefb6d44a0
+ Begin Bits: [0x000001a280000000, 0x000001a282000000)
+ End Bits:   [0x000001a282000000, 0x000001a284000000)
+
+Polling page: 0x000001a2e8a30000
+
+Metaspace:
+
+Usage:
+  Non-class:     65.93 MB used.
+      Class:      7.15 MB used.
+       Both:     73.08 MB used.
+
+Virtual space:
+  Non-class space:      128.00 MB reserved,      67.12 MB ( 52%) committed,  2 nodes.
+      Class space:        1.00 GB reserved,       8.19 MB ( <1%) committed,  1 nodes.
+             Both:        1.12 GB reserved,      75.31 MB (  7%) committed. 
+
+Chunk freelists:
+   Non-Class:  13.30 MB
+       Class:  7.88 MB
+        Both:  21.18 MB
+
+MaxMetaspaceSize: unlimited
+CompressedClassSpaceSize: 1.00 GB
+Initial GC threshold: 21.00 MB
+Current GC threshold: 125.56 MB
+CDS: on
+ - commit_granule_bytes: 65536.
+ - commit_granule_words: 8192.
+ - virtual_space_node_default_size: 8388608.
+ - enlarge_chunks_in_place: 1.
+ - use_allocation_guard: 0.
+
+
+Internal statistics:
+
+num_allocs_failed_limit: 9.
+num_arena_births: 2250.
+num_arena_deaths: 490.
+num_vsnodes_births: 3.
+num_vsnodes_deaths: 0.
+num_space_committed: 1205.
+num_space_uncommitted: 0.
+num_chunks_returned_to_freelist: 598.
+num_chunks_taken_from_freelist: 6350.
+num_chunk_merges: 143.
+num_chunk_splits: 3828.
+num_chunks_enlarged: 2022.
+num_inconsistent_stats: 0.
+
+CodeHeap 'non-profiled nmethods': size=119168Kb used=10813Kb max_used=20670Kb free=108354Kb
+ bounds [0x000001a2f5960000, 0x000001a2f6d90000, 0x000001a2fcdc0000]
+CodeHeap 'profiled nmethods': size=119104Kb used=6930Kb max_used=46668Kb free=112173Kb
+ bounds [0x000001a2eddc0000, 0x000001a2f0b60000, 0x000001a2f5210000]
+CodeHeap 'non-nmethods': size=7488Kb used=1440Kb max_used=3238Kb free=6047Kb
+ bounds [0x000001a2f5210000, 0x000001a2f5550000, 0x000001a2f5960000]
+CodeCache: size=245760Kb, used=19183Kb, max_used=70576Kb, free=226574Kb
+ total_blobs=4786, nmethods=4037, adapters=651, full_count=0
+Compilation: enabled, stopped_count=0, restarted_count=0
+
+Compilation events (20 events):
+Event: 4849.622 Thread 0x000001a2eac7a130 23615       4       sun.util.locale.LocaleObjectCache::get (126 bytes)
+Event: 4849.670 Thread 0x000001a2eac7a130 nmethod 23615 0x000001a2f5b25710 code [0x000001a2f5b25a00, 0x000001a2f5b264b0]
+Event: 4898.459 Thread 0x000001a2fe92ddb0 23616       3       java.lang.ref.ReferenceQueue::await (15 bytes)
+Event: 4898.459 Thread 0x000001a2fe92ddb0 nmethod 23616 0x000001a2ede1c310 code [0x000001a2ede1c4c0, 0x000001a2ede1c660]
+Event: 4978.229 Thread 0x000001a2eac7a130 23617       4       com.google.common.collect.ImmutableList::iterator (5 bytes)
+Event: 4978.233 Thread 0x000001a2eac7a130 nmethod 23617 0x000001a2f6064c10 code [0x000001a2f6064dc0, 0x000001a2f6064f80]
+Event: 4979.825 Thread 0x000001a2eac7a130 23618   !   4       java.lang.ClassLoader::loadClass (121 bytes)
+Event: 4979.850 Thread 0x000001a2eac7a130 nmethod 23618 0x000001a2f636ef10 code [0x000001a2f636f1c0, 0x000001a2f6370318]
+Event: 4988.481 Thread 0x000001a2fe92ddb0 23619       3       java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject::await (202 bytes)
+Event: 4988.482 Thread 0x000001a2fe92ddb0 nmethod 23619 0x000001a2ede58410 code [0x000001a2ede58700, 0x000001a2ede59530]
+Event: 4991.606 Thread 0x000001a2eac7a130 23620       4       java.util.concurrent.ConcurrentHashMap$KeySetView::remove (17 bytes)
+Event: 4991.608 Thread 0x000001a2eac7a130 nmethod 23620 0x000001a2f5ad7f10 code [0x000001a2f5ad80a0, 0x000001a2f5ad81a0]
+Event: 4998.565 Thread 0x000001a2eac7a130 23621       4       com.google.common.collect.ImmutableList::iterator (5 bytes)
+Event: 4998.568 Thread 0x000001a2eac7a130 nmethod 23621 0x000001a2f63b7b10 code [0x000001a2f63b7cc0, 0x000001a2f63b7e80]
+Event: 5056.488 Thread 0x000001a2eac7a130 23622       4       org.eclipse.core.internal.dtree.DeltaDataTree::setData (43 bytes)
+Event: 5056.501 Thread 0x000001a2eac7a130 nmethod 23622 0x000001a2f5a11a90 code [0x000001a2f5a11c80, 0x000001a2f5a121a0]
+Event: 5061.033 Thread 0x000001a2eac7a130 23623       4       java.util.concurrent.locks.AbstractQueuedSynchronizer$Node::clearStatus (12 bytes)
+Event: 5061.034 Thread 0x000001a2eac7a130 nmethod 23623 0x000001a2f596e490 code [0x000001a2f596e620, 0x000001a2f596e6b0]
+Event: 5065.220 Thread 0x000001a2eac7a130 23624  s    4       org.eclipse.core.internal.watson.ElementTree::newEmptyDelta (35 bytes)
+Event: 5065.249 Thread 0x000001a2eac7a130 nmethod 23624 0x000001a2f5c60610 code [0x000001a2f5c60860, 0x000001a2f5c61368]
+
+GC Heap History (20 events):
+Event: 5068.065 GC heap before
+{Heap before GC invocations=66394 (full 17):
+ PSYoungGen      total 6144K, used 6127K [0x00000000d5580000, 0x00000000d6000000, 0x0000000100000000)
+  eden space 3584K, 99% used [0x00000000d5580000,0x00000000d58fc3a8,0x00000000d5900000)
+  from space 2560K, 99% used [0x00000000d5900000,0x00000000d5b7fa68,0x00000000d5b80000)
+  to   space 3584K, 0% used [0x00000000d5c80000,0x00000000d5c80000,0x00000000d6000000)
+ ParOldGen       total 441856K, used 441489K [0x0000000080000000, 0x000000009af80000, 0x00000000d5580000)
+  object space 441856K, 99% used [0x0000000080000000,0x000000009af24498,0x000000009af80000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.071 GC heap after
+{Heap after GC invocations=66394 (full 17):
+ PSYoungGen      total 4608K, used 907K [0x00000000d5580000, 0x00000000d5d80000, 0x0000000100000000)
+  eden space 3584K, 0% used [0x00000000d5580000,0x00000000d5580000,0x00000000d5900000)
+  from space 1024K, 88% used [0x00000000d5c80000,0x00000000d5d62f40,0x00000000d5d80000)
+  to   space 2048K, 0% used [0x00000000d5980000,0x00000000d5980000,0x00000000d5b80000)
+ ParOldGen       total 443392K, used 443153K [0x0000000080000000, 0x000000009b100000, 0x00000000d5580000)
+  object space 443392K, 99% used [0x0000000080000000,0x000000009b0c44a8,0x000000009b100000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.094 GC heap before
+{Heap before GC invocations=66395 (full 17):
+ PSYoungGen      total 4608K, used 4491K [0x00000000d5580000, 0x00000000d5d80000, 0x0000000100000000)
+  eden space 3584K, 100% used [0x00000000d5580000,0x00000000d5900000,0x00000000d5900000)
+  from space 1024K, 88% used [0x00000000d5c80000,0x00000000d5d62f40,0x00000000d5d80000)
+  to   space 2048K, 0% used [0x00000000d5980000,0x00000000d5980000,0x00000000d5b80000)
+ ParOldGen       total 443392K, used 443153K [0x0000000080000000, 0x000000009b100000, 0x00000000d5580000)
+  object space 443392K, 99% used [0x0000000080000000,0x000000009b0c44a8,0x000000009b100000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.097 GC heap after
+{Heap after GC invocations=66395 (full 17):
+ PSYoungGen      total 5632K, used 224K [0x00000000d5580000, 0x00000000d5d00000, 0x0000000100000000)
+  eden space 3584K, 0% used [0x00000000d5580000,0x00000000d5580000,0x00000000d5900000)
+  from space 2048K, 10% used [0x00000000d5980000,0x00000000d59b8000,0x00000000d5b80000)
+  to   space 1024K, 0% used [0x00000000d5c00000,0x00000000d5c00000,0x00000000d5d00000)
+ ParOldGen       total 443904K, used 443745K [0x0000000080000000, 0x000000009b180000, 0x00000000d5580000)
+  object space 443904K, 99% used [0x0000000080000000,0x000000009b1584a8,0x000000009b180000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.265 GC heap before
+{Heap before GC invocations=66396 (full 17):
+ PSYoungGen      total 5632K, used 3808K [0x00000000d5580000, 0x00000000d5d00000, 0x0000000100000000)
+  eden space 3584K, 100% used [0x00000000d5580000,0x00000000d5900000,0x00000000d5900000)
+  from space 2048K, 10% used [0x00000000d5980000,0x00000000d59b8000,0x00000000d5b80000)
+  to   space 1024K, 0% used [0x00000000d5c00000,0x00000000d5c00000,0x00000000d5d00000)
+ ParOldGen       total 443904K, used 443745K [0x0000000080000000, 0x000000009b180000, 0x00000000d5580000)
+  object space 443904K, 99% used [0x0000000080000000,0x000000009b1584a8,0x000000009b180000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.267 GC heap after
+{Heap after GC invocations=66396 (full 17):
+ PSYoungGen      total 4096K, used 352K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 0% used [0x00000000d5580000,0x00000000d5580000,0x00000000d5900000)
+  from space 512K, 68% used [0x00000000d5c00000,0x00000000d5c58000,0x00000000d5c80000)
+  to   space 512K, 0% used [0x00000000d5b80000,0x00000000d5b80000,0x00000000d5c00000)
+ ParOldGen       total 443904K, used 443785K [0x0000000080000000, 0x000000009b180000, 0x00000000d5580000)
+  object space 443904K, 99% used [0x0000000080000000,0x000000009b1624a8,0x000000009b180000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.374 GC heap before
+{Heap before GC invocations=66397 (full 17):
+ PSYoungGen      total 4096K, used 3936K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 100% used [0x00000000d5580000,0x00000000d5900000,0x00000000d5900000)
+  from space 512K, 68% used [0x00000000d5c00000,0x00000000d5c58000,0x00000000d5c80000)
+  to   space 512K, 0% used [0x00000000d5b80000,0x00000000d5b80000,0x00000000d5c00000)
+ ParOldGen       total 443904K, used 443785K [0x0000000080000000, 0x000000009b180000, 0x00000000d5580000)
+  object space 443904K, 99% used [0x0000000080000000,0x000000009b1624a8,0x000000009b180000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.377 GC heap after
+{Heap after GC invocations=66397 (full 17):
+ PSYoungGen      total 4096K, used 160K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 0% used [0x00000000d5580000,0x00000000d5580000,0x00000000d5900000)
+  from space 512K, 31% used [0x00000000d5b80000,0x00000000d5ba8000,0x00000000d5c00000)
+  to   space 512K, 0% used [0x00000000d5c00000,0x00000000d5c00000,0x00000000d5c80000)
+ ParOldGen       total 443904K, used 443881K [0x0000000080000000, 0x000000009b180000, 0x00000000d5580000)
+  object space 443904K, 99% used [0x0000000080000000,0x000000009b17a4a8,0x000000009b180000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.478 GC heap before
+{Heap before GC invocations=66398 (full 17):
+ PSYoungGen      total 4096K, used 3744K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 100% used [0x00000000d5580000,0x00000000d5900000,0x00000000d5900000)
+  from space 512K, 31% used [0x00000000d5b80000,0x00000000d5ba8000,0x00000000d5c00000)
+  to   space 512K, 0% used [0x00000000d5c00000,0x00000000d5c00000,0x00000000d5c80000)
+ ParOldGen       total 443904K, used 443881K [0x0000000080000000, 0x000000009b180000, 0x00000000d5580000)
+  object space 443904K, 99% used [0x0000000080000000,0x000000009b17a4a8,0x000000009b180000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.481 GC heap after
+{Heap after GC invocations=66398 (full 17):
+ PSYoungGen      total 4096K, used 128K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 0% used [0x00000000d5580000,0x00000000d5580000,0x00000000d5900000)
+  from space 512K, 25% used [0x00000000d5c00000,0x00000000d5c20000,0x00000000d5c80000)
+  to   space 512K, 0% used [0x00000000d5b80000,0x00000000d5b80000,0x00000000d5c00000)
+ ParOldGen       total 443904K, used 443881K [0x0000000080000000, 0x000000009b180000, 0x00000000d5580000)
+  object space 443904K, 99% used [0x0000000080000000,0x000000009b17a4a8,0x000000009b180000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.576 GC heap before
+{Heap before GC invocations=66399 (full 17):
+ PSYoungGen      total 4096K, used 3712K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 100% used [0x00000000d5580000,0x00000000d5900000,0x00000000d5900000)
+  from space 512K, 25% used [0x00000000d5c00000,0x00000000d5c20000,0x00000000d5c80000)
+  to   space 512K, 0% used [0x00000000d5b80000,0x00000000d5b80000,0x00000000d5c00000)
+ ParOldGen       total 443904K, used 443881K [0x0000000080000000, 0x000000009b180000, 0x00000000d5580000)
+  object space 443904K, 99% used [0x0000000080000000,0x000000009b17a4a8,0x000000009b180000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.579 GC heap after
+{Heap after GC invocations=66399 (full 17):
+ PSYoungGen      total 4096K, used 128K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 0% used [0x00000000d5580000,0x00000000d5580000,0x00000000d5900000)
+  from space 512K, 25% used [0x00000000d5b80000,0x00000000d5ba0000,0x00000000d5c00000)
+  to   space 512K, 0% used [0x00000000d5c00000,0x00000000d5c00000,0x00000000d5c80000)
+ ParOldGen       total 443904K, used 443897K [0x0000000080000000, 0x000000009b180000, 0x00000000d5580000)
+  object space 443904K, 99% used [0x0000000080000000,0x000000009b17e4a8,0x000000009b180000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.667 GC heap before
+{Heap before GC invocations=66400 (full 17):
+ PSYoungGen      total 4096K, used 3712K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 100% used [0x00000000d5580000,0x00000000d5900000,0x00000000d5900000)
+  from space 512K, 25% used [0x00000000d5b80000,0x00000000d5ba0000,0x00000000d5c00000)
+  to   space 512K, 0% used [0x00000000d5c00000,0x00000000d5c00000,0x00000000d5c80000)
+ ParOldGen       total 443904K, used 443897K [0x0000000080000000, 0x000000009b180000, 0x00000000d5580000)
+  object space 443904K, 99% used [0x0000000080000000,0x000000009b17e4a8,0x000000009b180000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.670 GC heap after
+{Heap after GC invocations=66400 (full 17):
+ PSYoungGen      total 4096K, used 160K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 0% used [0x00000000d5580000,0x00000000d5580000,0x00000000d5900000)
+  from space 512K, 31% used [0x00000000d5c00000,0x00000000d5c28000,0x00000000d5c80000)
+  to   space 512K, 0% used [0x00000000d5b80000,0x00000000d5b80000,0x00000000d5c00000)
+ ParOldGen       total 444416K, used 443937K [0x0000000080000000, 0x000000009b200000, 0x00000000d5580000)
+  object space 444416K, 99% used [0x0000000080000000,0x000000009b1884a8,0x000000009b200000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.770 GC heap before
+{Heap before GC invocations=66401 (full 17):
+ PSYoungGen      total 4096K, used 3744K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 100% used [0x00000000d5580000,0x00000000d5900000,0x00000000d5900000)
+  from space 512K, 31% used [0x00000000d5c00000,0x00000000d5c28000,0x00000000d5c80000)
+  to   space 512K, 0% used [0x00000000d5b80000,0x00000000d5b80000,0x00000000d5c00000)
+ ParOldGen       total 444416K, used 443937K [0x0000000080000000, 0x000000009b200000, 0x00000000d5580000)
+  object space 444416K, 99% used [0x0000000080000000,0x000000009b1884a8,0x000000009b200000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.773 GC heap after
+{Heap after GC invocations=66401 (full 17):
+ PSYoungGen      total 4096K, used 192K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 0% used [0x00000000d5580000,0x00000000d5580000,0x00000000d5900000)
+  from space 512K, 37% used [0x00000000d5b80000,0x00000000d5bb0000,0x00000000d5c00000)
+  to   space 512K, 0% used [0x00000000d5c00000,0x00000000d5c00000,0x00000000d5c80000)
+ ParOldGen       total 444416K, used 443953K [0x0000000080000000, 0x000000009b200000, 0x00000000d5580000)
+  object space 444416K, 99% used [0x0000000080000000,0x000000009b18c4a8,0x000000009b200000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.899 GC heap before
+{Heap before GC invocations=66402 (full 17):
+ PSYoungGen      total 4096K, used 3776K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 100% used [0x00000000d5580000,0x00000000d5900000,0x00000000d5900000)
+  from space 512K, 37% used [0x00000000d5b80000,0x00000000d5bb0000,0x00000000d5c00000)
+  to   space 512K, 0% used [0x00000000d5c00000,0x00000000d5c00000,0x00000000d5c80000)
+ ParOldGen       total 444416K, used 443953K [0x0000000080000000, 0x000000009b200000, 0x00000000d5580000)
+  object space 444416K, 99% used [0x0000000080000000,0x000000009b18c4a8,0x000000009b200000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5068.902 GC heap after
+{Heap after GC invocations=66402 (full 17):
+ PSYoungGen      total 4096K, used 192K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 0% used [0x00000000d5580000,0x00000000d5580000,0x00000000d5900000)
+  from space 512K, 37% used [0x00000000d5c00000,0x00000000d5c30000,0x00000000d5c80000)
+  to   space 512K, 0% used [0x00000000d5b80000,0x00000000d5b80000,0x00000000d5c00000)
+ ParOldGen       total 444416K, used 443977K [0x0000000080000000, 0x000000009b200000, 0x00000000d5580000)
+  object space 444416K, 99% used [0x0000000080000000,0x000000009b1924a8,0x000000009b200000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5069.039 GC heap before
+{Heap before GC invocations=66403 (full 17):
+ PSYoungGen      total 4096K, used 3776K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 100% used [0x00000000d5580000,0x00000000d5900000,0x00000000d5900000)
+  from space 512K, 37% used [0x00000000d5c00000,0x00000000d5c30000,0x00000000d5c80000)
+  to   space 512K, 0% used [0x00000000d5b80000,0x00000000d5b80000,0x00000000d5c00000)
+ ParOldGen       total 444416K, used 443977K [0x0000000080000000, 0x000000009b200000, 0x00000000d5580000)
+  object space 444416K, 99% used [0x0000000080000000,0x000000009b1924a8,0x000000009b200000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+Event: 5069.042 GC heap after
+{Heap after GC invocations=66403 (full 17):
+ PSYoungGen      total 4096K, used 128K [0x00000000d5580000, 0x00000000d5c80000, 0x0000000100000000)
+  eden space 3584K, 0% used [0x00000000d5580000,0x00000000d5580000,0x00000000d5900000)
+  from space 512K, 25% used [0x00000000d5b80000,0x00000000d5ba0000,0x00000000d5c00000)
+  to   space 512K, 0% used [0x00000000d5c00000,0x00000000d5c00000,0x00000000d5c80000)
+ ParOldGen       total 444416K, used 444017K [0x0000000080000000, 0x000000009b200000, 0x00000000d5580000)
+  object space 444416K, 99% used [0x0000000080000000,0x000000009b19c4a8,0x000000009b200000)
+ Metaspace       used 74832K, committed 77120K, reserved 1179648K
+  class space    used 7322K, committed 8384K, reserved 1048576K
+}
+
+Dll operation events (20 events):
+Event: 0.015 Attempting to load shared library c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\java.dll
+Event: 0.015 Loaded shared library c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\java.dll
+Event: 0.104 Attempting to load shared library c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\zip.dll
+Event: 0.105 Loaded shared library c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\zip.dll
+Event: 0.136 Attempting to load shared library C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\instrument.dll
+Event: 0.136 Loaded shared library C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\instrument.dll
+Event: 0.143 Attempting to load shared library C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\net.dll
+Event: 0.145 Loaded shared library C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\net.dll
+Event: 0.147 Attempting to load shared library C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\nio.dll
+Event: 0.148 Loaded shared library C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\nio.dll
+Event: 0.152 Attempting to load shared library C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\zip.dll
+Event: 0.152 Loaded shared library C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\zip.dll
+Event: 0.178 Attempting to load shared library C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\jimage.dll
+Event: 0.179 Loaded shared library C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\jimage.dll
+Event: 0.291 Attempting to load shared library c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\verify.dll
+Event: 0.292 Loaded shared library c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\verify.dll
+Event: 2.153 Attempting to load shared library C:\Users\acer\AppData\Roaming\Code\User\globalStorage\redhat.java\1.56.0\config_win\org.eclipse.equinox.launcher\org.eclipse.equinox.launcher.win32.win32.x86_64_1.3.100.v20260804-1928\eclipse_11924.dll
+Event: 2.158 Loaded shared library C:\Users\acer\AppData\Roaming\Code\User\globalStorage\redhat.java\1.56.0\config_win\org.eclipse.equinox.launcher\org.eclipse.equinox.launcher.win32.win32.x86_64_1.3.100.v20260804-1928\eclipse_11924.dll
+Event: 4.637 Attempting to load shared library C:\Users\acer\AppData\Local\Temp\jna-2988111\jna212506836391203157.dll
+Event: 4.758 Loaded shared library C:\Users\acer\AppData\Local\Temp\jna-2988111\jna212506836391203157.dll
+
+Deoptimization events (20 events):
+Event: 3812.861 Thread 0x000001a2dc76f680 Uncommon trap: trap_request=0xffffff5c fr.pc=0x000001a2f5b60730 relative=0x00000000000004d0
+Event: 3812.861 Thread 0x000001a2dc76f680 Uncommon trap: reason=speculate_null_check action=make_not_entrant pc=0x000001a2f5b60730 method=java.util.Objects.hashCode(Ljava/lang/Object;)I @ 1 c2
+Event: 3812.861 Thread 0x000001a2dc76f680 DEOPT PACKING pc=0x000001a2f5b60730 sp=0x0000006ceaafe220
+Event: 3812.861 Thread 0x000001a2dc76f680 DEOPT UNPACKING pc=0x000001a2f5263aa2 sp=0x0000006ceaafdc58 mode 2
+Event: 4184.357 Thread 0x000001a2dc76e2d0 Uncommon trap: trap_request=0xffffffd6 fr.pc=0x000001a2f6b224d0 relative=0x0000000000006250
+Event: 4184.357 Thread 0x000001a2dc76e2d0 Uncommon trap: reason=array_check action=maybe_recompile pc=0x000001a2f6b224d0 method=java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.offer(Ljava/lang/Runnable;)Z @ 65 c2
+Event: 4184.358 Thread 0x000001a2dc76e2d0 DEOPT PACKING pc=0x000001a2f6b224d0 sp=0x0000006cea9ff350
+Event: 4184.358 Thread 0x000001a2dc76e2d0 DEOPT UNPACKING pc=0x000001a2f5263aa2 sp=0x0000006cea9fefd8 mode 2
+Event: 4185.790 Thread 0x000001a2db16a490 Uncommon trap: trap_request=0xffffffd6 fr.pc=0x000001a2f6b224d0 relative=0x0000000000006250
+Event: 4185.790 Thread 0x000001a2db16a490 Uncommon trap: reason=array_check action=maybe_recompile pc=0x000001a2f6b224d0 method=java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.offer(Ljava/lang/Runnable;)Z @ 65 c2
+Event: 4185.790 Thread 0x000001a2db16a490 DEOPT PACKING pc=0x000001a2f6b224d0 sp=0x0000006ce9dff110
+Event: 4185.790 Thread 0x000001a2db16a490 DEOPT UNPACKING pc=0x000001a2f5263aa2 sp=0x0000006ce9dfed98 mode 2
+Event: 4187.101 Thread 0x000001a2ca8385e0 Uncommon trap: trap_request=0xffffffd6 fr.pc=0x000001a2f6b224d0 relative=0x0000000000006250
+Event: 4187.101 Thread 0x000001a2ca8385e0 Uncommon trap: reason=array_check action=maybe_recompile pc=0x000001a2f6b224d0 method=java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.offer(Ljava/lang/Runnable;)Z @ 65 c2
+Event: 4187.101 Thread 0x000001a2ca8385e0 DEOPT PACKING pc=0x000001a2f6b224d0 sp=0x0000006ce64ff100
+Event: 4187.101 Thread 0x000001a2ca8385e0 DEOPT UNPACKING pc=0x000001a2f5263aa2 sp=0x0000006ce64fed88 mode 2
+Event: 4188.351 Thread 0x000001a2dc76f680 Uncommon trap: trap_request=0xffffffd6 fr.pc=0x000001a2f6b224d0 relative=0x0000000000006250
+Event: 4188.351 Thread 0x000001a2dc76f680 Uncommon trap: reason=array_check action=maybe_recompile pc=0x000001a2f6b224d0 method=java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.offer(Ljava/lang/Runnable;)Z @ 65 c2
+Event: 4188.351 Thread 0x000001a2dc76f680 DEOPT PACKING pc=0x000001a2f6b224d0 sp=0x0000006ceaafede0
+Event: 4188.351 Thread 0x000001a2dc76f680 DEOPT UNPACKING pc=0x000001a2f5263aa2 sp=0x0000006ceaafea68 mode 2
+
+Classes loaded (20 events):
+Event: 100.977 Loading class java/io/CharArrayWriter
+Event: 100.978 Loading class java/io/CharArrayWriter done
+Event: 101.576 Loading class sun/nio/fs/WindowsFileCopy
+Event: 101.577 Loading class sun/nio/fs/WindowsFileCopy done
+Event: 138.320 Loading class jdk/internal/module/IllegalAccessLogger
+Event: 138.320 Loading class jdk/internal/module/IllegalAccessLogger done
+Event: 138.929 Loading class jdk/internal/module/IllegalAccessLogger
+Event: 138.929 Loading class jdk/internal/module/IllegalAccessLogger done
+Event: 319.192 Loading class java/util/stream/Nodes$CollectorTask$OfRef
+Event: 319.192 Loading class java/util/stream/Nodes$CollectorTask
+Event: 319.201 Loading class java/util/stream/Nodes$CollectorTask done
+Event: 319.201 Loading class java/util/stream/Nodes$CollectorTask$OfRef done
+Event: 319.204 Loading class java/util/function/LongFunction
+Event: 319.204 Loading class java/util/function/LongFunction done
+Event: 319.205 Loading class java/util/stream/Nodes$ConcNode
+Event: 319.205 Loading class java/util/stream/Nodes$AbstractConcNode
+Event: 319.205 Loading class java/util/stream/Nodes$AbstractConcNode done
+Event: 319.205 Loading class java/util/stream/Nodes$ConcNode done
+Event: 4530.061 Loading class com/sun/org/apache/xerces/internal/xni/grammars/XMLGrammarPool
+Event: 4530.069 Loading class com/sun/org/apache/xerces/internal/xni/grammars/XMLGrammarPool done
+
+Classes unloaded (20 events):
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285209400 'java/lang/invoke/LambdaForm$BMH+0x000001a285209400'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a2851aec00 'java/lang/invoke/LambdaForm$MH+0x000001a2851aec00'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a28517a800 'java/lang/invoke/LambdaForm$MH+0x000001a28517a800'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a28517a000 'java/lang/invoke/LambdaForm$MH+0x000001a28517a000'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285179c00 'java/lang/invoke/LambdaForm$MH+0x000001a285179c00'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285179800 'java/lang/invoke/LambdaForm$MH+0x000001a285179800'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285120400 'java/lang/invoke/LambdaForm$MH+0x000001a285120400'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285082400 'java/lang/invoke/LambdaForm$MH+0x000001a285082400'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285081c00 'java/lang/invoke/LambdaForm$MH+0x000001a285081c00'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285081800 'java/lang/invoke/LambdaForm$MH+0x000001a285081800'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285081400 'java/lang/invoke/LambdaForm$MH+0x000001a285081400'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285081000 'java/lang/invoke/LambdaForm$MH+0x000001a285081000'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285080800 'java/lang/invoke/LambdaForm$MH+0x000001a285080800'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285080400 'java/lang/invoke/LambdaForm$MH+0x000001a285080400'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a285080000 'java/lang/invoke/LambdaForm$MH+0x000001a285080000'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a28501f800 'java/lang/invoke/LambdaForm$MH+0x000001a28501f800'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a28501e800 'java/lang/invoke/LambdaForm$MH+0x000001a28501e800'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a28501e400 'java/lang/invoke/LambdaForm$MH+0x000001a28501e400'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a28501dc00 'java/lang/invoke/LambdaForm$MH+0x000001a28501dc00'
+Event: 2427.988 Thread 0x000001a2eab540e0 Unloading class 0x000001a28501d400 'java/lang/invoke/LambdaForm$MH+0x000001a28501d400'
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (20 events):
+Event: 5069.119 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57d53c8}> (0x00000000d57d53c8) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.119 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57d8740}> (0x00000000d57d8740) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.120 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57dbab8}> (0x00000000d57dbab8) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.120 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57dee30}> (0x00000000d57dee30) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.120 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57e2538}> (0x00000000d57e2538) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.121 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57e5e90}> (0x00000000d57e5e90) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.121 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57e93d0}> (0x00000000d57e93d0) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.122 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57ec910}> (0x00000000d57ec910) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.122 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57f01e0}> (0x00000000d57f01e0) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.122 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57f38e8}> (0x00000000d57f38e8) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.123 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57f7068}> (0x00000000d57f7068) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.123 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57fa770}> (0x00000000d57fa770) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.123 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d57fe040}> (0x00000000d57fe040) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.124 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d5801580}> (0x00000000d5801580) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.124 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d5805260}> (0x00000000d5805260) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.124 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d58087a0}> (0x00000000d58087a0) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.125 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d580c070}> (0x00000000d580c070) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.125 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d580fb08}> (0x00000000d580fb08) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.126 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d5812e80}> (0x00000000d5812e80) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+Event: 5069.126 Thread 0x000001a2dc7703a0 Exception <a 'sun/nio/fs/WindowsException'{0x00000000d5816808}> (0x00000000d5816808) 
+thrown [s\src\hotspot\share\prims\jni.cpp, line 520]
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (20 events):
+Event: 5068.065 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure)
+Event: 5068.071 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure) done
+Event: 5068.094 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure)
+Event: 5068.097 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure) done
+Event: 5068.264 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure)
+Event: 5068.267 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure) done
+Event: 5068.374 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure)
+Event: 5068.377 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure) done
+Event: 5068.478 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure)
+Event: 5068.481 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure) done
+Event: 5068.576 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure)
+Event: 5068.579 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure) done
+Event: 5068.667 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure)
+Event: 5068.670 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure) done
+Event: 5068.770 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure)
+Event: 5068.773 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure) done
+Event: 5068.899 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure)
+Event: 5068.902 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure) done
+Event: 5069.039 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure)
+Event: 5069.042 Executing safepoint VM operation: ParallelGCFailedAllocation (Allocation Failure) done
+
+Memory protections (0 events):
+No events
+
+Nmethod flushes (20 events):
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f0851810
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f0852390
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f0853a90
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f0854610
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f0858c10
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f085a910
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f085b190
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f085e010
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f085ec10
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f086b590
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f087b710
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f087cb90
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f087e010
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f08cc690
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f08ce290
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f08d0690
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f08f3910
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f09abe10
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f0aeec10
+Event: 4965.713 Thread 0x000001a2eab540e0 flushing  nmethod 0x000001a2f0b25610
+
+Events (20 events):
+Event: 5055.002 Thread 0x000001a2ddf398b0 Thread exited: 0x000001a2ddf398b0
+Event: 5055.263 Thread 0x000001a2ddf3ac60 Thread added: 0x000001a2ddf398b0
+Event: 5056.472 Thread 0x000001a2ddf398b0 Thread exited: 0x000001a2ddf398b0
+Event: 5056.753 Thread 0x000001a2db169e00 Thread added: 0x000001a2ddf37e70
+Event: 5058.006 Thread 0x000001a2ddf37e70 Thread exited: 0x000001a2ddf37e70
+Event: 5058.320 Thread 0x000001a2ca838c70 Thread added: 0x000001a2ddf36ac0
+Event: 5059.572 Thread 0x000001a2ddf36ac0 Thread exited: 0x000001a2ddf36ac0
+Event: 5059.888 Thread 0x000001a2cb8f0810 Thread added: 0x000001a2ddf37e70
+Event: 5061.033 Thread 0x000001a2ddf37e70 Thread exited: 0x000001a2ddf37e70
+Event: 5061.280 Thread 0x000001a2dc7703a0 Thread added: 0x000001a2ddf36430
+Event: 5062.360 Thread 0x000001a2ddf36430 Thread exited: 0x000001a2ddf36430
+Event: 5062.678 Thread 0x000001a2dc772b00 Thread added: 0x000001a2ddf37e70
+Event: 5063.776 Thread 0x000001a2ddf37e70 Thread exited: 0x000001a2ddf37e70
+Event: 5064.036 Thread 0x000001a2cd2980a0 Thread added: 0x000001a2ddf37e70
+Event: 5065.201 Thread 0x000001a2ddf37e70 Thread exited: 0x000001a2ddf37e70
+Event: 5065.504 Thread 0x000001a2ca838c70 Thread added: 0x000001a2ddf37e70
+Event: 5066.647 Thread 0x000001a2ddf37e70 Thread exited: 0x000001a2ddf37e70
+Event: 5066.901 Thread 0x000001a2dc76e2d0 Thread added: 0x000001a2ddf37e70
+Event: 5067.978 Thread 0x000001a2ddf37e70 Thread exited: 0x000001a2ddf37e70
+Event: 5068.239 Thread 0x000001a2dc7703a0 Thread added: 0x000001a2ddf398b0
+
+
+Dynamic libraries:
+0x00007ff607d70000 - 0x00007ff607d7e000 	c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\java.exe
+0x00007ffffed00000 - 0x00007ffffef66000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffffdd90000 - 0x00007ffffde59000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffffc3a0000 - 0x00007ffffc79f000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffffc1b0000 - 0x00007ffffc2fc000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007fffe0bb0000 - 0x00007fffe0bc8000 	c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\jli.dll
+0x00007fffc9590000 - 0x00007fffc95ae000 	c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\VCRUNTIME140.dll
+0x00007ffffe9d0000 - 0x00007ffffeb96000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffffc7b0000 - 0x00007ffffc7d7000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffffdbc0000 - 0x00007ffffdbeb000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffffc080000 - 0x00007ffffc1a9000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffffbf10000 - 0x00007ffffbfb3000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffffb2f0000 - 0x00007ffffb581000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.8972_none_3e0da176e32f9d4b\COMCTL32.dll
+0x00007ffffdef0000 - 0x00007ffffdf99000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffffe430000 - 0x00007ffffe462000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007fffef170000 - 0x00007fffef17c000 	c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\vcruntime140_1.dll
+0x00007fff9cfd0000 - 0x00007fff9d05d000 	c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\msvcp140.dll
+0x00007ffefaa10000 - 0x00007ffefb7b2000 	c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\server\jvm.dll
+0x00007ffffe8b0000 - 0x00007ffffe96c000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffffcc20000 - 0x00007ffffccca000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffffe790000 - 0x00007ffffe8a8000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffffd7a0000 - 0x00007ffffd822000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffffbd70000 - 0x00007ffffbdce000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ffff99c0000 - 0x00007ffff99cb000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffff3920000 - 0x00007ffff3956000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffffbd50000 - 0x00007ffffbd65000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ffffa540000 - 0x00007ffffa55b000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007fffeefe0000 - 0x00007fffeefea000 	c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\jimage.dll
+0x00007ffffb6a0000 - 0x00007ffffb8e2000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffffd830000 - 0x00007ffffdbb5000 	C:\WINDOWS\System32\combase.dll
+0x00007ffffcef0000 - 0x00007ffffcfc9000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ffffb590000 - 0x00007ffffb5cb000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffffc970000 - 0x00007ffffca1c000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007fffebff0000 - 0x00007fffebfff000 	c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\instrument.dll
+0x00007fffe0e10000 - 0x00007fffe0e30000 	c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\java.dll
+0x00007ffffcfd0000 - 0x00007ffffd758000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ffff8850000 - 0x00007ffff90eb000 	C:\WINDOWS\SYSTEM32\windows.storage.dll
+0x00007ffffeba0000 - 0x00007ffffec99000 	C:\WINDOWS\System32\SHCORE.dll
+0x00007ffffe530000 - 0x00007ffffe596000 	C:\WINDOWS\System32\shlwapi.dll
+0x00007ffffbe30000 - 0x00007ffffbe59000 	C:\WINDOWS\SYSTEM32\profapi.dll
+0x00007fffebfb0000 - 0x00007fffebfc8000 	c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\zip.dll
+0x00007fffe8620000 - 0x00007fffe8630000 	C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\net.dll
+0x00007ffff3640000 - 0x00007ffff3768000 	C:\WINDOWS\SYSTEM32\WINHTTP.dll
+0x00007ffffa190000 - 0x00007ffffa1fc000 	C:\WINDOWS\system32\mswsock.dll
+0x00007fffe84c0000 - 0x00007fffe84d6000 	C:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\nio.dll
+0x00007fffebfa0000 - 0x00007fffebfb0000 	c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\verify.dll
+0x00007fffa6b30000 - 0x00007fffa6b75000 	C:\Users\acer\AppData\Roaming\Code\User\globalStorage\redhat.java\1.56.0\config_win\org.eclipse.equinox.launcher\org.eclipse.equinox.launcher.win32.win32.x86_64_1.3.100.v20260804-1928\eclipse_11924.dll
+0x00007ffffdbf0000 - 0x00007ffffdd89000 	C:\WINDOWS\System32\ole32.dll
+0x00007ffffba10000 - 0x00007ffffba2b000 	C:\WINDOWS\SYSTEM32\CRYPTSP.dll
+0x00007ffff9ba0000 - 0x00007ffff9bd9000 	C:\WINDOWS\system32\rsaenh.dll
+0x00007ffffa240000 - 0x00007ffffa272000 	C:\WINDOWS\SYSTEM32\USERENV.dll
+0x00007ffffbe00000 - 0x00007ffffbe2a000 	C:\WINDOWS\SYSTEM32\bcrypt.dll
+0x00007ffffa480000 - 0x00007ffffa48c000 	C:\WINDOWS\SYSTEM32\CRYPTBASE.dll
+0x00007ffff95c0000 - 0x00007ffff95f3000 	C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL
+0x00007ffffca30000 - 0x00007ffffca3a000 	C:\WINDOWS\System32\NSI.dll
+0x00007fffa0030000 - 0x00007fffa0079000 	C:\Users\acer\AppData\Local\Temp\jna-2988111\jna212506836391203157.dll
+0x00007ffffd790000 - 0x00007ffffd798000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffff3ef0000 - 0x00007ffff3f0d000 	C:\WINDOWS\SYSTEM32\dhcpcsvc6.DLL
+0x00007ffff3e40000 - 0x00007ffff3e65000 	C:\WINDOWS\SYSTEM32\dhcpcsvc.DLL
+
+JVMTI agents:
+c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\lombok\lombok-1.18.39-4050.jar path:c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\instrument.dll, loaded, initialized, instrumentlib options:none
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.8972_none_3e0da176e32f9d4b;c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\jre\21.0.12.1-win32-x86_64\bin\server;C:\Users\acer\AppData\Roaming\Code\User\globalStorage\redhat.java\1.56.0\config_win\org.eclipse.equinox.launcher\org.eclipse.equinox.launcher.win32.win32.x86_64_1.3.100.v20260804-1928;C:\Users\acer\AppData\Local\Temp\jna-2988111
+
+VM Arguments:
+jvm_args: --add-modules=ALL-SYSTEM --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/sun.nio.fs=ALL-UNNAMED -Declipse.application=org.eclipse.jdt.ls.core.id1 -Dosgi.bundles.defaultStartLevel=4 -Declipse.product=org.eclipse.jdt.ls.core.product -Djava.import.generatesMetadataFilesAtProjectRoot=false -Dm2e.project.cache.size=50 -DDetectVMInstallationsJob.disabled=true -Dfile.encoding=utf8 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable -javaagent:c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\lombok\lombok-1.18.39-4050.jar -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=c:\Users\acer\AppData\Roaming\Code\User\workspaceStorage\c237d93324249893b784bcad245891e1\redhat.java -Daether.dependencyCollector.impl=bf 
+java_command: c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\server\plugins\org.eclipse.equinox.launcher_1.8.0.v20260804-1928.jar -configuration c:\Users\acer\AppData\Roaming\Code\User\globalStorage\redhat.java\1.56.0\config_win -data c:\Users\acer\AppData\Roaming\Code\User\workspaceStorage\c237d93324249893b784bcad245891e1\redhat.java\jdt_ws --stdio
+java_class_path (initial): c:\Users\acer\.vscode\extensions\redhat.java-1.56.0-win32-x64\server\plugins\org.eclipse.equinox.launcher_1.8.0.v20260804-1928.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+    uintx AdaptiveSizePolicyWeight                 = 90                                        {product} {command line}
+     intx CICompilerCount                          = 12                                        {product} {ergonomic}
+    uintx GCTimeRatio                              = 4                                         {product} {command line}
+     bool HeapDumpOnOutOfMemoryError               = true                                   {manageable} {command line}
+    ccstr HeapDumpPath                             = c:\Users\acer\AppData\Roaming\Code\User\workspaceStorage\c237d93324249893b784bcad245891e1\redhat.java         {manageable} {command line}
+   size_t InitialHeapSize                          = 104857600                                 {product} {command line}
+   size_t MaxHeapSize                              = 2147483648                                {product} {command line}
+   size_t MaxNewSize                               = 715653120                                 {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 524288                                    {product} {ergonomic}
+   size_t MinHeapSize                              = 104857600                                 {product} {command line}
+   size_t NewSize                                  = 34603008                                  {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 7602480                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122027880                              {pd product} {ergonomic}
+   size_t OldSize                                  = 70254592                                  {product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122027880                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 2147483648                             {manageable} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+     bool UseParallelGC                            = true                                      {product} {command line}
+
+Logging:
+Log output configuration:
+ #0: stdout all=off uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Release file:
+JAVA_VERSION="21.0.12.1" 
+MODULES="java.base java.compiler java.datatransfer java.xml java.prefs java.desktop java.instrument java.logging java.management java.security.sasl java.naming java.rmi java.management.rmi java.net.http java.scripting java.security.jgss java.transaction.xa java.sql java.sql.rowset java.xml.crypto java.se java.smartcardio jdk.accessibility jdk.internal.jvmstat jdk.attach jdk.charsets jdk.internal.opt jdk.zipfs jdk.compiler jdk.crypto.ec jdk.crypto.cryptoki jdk.crypto.mscapi jdk.dynalink jdk.internal.ed jdk.editpad jdk.hotspot.agent jdk.httpserver jdk.internal.le jdk.internal.vm.ci jdk.internal.vm.compiler jdk.internal.vm.compiler.management jdk.jartool jdk.javadoc jdk.jcmd jdk.management jdk.management.agent jdk.jconsole jdk.jdeps jdk.jdwp.agent jdk.jdi jdk.jfr jdk.jshell jdk.jsobject jdk.jstatd jdk.localedata jdk.management.jfr jdk.naming.dns jdk.naming.rmi jdk.net jdk.nio.mapmode jdk.random jdk.sctp jdk.security.auth jdk.security.jgss jdk.unsupported jdk.unsupported.desktop jdk.xml.dom" 
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk-22
+PATH=C:\app\acer\product\21c\dbhomeXE\bin;D:\Software\oracle\oracledb\dbhomeXE\bin;D:\Software\oracle\dbhomeXE\bin;D:\Software\dbhomeXE\bin;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\xammp\php;C:\ProgramData\ComposerSetup\bin;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Node.js;C:\Program Files\nodejs\;C:\Program Files\Java\jdk-17\bin;C:\MinGW\bin;C:\Users\acer\AppData\Roaming\npm;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Users\acer\flutter\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\180\Tools\Binn\;C:\Program Files\Microsoft SQL Server\170\DTS\Binn\;C:\Program Files\Docker\Docker\resources\bin;C:\Users\acer\anaconda3_new;C:\Users\acer\anaconda3_new\Library\mingw-w64\bin;C:\Users\acer\anaconda3_new\Library\usr\bin;C:\Users\acer\anaconda3_new\Library\bin;C:\Users\acer\anaconda3_new\Scripts;C:\Users\acer\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\acer\AppData\Local\Programs\Python\Python313\;C:\MinGW\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.3\bin;;C:\Users\acer\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\acer\AppData\Local\Microsoft\WindowsApps;C:\Users\acer\AppData\Local\GitHubDesktop\bin;C:\Users\acer\.dotnet\tools;D:\Software\cursor\resources\app\bin;C:\Users\acer\flutter\bin;D:\Software\Antigravity IDE\bin;C:\Users\acer\AppData\Local\Programs\Antigravity IDE\bin;C:\Users\acer\AppData\Local\Microsoft\WinGet\Links;;C:\Users\acer\AppData\Local\Programs\Ollama
+USERNAME=acer
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD
+TMP=C:\Users\acer\AppData\Local\Temp
+TEMP=C:\Users\acer\AppData\Local\Temp
+
+
+
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 26100 (10.0.26100.9168)
+OS uptime: 5 days 23:17 hours
+Hyper-V role detected
+
+CPU: total 16 (initial active 16) (16 cores per cpu, 2 threads per core) family 23 model 104 stepping 1 microcode 0x8608108, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4a, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt, hv, rdtscp, rdpid, f16c
+Processor Information for the first 16 processors :
+  Max Mhz: 1801, Current Mhz: 1801, Mhz Limit: 1801
+
+Memory: 4k page, system-wide physical 15706M (4505M free)
+TotalPageFile size 28506M (AvailPageFile size 9174M)
+current process WorkingSet (physical memory assigned to process): 607M, peak: 1724M
+current process commit charge ("private bytes"): 838M, peak: 1821M
+
+vm_info: OpenJDK 64-Bit Server VM (21.0.12.1+1-LTS) for windows-amd64 JRE (21.0.12.1+1-LTS), built on 2026-08-18T00:00:00Z by "admin" with MS VC++ 17.12 (VS2022)
+
+END.

@@ -6,6 +6,10 @@ spring:
     username: ${SPRING_DATASOURCE_USERNAME:postgres.dmoeaafkeofezfcwesye}
     password: ${SPRING_DATASOURCE_PASSWORD:${DB_PASSWORD}}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 3
+      minimum-idle: 0
+      connection-timeout: 30000
 
   jackson:
     serialization:
@@ -14,10 +18,9 @@ spring:
     time-zone: Asia/Colombo
 
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: ${PORT:8080}

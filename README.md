@@ -90,4 +90,15 @@ The password is read from `SPRING_DATASOURCE_PASSWORD` (or the legacy `DB_PASSWO
 
 For Render, configure `SPRING_DATASOURCE_URL` as a JDBC URL (`jdbc:postgresql://<HOST>:5432/<DATABASE>?sslmode=require`), `SPRING_DATASOURCE_USERNAME` as the database username, and `SPRING_DATASOURCE_PASSWORD` as the database password. Render's `DATABASE_URL` value is not a JDBC URL; do not use it directly for `SPRING_DATASOURCE_URL`.
 
+### Troubleshoot Render startup with Supabase
+
+If Render exits during startup with `EMAXCONNSESSION` or `max clients reached in session mode`, the Supabase session pooler has no free client slots. The backend limits its Hikari connection pool to 3 connections, but those slots are shared with other app instances and local clients.
+
+- In Render, keep the backend service at one instance while using the Supabase session pooler.
+- Stop locally running copies of the backend and any other apps using the same Supabase database, then redeploy the Render service.
+- In Supabase, check the database/pooler connections and close or restart stale clients if the pool remains full. Do not paste database passwords into logs or support messages.
+- Keep the three `SPRING_DATASOURCE_*` variables set on the Render backend service, and make sure the URL is the JDBC session-pooler URL. The app listens on Render's `PORT` automatically.
+
+The Hibernate `PostgreSQLDialect` warning is not the cause of this failure; Hibernate now detects the dialect from the database connection.
+
 Default login accounts (created on first start if missing): `admin` / `admin123`, `cashier` / `cashier123`, `manager` / `manager123`.
