@@ -4,6 +4,7 @@ import com.erp.backend.dto.BillRequest;
 import com.erp.backend.model.Bill;
 import com.erp.backend.model.Product;
 import com.erp.backend.repository.BillRepository;
+import com.erp.backend.repository.CustomerRepository;
 import com.erp.backend.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -90,7 +91,7 @@ public class BillingServiceTest {
     void testSaveBillLowStockWarning() {
         BillRequest request = new BillRequest();
         request.setCashierName("Jane");
-        request.setReceivedAmount(50.0);
+        request.setReceivedAmount(180.0);
 
         BillRequest.BillItemRequest itemReq = new BillRequest.BillItemRequest();
         itemReq.setProductId(1L);

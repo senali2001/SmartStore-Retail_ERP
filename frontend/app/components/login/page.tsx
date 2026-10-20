@@ -133,11 +133,12 @@ const handleLogin = async () => {
     });
 
     if (!res.ok) {
-      alert("Login failed");
+      const message = await res.text();
+      alert(message || "Login failed");
       return;
     }
 
-    const role = await res.text();
+    const role = (await res.text()).trim().toLowerCase();
 
     if (role === "admin") {
       window.location.href = "/admindashboard";
@@ -145,6 +146,10 @@ const handleLogin = async () => {
       window.location.href = "/managerdashboard";
     } else if (role === "cashier") {
       window.location.href = "/cashierdashboard";
+    } else if (role === "stockmanager" || role === "stockmng") {
+      window.location.href = "/admindashboard/stock";
+    } else {
+      alert("Logged in, but this role has no dashboard: " + role);
     }
 
   } catch (err) {

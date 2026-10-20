@@ -67,3 +67,25 @@ This system provides a centralized platform for managing day to day retail busin
 - REST APIs
 - Payment Gateway Integration (paypal)
 
+## Run the backend locally
+
+The backend requires Java 21 and a Supabase database password. New Supabase projects expose `db.<project>.supabase.co` on **IPv6 only**. This Windows machine cannot resolve that host, so Spring Boot never starts and the frontend shows login failed.
+
+Use the **Session pooler** (IPv4, port 5432). Host and username are in `backend/src/main/resources/application.yml`. In PowerShell:
+
+```powershell
+cd "D:\PROJECTS 2026\ERP-Systems\backend"
+$env:DB_PASSWORD = '<your Supabase database password>'
+.\mvnw.cmd spring-boot:run
+```
+
+This project’s session pooler host is `aws-0-ap-northeast-1.pooler.supabase.com`. If startup reports `tenant/user not found`, copy the exact host from the Supabase Dashboard **Connect** dialog and override it:
+
+```powershell
+$env:SPRING_DATASOURCE_URL = 'jdbc:postgresql://<POOLER-HOST>:5432/postgres?sslmode=require'
+$env:SPRING_DATASOURCE_USERNAME = 'postgres.<PROJECT-REF>'
+```
+
+The password is read from `DB_PASSWORD` and must not be committed. The API should be available at `http://localhost:8080`.
+
+Default login accounts (created on first start if missing): `admin` / `admin123`, `cashier` / `cashier123`, `manager` / `manager123`.

@@ -20,34 +20,35 @@ public class DatabaseSeeder implements CommandLineRunner {
     private final SupplierRepository supplierRepository;
     private final CustomerRepository customerRepository;
     private final BillRepository billRepository;
+    private final UserRepository userRepository;
 
     public DatabaseSeeder(ProductRepository productRepository,
                           InventoryRepository inventoryRepository,
                           SupplierRepository supplierRepository,
                           CustomerRepository customerRepository,
-                          BillRepository billRepository) {
+                          BillRepository billRepository,
+                          UserRepository userRepository) {
         this.productRepository = productRepository;
         this.inventoryRepository = inventoryRepository;
         this.supplierRepository = supplierRepository;
         this.customerRepository = customerRepository;
         this.billRepository = billRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-        System.out.println("Clearing old tables for a clean seed of realistic business data...");
-        billRepository.deleteAll();
-        productRepository.deleteAll();
-        supplierRepository.deleteAll();
-        customerRepository.deleteAll();
-        inventoryRepository.deleteAll();
-        
-        billRepository.flush();
-        productRepository.flush();
-        supplierRepository.flush();
-        customerRepository.flush();
-        inventoryRepository.flush();
+        seedDefaultUsersIfMissing();
+
+        if (billRepository.count() > 0
+                || productRepository.count() > 0
+                || supplierRepository.count() > 0
+                || customerRepository.count() > 0
+                || inventoryRepository.count() > 0) {
+            System.out.println("Existing business data found; skipping sample data seeding.");
+            return;
+        }
 
         System.out.println("Seeding 15 realistic suppliers...");
         String[][] supplierDefs = {
@@ -249,6 +250,30 @@ public class DatabaseSeeder implements CommandLineRunner {
         inventoryRepository.save(createInventoryItem("Apple Watch S9", "Electronics", 3.0, 5.0, 300.0, 399.0, "Units", "Aisle 4"));
         inventoryRepository.save(createInventoryItem("Levi's 501 Jeans", "Apparel", 203.0, 20.0, 40.0, 70.0, "Units", "Aisle 1"));
         System.out.println("Seeding database complete.");
+    }
+
+    private void seedDefaultUsersIfMissing() {
+        String[][] defaults = {
+            {"admin", "admin123", "admin", "Admin User", "admin@smartstore.lk"},
+            {"cashier", "cashier123", "cashier", "Cashier User", "cashier@smartstore.lk"},
+            {"manager", "manager123", "manager", "Manager User", "manager@smartstore.lk"},
+            {"stockmng", "stockmng123", "stockmanager", "Stock Manager", "stock@smartstore.lk"}
+        };
+        for (String[] def : defaults) {
+            if (userRepository.findByUsername(def[0]).isPresent()) {
+                continue;
+            }
+            User user = new User();
+            user.setUsername(def[0]);
+            user.setPassword(def[1]);
+            user.setRole(def[2]);
+            user.setFullName(def[3]);
+            user.setEmail(def[4]);
+            user.setStatus("ACTIVE");
+            user.setCreatedAt(LocalDateTime.now());
+            userRepository.save(user);
+            System.out.println("Seeded login user: " + def[0]);
+        }
     }
 
     private InventoryItem createInventoryItem(String name, String category, Double stock, Double minLevel, Double buyingPrice, Double sellingPrice, String unit, String location) {

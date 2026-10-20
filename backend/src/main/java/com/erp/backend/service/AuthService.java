@@ -20,6 +20,10 @@ public class AuthService {
             throw new RuntimeException("Invalid password");
         }
 
-        return user.getRole();
+        if (user.getStatus() != null && !"ACTIVE".equalsIgnoreCase(user.getStatus())) {
+            throw new RuntimeException("User is inactive");
+        }
+
+        return user.getRole() == null ? "" : user.getRole().trim().toLowerCase();
     }
 }
