@@ -155,7 +155,7 @@ const handleLogin = async () => {
 
   } catch (err) {
     console.error(err);
-    alert("Server error");
+    alert("Could not connect to the server. Check the deployment and try again.");
   }
 };
 
