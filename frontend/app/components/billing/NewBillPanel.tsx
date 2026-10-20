@@ -518,7 +518,7 @@ export default function NewBillPanel() {
                   placeholder="0.00"
                   value={receivedAmount}
                   onChange={(e) => setReceivedAmount(e.target.value)}
-                  className="w-full rounded-xl border border-stone-300 px-3 py-2 text-sm"
+                  className="w-full rounded-xl border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-stone-900 placeholder:text-stone-400 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-100"
                 />
 
                 <div className="flex justify-between text-sm font-bold text-emerald-700 mt-2">
