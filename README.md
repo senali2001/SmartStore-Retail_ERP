@@ -101,6 +101,8 @@ If Render exits during startup with `EMAXCONNSESSION` or `max clients reached in
 
 The Hibernate `PostgreSQLDialect` warning is not the cause of this failure; Hibernate now detects the dialect from the database connection.
 
+The backend Render URL is an API service, not a frontend webpage. Opening its root URL returns a small health response (`status: UP`); use the Vercel URL for the actual application UI.
+
 ### Deploy the frontend to Vercel
 
 1. Import this repository into Vercel and set the **Root Directory** to `frontend` (keep the Next.js framework preset and default build command).
