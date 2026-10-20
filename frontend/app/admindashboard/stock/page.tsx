@@ -1,12 +1,12 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { API_BASE } from '@/lib/api'
 import {
   Package, Plus, Search, Download, Upload, Eye, Pencil, Trash2,
   AlertTriangle, Clock, TrendingDown, ChevronLeft, ChevronRight,
   RefreshCw, DollarSign, X
 } from 'lucide-react'
 
-const API_BASE = 'http://localhost:8080/api'
 const PAGE_SIZE = 8
 
 const STATUS_CONFIG: Record<string, { label: string; cls: string }> = {

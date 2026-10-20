@@ -1,11 +1,11 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { API_BASE } from '@/lib/api'
 import {
   UserCircle, Search, Eye, ChevronLeft, ChevronRight, X, Star,
   ShoppingBag, DollarSign, Phone, Mail, Award, Clock, RefreshCw, Calendar, MapPin
 } from 'lucide-react'
 
-const API_BASE = 'http://localhost:8080/api'
 const PAGE_SIZE = 6
 
 export default function CustomersPage() {

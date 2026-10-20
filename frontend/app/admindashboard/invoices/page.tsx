@@ -1,8 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { FileText, Search, Download, Printer, Eye, CheckCircle, Clock, ChevronLeft, ChevronRight, X, DollarSign, RefreshCw } from 'lucide-react'
-
-const API_BASE = 'http://localhost:8080/api'
+import { API_BASE } from '@/lib/api'
 const PAGE_SIZE = 7
 
 export default function InvoicesPage() {

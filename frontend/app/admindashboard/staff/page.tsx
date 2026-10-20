@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
+import { API_BASE } from '@/lib/api'
 import {
   Users, UserPlus, Search, Filter, Download, Eye, Pencil,
   Trash2, KeyRound, X, Check, ChevronDown, ChevronLeft,
@@ -41,8 +42,6 @@ const ROLE_COLORS: Record<string, string> = {
   MANAGER: 'badge-blue',
   CASHIER: 'badge-teal',
 }
-
-const API_BASE = 'http://localhost:8080/api'
 
 function avatarColor(name: string) {
   const colors = ['#059669','#2563eb','#7c3aed','#d97706','#db2777','#0d9488','#ea580c','#65a30d']

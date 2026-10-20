@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useState } from "react";
+import { API_BASE } from "@/lib/api";
 import "./login.css";
 
 export default function LoginPage() {
@@ -124,7 +125,7 @@ export default function LoginPage() {
 
 const handleLogin = async () => {
   try {
-    const res = await fetch("http://localhost:8080/api/login", {
+    const res = await fetch(`${API_BASE}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

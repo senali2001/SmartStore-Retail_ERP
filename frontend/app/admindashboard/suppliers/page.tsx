@@ -1,12 +1,12 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { API_BASE } from '@/lib/api'
 import {
   Truck, Plus, Search, Download, Eye, Pencil, Trash2,
   ChevronLeft, ChevronRight, X, MapPin, Phone, Mail,
   Building2, PackageCheck, Calendar, DollarSign, RefreshCw
 } from 'lucide-react'
 
-const API_BASE = 'http://localhost:8080/api'
 const PAGE_SIZE = 5
 
 export default function SuppliersPage() {

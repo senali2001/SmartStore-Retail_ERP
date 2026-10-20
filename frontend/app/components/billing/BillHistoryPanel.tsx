@@ -14,8 +14,7 @@ import {
   User,
   ShoppingBag,
 } from "lucide-react";
-
-const API_BASE_URL = "http://localhost:8080";
+import { API_BASE } from "@/lib/api";
 
 type BillItem = {
   id: number;
@@ -47,7 +46,7 @@ export default function BillHistoryPanel() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/bills`)
+    fetch(`${API_BASE}/bills`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch bills");
         return res.json();
@@ -269,7 +268,7 @@ export default function BillHistoryPanel() {
                         </div>
 
                         <a
-                          href={`${API_BASE_URL}/api/bills/${bill.id}/pdf`}
+                          href={`${API_BASE}/bills/${bill.id}/pdf`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-2 rounded-2xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-500"

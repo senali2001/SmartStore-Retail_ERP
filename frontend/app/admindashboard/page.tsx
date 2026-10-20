@@ -10,8 +10,7 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid
 } from 'recharts'
 import Link from 'next/link'
-
-const API_BASE = 'http://localhost:8080/api'
+import { API_BASE } from '@/lib/api'
 
 const ChartTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null

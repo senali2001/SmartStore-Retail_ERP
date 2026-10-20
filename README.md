@@ -101,4 +101,14 @@ If Render exits during startup with `EMAXCONNSESSION` or `max clients reached in
 
 The Hibernate `PostgreSQLDialect` warning is not the cause of this failure; Hibernate now detects the dialect from the database connection.
 
+### Deploy the frontend to Vercel
+
+1. Import this repository into Vercel and set the **Root Directory** to `frontend` (keep the Next.js framework preset and default build command).
+2. Add the environment variable `NEXT_PUBLIC_API_BASE_URL` with the Render backend origin, for example `https://smartstore-retail-erp.onrender.com` (no trailing slash and no `/api` suffix). Set it for Production and Preview as needed, then deploy.
+3. Copy the deployed Vercel frontend origin, such as `https://<your-project>.vercel.app`, into the Render backend environment variable `CORS_ALLOWED_ORIGINS`. For multiple exact origins, separate them with commas. Do not include a path or trailing slash.
+4. Redeploy the Render backend after changing `CORS_ALLOWED_ORIGINS`. Redeploy the Vercel frontend after changing `NEXT_PUBLIC_API_BASE_URL`; Next.js embeds this public variable during the build.
+5. Open the Vercel URL and try logging in. If requests fail, check the browser developer console and Render logs; confirm the request goes to the Render URL and the Vercel origin exactly matches `CORS_ALLOWED_ORIGINS`.
+
+For local development, the frontend defaults to `http://localhost:8080`; copy `frontend/.env.example` to `frontend/.env.local` only if you need to override it.
+
 Default login accounts (created on first start if missing): `admin` / `admin123`, `cashier` / `cashier123`, `manager` / `manager123`.

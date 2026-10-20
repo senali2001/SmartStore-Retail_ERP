@@ -1,13 +1,13 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { BarChart3, Download, Calendar, TrendingUp, DollarSign, ShoppingBag, Percent, RefreshCw } from 'lucide-react'
+import { API_BASE } from '@/lib/api'
 import {
   BarChart, Bar, AreaChart, Area, LineChart, Line,
   PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
 
-const API_BASE = 'http://localhost:8080/api'
 const CATEGORY_COLORS = ['#059669', '#2563eb', '#7c3aed', '#d97706', '#db2777', '#0d9488']
 
 const ChartCard = ({ title, subtitle, children }: { title: string; subtitle?: string; children: React.ReactNode }) => (

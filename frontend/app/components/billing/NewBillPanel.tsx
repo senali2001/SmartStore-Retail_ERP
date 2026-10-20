@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, PlusCircle, RotateCcw, Search, ShoppingCart, Trash2, UserPlus, Check, X, Star, CreditCard, DollarSign, Smartphone } from "lucide-react";
+import { API_BASE } from "@/lib/api";
 
 type Product = {
   id: number;
@@ -24,8 +25,6 @@ type BillItem = {
   lineDiscount: number;
   lineNetTotal: number;
 };
-
-const API_BASE_URL = "http://localhost:8080";
 
 export default function NewBillPanel() {
   const router = useRouter();
@@ -57,7 +56,7 @@ export default function NewBillPanel() {
     }
 
     const controller = new AbortController();
-    fetch(`${API_BASE_URL}/api/products/search?keyword=${encodeURIComponent(keyword)}`, { signal: controller.signal })
+    fetch(`${API_BASE}/products/search?keyword=${encodeURIComponent(keyword)}`, { signal: controller.signal })
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch(() => setProducts([]));
@@ -68,7 +67,7 @@ export default function NewBillPanel() {
   const handleSearchCustomer = async () => {
     if (!phoneSearch.trim()) return;
     try {
-      const res = await fetch(`${API_BASE_URL}/api/customers/phone/${phoneSearch.trim()}`);
+      const res = await fetch(`${API_BASE}/customers/phone/${phoneSearch.trim()}`);
       if (res.ok) {
         const data = await res.json();
         setCustomer(data);
@@ -89,7 +88,7 @@ export default function NewBillPanel() {
       return;
     }
     try {
-      const res = await fetch(`${API_BASE_URL}/api/customers`, {
+      const res = await fetch(`${API_BASE}/customers`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -227,7 +226,7 @@ export default function NewBillPanel() {
         })),
       };
 
-      const res = await fetch(`${API_BASE_URL}/api/bills`, {
+      const res = await fetch(`${API_BASE}/bills`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -415,7 +414,7 @@ export default function NewBillPanel() {
 
               <div className="space-y-3">
                 <a
-                  href={`${API_BASE_URL}/api/bills/${savedBillData.id}/pdf`}
+                  href={`${API_BASE}/bills/${savedBillData.id}/pdf`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald-600 px-4 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-500 shadow-sm"
