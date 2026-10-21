@@ -69,24 +69,20 @@ This system provides a centralized platform for managing day to day retail busin
 
 ## Run the backend locally
 
-The backend requires Java 21 and a Supabase database password. New Supabase projects expose `db.<project>.supabase.co` on **IPv6 only**. This Windows machine cannot resolve that host, so Spring Boot never starts and the frontend shows login failed.
-
-Use the **Session pooler** (IPv4, port 5432). Host and username are in `backend/src/main/resources/application.yml`. In PowerShell:
-
-```powershell
-cd "D:\PROJECTS 2026\ERP-Systems\backend"
-$env:DB_PASSWORD = '<your Supabase database password>'
-.\mvnw.cmd spring-boot:run
-```
-
-This project’s session pooler host is `aws-0-ap-northeast-1.pooler.supabase.com`. If startup reports `tenant/user not found`, copy the exact host from the Supabase Dashboard **Connect** dialog and override it:
+The backend requires Java 21 and a Supabase PostgreSQL database. In the Supabase Dashboard, open **Connect** and select the **Session pooler**. Use that connection's host and username; the username is project-specific. In PowerShell, from the repository root, set the connection details (replace the host and username with the exact values shown by Supabase):
 
 ```powershell
 $env:SPRING_DATASOURCE_URL = 'jdbc:postgresql://<POOLER-HOST>:5432/postgres?sslmode=require'
-$env:SPRING_DATASOURCE_USERNAME = 'postgres.<PROJECT-REF>'
+$env:SPRING_DATASOURCE_USERNAME = '<POOLER-USERNAME>'
+$securePassword = Read-Host "Supabase database password" -AsSecureString
+$env:SPRING_DATASOURCE_PASSWORD = [System.Net.NetworkCredential]::new("", $securePassword).Password
+
+$env:JAVA_HOME = 'C:\Program Files\Java\jdk-21.0.12.1'
+$env:Path = "$env:JAVA_HOME\bin;$env:Path"
+.\backend\mvnw.cmd -f .\backend\pom.xml spring-boot:run
 ```
 
-The password is read from `SPRING_DATASOURCE_PASSWORD` (or the legacy `DB_PASSWORD`) and must not be committed. The API should be available at `http://localhost:8080`.
+At the password prompt, type the database password and press Enter. Do not put the password inside the `Read-Host` prompt text or paste it into source code, logs, or chat. The URL and username are required so the app cannot silently connect with stale credentials. The API should be available at `http://localhost:8080`.
 
 For Render, configure `SPRING_DATASOURCE_URL` as a JDBC URL (`jdbc:postgresql://<HOST>:5432/<DATABASE>?sslmode=require`), `SPRING_DATASOURCE_USERNAME` as the database username, and `SPRING_DATASOURCE_PASSWORD` as the database password. Render's `DATABASE_URL` value is not a JDBC URL; do not use it directly for `SPRING_DATASOURCE_URL`.
 
