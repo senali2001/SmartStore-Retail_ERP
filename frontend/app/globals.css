@@ -23,4 +23,20 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+@media (max-width: 767px) {
+  .manager-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .manager-sidebar.is-mobile-open {
+    transform: translateX(0);
+  }
+
+  .manager-main [style*="grid-template-columns"] {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important;
+  }
 }

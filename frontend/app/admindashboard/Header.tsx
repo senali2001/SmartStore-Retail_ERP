@@ -1,8 +1,8 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useSyncExternalStore } from 'react'
 import {
   Search, Bell, Sun, Moon, ChevronDown,
-  User, Settings, LogOut, Menu, MessageSquare, X
+  User, Settings, LogOut, Menu
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -13,15 +13,27 @@ const notifications = [
   { id: 4, type: 'staff',   title: 'Staff login',         desc: 'Cashier Priya logged in',                   time: '2h ago',  read: true  },
 ]
 
+function subscribeToTheme(onChange: () => void) {
+  window.addEventListener('storage', onChange)
+  window.addEventListener('smartstore-theme-change', onChange)
+  return () => {
+    window.removeEventListener('storage', onChange)
+    window.removeEventListener('smartstore-theme-change', onChange)
+  }
+}
+
+function getThemeSnapshot() {
+  return localStorage.getItem('smartstore-theme') === 'dark'
+}
+
 interface Props {
-  sidebarCollapsed: boolean
   onMenuClick: () => void
 }
 
-export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
+export default function AdminHeader({ onMenuClick }: Props) {
   const [time, setTime]             = useState('')
   const [date, setDate]             = useState('')
-  const [dark, setDark]             = useState(false)
+  const dark = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, () => false)
   const [notifOpen, setNotifOpen]   = useState(false)
   const [profileOpen, setProfileOpen] = useState(false)
   const notifRef   = useRef<HTMLDivElement>(null)
@@ -39,15 +51,13 @@ export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
   }, [])
 
   useEffect(() => {
-    const saved = localStorage.getItem('smartstore-theme')
-    if (saved === 'dark') { setDark(true); document.documentElement.setAttribute('data-theme', 'dark') }
-  }, [])
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : '')
+  }, [dark])
 
   const toggleTheme = () => {
     const next = !dark
-    setDark(next)
-    document.documentElement.setAttribute('data-theme', next ? 'dark' : '')
     localStorage.setItem('smartstore-theme', next ? 'dark' : 'light')
+    window.dispatchEvent(new Event('smartstore-theme-change'))
   }
 
   useEffect(() => {
@@ -61,15 +71,19 @@ export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
 
   const unread = notifications.filter(n => !n.read).length
 
-  const sidebarW = sidebarCollapsed ? 72 : 260
-
   return (
     <header
       className="admin-header"
-      style={{ marginLeft: sidebarW, transition: 'margin-left 0.25s ease', position: 'sticky', top: 0, zIndex: 50 }}
+      style={{ position: 'sticky', top: 0, zIndex: 50 }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <button className="btn btn-ghost btn-icon" onClick={onMenuClick} style={{ color: 'var(--text-secondary)' }}>
+        <button
+          type="button"
+          className="btn btn-ghost btn-icon"
+          onClick={onMenuClick}
+          aria-label="Toggle navigation menu"
+          style={{ color: 'var(--text-secondary)' }}
+        >
           <Menu size={18} />
         </button>
 
@@ -85,7 +99,7 @@ export default function AdminHeader({ sidebarCollapsed, onMenuClick }: Props) {
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
 
-        <div style={{
+        <div className="admin-header-clock" style={{
           background: 'var(--bg-hover)',
           border: '1px solid var(--border)',
           borderRadius: 'var(--r-md)',

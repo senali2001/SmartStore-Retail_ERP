@@ -13,11 +13,16 @@ const navItems = [
   { icon: LogOut, label: 'Logout', href: '/components/login' },
 ]
 
-export default function Sidebar() {
+interface SidebarProps {
+  open: boolean
+  onNavigate: () => void
+}
+
+export default function Sidebar({ open, onNavigate }: SidebarProps) {
   const pathname = usePathname()
 
   return (
-    <aside className="fixed left-0 top-0 z-50 flex h-screen min-w-60 flex-col border-r border-emerald-900/40 bg-black">
+    <aside className={`fixed left-0 top-0 z-50 flex h-dvh w-60 max-w-[calc(100vw-3rem)] flex-col border-r border-emerald-900/40 bg-black transition-transform duration-200 md:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'}`}>
       <div className="flex items-center gap-3 border-b border-emerald-900/40 px-5 py-5">
         <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-500 shadow-lg shadow-emerald-900/40">
           <Store size={18} color="#fff" />
@@ -36,6 +41,7 @@ export default function Sidebar() {
             <Link
               key={label}
               href={href}
+              onClick={onNavigate}
               className={`mb-2 flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-left transition ${
                 isActive
                   ? 'bg-emerald-500/15 text-emerald-300'

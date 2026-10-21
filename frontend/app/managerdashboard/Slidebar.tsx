@@ -61,15 +61,20 @@ const navSections = [
   }
 ]
 
-export default function Sidebar() {
+interface SidebarProps {
+  open: boolean
+  onNavigate: () => void
+}
+
+export default function Sidebar({ open, onNavigate }: SidebarProps) {
   const [activeItem, setActiveItem] = useState('Dashboard')
 
   return (
     <aside
       style={{
-        width: '240px',
-        minWidth: '240px',
-        height: '100vh',
+        width: 'min(240px, calc(100vw - 48px))',
+        minWidth: 0,
+        height: '100dvh',
         background: 'var(--bg-secondary)',
         borderRight: '1px solid var(--border)',
         display: 'flex',
@@ -79,6 +84,7 @@ export default function Sidebar() {
         top: 0,
         zIndex: 50,
       }}
+      className={`manager-sidebar fixed transition-transform duration-200${open ? ' is-mobile-open' : ''}`}
     >
       <div style={{
         padding: '20px 20px 16px',
@@ -123,7 +129,10 @@ export default function Sidebar() {
               return (
                 <button
                   key={label}
-                  onClick={() => setActiveItem(label)}
+                  onClick={() => {
+                    setActiveItem(label)
+                    onNavigate()
+                  }}
                   style={{
                     width: '100%',
                     display: 'flex',

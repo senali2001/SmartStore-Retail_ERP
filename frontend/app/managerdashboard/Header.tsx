@@ -1,7 +1,7 @@
 'use client'
-import { Search, Bell, RefreshCw } from 'lucide-react'
+import { Menu, Search, Bell, RefreshCw } from 'lucide-react'
 
-export default function Header() {
+export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
   return (
     <header style={{
       height: 60,
@@ -10,23 +10,32 @@ export default function Header() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: '0 24px',
+      padding: '0 16px',
       position: 'sticky',
       top: 0,
       zIndex: 40,
     }}>
-      <div>
-        <div style={{ fontFamily: 'var(--font-display)', fontSize: 17, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
-          Dashboard
-        </div>
-        <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>
-          Overview · March 24, 2026
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <button
+          type="button"
+          aria-label="Open navigation menu"
+          onClick={onMenuClick}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-stone-700 bg-black text-white md:hidden"
+        >
+          <Menu size={20} />
+        </button>
+        <div>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: 17, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
+            Dashboard
+          </div>
+          <div className="hidden sm:block" style={{ fontSize: 11, color: 'var(--text-muted)' }}>
+            Overview · March 24, 2026
+          </div>
         </div>
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <div style={{
-          display: 'flex',
+        <div className="hidden sm:flex" style={{
           alignItems: 'center',
           gap: 8,
           background: 'var(--bg-card)',

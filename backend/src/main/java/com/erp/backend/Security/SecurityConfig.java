@@ -25,7 +25,7 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> {
-                auth.requestMatchers("/", "/api/**").permitAll();
+                auth.requestMatchers("/", "/favicon.ico", "/api/**").permitAll();
                 auth.anyRequest().authenticated();
             })
             .build();
@@ -33,7 +33,7 @@ public class SecurityConfig {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource(
-            @Value("${CORS_ALLOWED_ORIGINS:http://localhost:3000,https://smartstore-six-rust.vercel.app}")
+            @Value("${CORS_ALLOWED_ORIGINS:http://localhost:3000,https://smartstore-six-rust.vercel.app,https://smart-store-retail-erp.vercel.app}")
             String allowedOrigins) {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(Arrays.stream(allowedOrigins.split(","))

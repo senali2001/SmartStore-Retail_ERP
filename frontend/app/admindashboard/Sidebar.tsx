@@ -1,12 +1,11 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard, Users, Package, Truck, Tag,
   ShoppingCart, FileText, UserCircle, BarChart3,
-  Settings, LogOut, Store, ChevronLeft, ChevronRight,
-  Bell, ShoppingBag, Menu
+  Settings, LogOut, Store, ChevronLeft, ChevronRight
 } from 'lucide-react'
 
 const NAV_ITEMS = [
@@ -25,9 +24,11 @@ const NAV_ITEMS = [
 interface Props {
   collapsed: boolean
   onToggle: () => void
+  mobileOpen: boolean
+  onNavigate: () => void
 }
 
-export default function Sidebar({ collapsed, onToggle }: Props) {
+export default function Sidebar({ collapsed, onToggle, mobileOpen, onNavigate }: Props) {
   const pathname = usePathname()
   const [logoutOpen, setLogoutOpen] = useState(false)
 
@@ -36,7 +37,7 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
   return (
     <>
       <aside
-        className="admin-sidebar"
+        className={`admin-sidebar${mobileOpen ? ' is-mobile-open' : ''}`}
         style={{ width: w }}
       >
         <div className="sidebar-logo-section" style={{ justifyContent: collapsed ? 'center' : 'flex-start' }}>
@@ -52,6 +53,7 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
         </div>
 
         <button
+          className="sidebar-collapse-toggle"
           onClick={onToggle}
           style={{
             position: 'absolute',
@@ -97,6 +99,7 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
                 className={`sidebar-item${isActive ? ' active' : ''}`}
                 style={{ justifyContent: collapsed ? 'center' : 'flex-start', padding: collapsed ? '11px 0' : '9px 20px' }}
                 data-tip={collapsed ? label : undefined}
+                onClick={onNavigate}
               >
                 <Icon size={17} style={{ flexShrink: 0 }} />
                 {!collapsed && (
@@ -117,7 +120,10 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
 
           <button
             className="sidebar-item"
-            onClick={() => setLogoutOpen(true)}
+            onClick={() => {
+              setLogoutOpen(true)
+              onNavigate()
+            }}
             style={{
               color: 'var(--color-red)',
               justifyContent: collapsed ? 'center' : 'flex-start',
@@ -178,7 +184,7 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
               </div>
             </div>
             <p style={{ fontSize: 13.5, color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 20 }}>
-              You'll be signed out of your SmartStore admin session. Any unsaved changes will be lost.
+              You&apos;ll be signed out of your SmartStore admin session. Any unsaved changes will be lost.
             </p>
             <div style={{ display: 'flex', gap: 10 }}>
               <button className="btn btn-secondary" style={{ flex: 1 }} onClick={() => setLogoutOpen(false)}>

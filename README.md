@@ -102,11 +102,11 @@ The backend Render URL is an API service, not a frontend webpage. Opening its ro
 ### Deploy the frontend to Vercel
 
 1. Import this repository into Vercel and set the **Root Directory** to `frontend` (keep the Next.js framework preset and default build command).
-2. Add the environment variable `NEXT_PUBLIC_API_BASE_URL` with the Render backend origin, for example `https://smartstore-retail-erp.onrender.com` (no trailing slash and no `/api` suffix). Set it for Production and Preview as needed, then deploy.
-3. The backend allows `https://smartstore-six-rust.vercel.app` and `http://localhost:3000` by default. If your Vercel project uses a different domain or you need preview deployments, set the Render backend environment variable `CORS_ALLOWED_ORIGINS` to the exact origins, separated by commas (for example `https://smartstore-six-rust.vercel.app,https://your-preview.vercel.app`). Do not include a path or trailing slash.
-4. Redeploy the Render backend after changing `CORS_ALLOWED_ORIGINS`. Redeploy the Vercel frontend after changing `NEXT_PUBLIC_API_BASE_URL`; Next.js embeds this public variable during the build.
-5. Open the Vercel URL and try logging in. If requests fail, check the browser developer console and Render logs; confirm the request goes to the Render URL and the Vercel origin exactly matches `CORS_ALLOWED_ORIGINS`.
+2. Add the environment variable `NEXT_PUBLIC_API_BASE_URL` with the Render backend origin `https://smartstore-vqsc.onrender.com` (no trailing slash and no `/api` suffix). Set it for Production and Preview as needed, then deploy.
+3. The frontend sends API calls through its same-origin Next.js proxy, so the Vercel domain does not need to be added to backend CORS for those calls. `CORS_ALLOWED_ORIGINS` is only needed for clients that call the backend directly; set it to their exact origins, separated by commas, with no path or trailing slash.
+4. Redeploy the Render backend after changing its environment variables. Redeploy the Vercel frontend after changing `NEXT_PUBLIC_API_BASE_URL`; Next.js uses this value when building the API proxy.
+5. Open the Vercel URL and try logging in. If requests fail, check the browser developer console and Render logs; in the browser Network panel, API requests should use the frontend's `/api/...` path.
 
-For local development, the frontend defaults to `http://localhost:8080`; copy `frontend/.env.example` to `frontend/.env.local` only if you need to override it.
+The frontend sends API requests through a same-origin Next.js proxy, which avoids browser CORS failures. The proxy uses `NEXT_PUBLIC_API_BASE_URL`; when it is unset, it targets `https://smartstore-vqsc.onrender.com`. For local development against a locally running backend, set `NEXT_PUBLIC_API_BASE_URL=http://localhost:8080` in `frontend/.env.local`. Copy `frontend/.env.example` to use the deployed API.
 
 Default login accounts (created on first start if missing): `admin` / `admin123`, `cashier` / `cashier123`, `manager` / `manager123`.
