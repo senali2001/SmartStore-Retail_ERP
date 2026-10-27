@@ -5,6 +5,13 @@ This system provides a centralized platform for managing day to day retail busin
 
 ---
 
+User Names   |  Password
+---------------------------
+admin        | admin123
+cashier      | cashier123
+manager      | manager123
+stockmanage  | stock123
+
 ## 🚀 Features
 
 ### 👨‍💼 Admin Panel
